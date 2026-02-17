@@ -32,16 +32,13 @@ export default function Home() {
         A K ENGINEERING – Industrial EPC Solutions
       </h1>
 
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4 w-full max-w-md"
-      >
-        <input name="name" placeholder="Your Name" required className="p-3 rounded text-black" />
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full max-w-md">
+        <input name="contactPerson" placeholder="Your Name" required className="p-3 rounded text-black" />
         <input name="email" placeholder="Your Email" required className="p-3 rounded text-black" />
-        <input name="phone" placeholder="Phone Number" required className="p-3 rounded text-black" />
+        <input name="companyName" placeholder="Company Name" required className="p-3 rounded text-black" />
         <textarea name="message" placeholder="Project Requirement" required className="p-3 rounded text-black" />
 
-        <button className="bg-white text-black py-3 rounded font-semibold">
+        <button type="submit" className="bg-white text-black py-3 rounded font-semibold">
           Submit Enquiry
         </button>
       </form>
