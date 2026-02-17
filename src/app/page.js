@@ -1,9 +1,9 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div>
-      <h1>WORKING TEST PAGE 🚀</h1>
+    <div className="min-h-screen flex items-center justify-center">
+      <h1 className="text-4xl font-bold">
+        A K ENGINEERING 🚀
+      </h1>
     </div>
   );
 }
