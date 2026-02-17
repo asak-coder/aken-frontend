@@ -1,135 +1,52 @@
+"use client";
+import { useState } from "react";
+
 export default function Home() {
+  const [status, setStatus] = useState("");
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    const res = await fetch("https://aken-backend-1.onrender.com/api/leads", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      setStatus("✅ Enquiry submitted successfully!");
+      e.target.reset();
+    } else {
+      setStatus("❌ Something went wrong.");
+    }
+  }
+
   return (
-    <div className="min-h-screen bg-zinc-950 text-white">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white p-10">
+      <h1 className="text-4xl font-bold mb-6">
+        A K ENGINEERING – Industrial EPC Solutions
+      </h1>
 
-      {/* NAVBAR */}
-      <header className="w-full p-6 border-b border-zinc-800 flex justify-between items-center">
-        <h1 className="text-2xl font-bold tracking-wide">
-          A K ENGINEERING
-        </h1>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-4 w-full max-w-md"
+      >
+        <input name="name" placeholder="Your Name" required className="p-3 rounded text-black" />
+        <input name="email" placeholder="Your Email" required className="p-3 rounded text-black" />
+        <input name="phone" placeholder="Phone Number" required className="p-3 rounded text-black" />
+        <textarea name="message" placeholder="Project Requirement" required className="p-3 rounded text-black" />
 
-        <button className="px-4 py-2 bg-white text-black rounded-md font-semibold hover:bg-gray-200 transition">
-          Get Quote
+        <button className="bg-white text-black py-3 rounded font-semibold">
+          Submit Enquiry
         </button>
-      </header>
+      </form>
 
-      {/* HERO SECTION */}
-      <section className="flex flex-col items-center justify-center text-center py-28 px-6">
-
-        <h2 className="text-5xl font-extrabold mb-8 leading-tight">
-          Industrial EPC & <br />
-          Pre-Engineered Building Solutions
-        </h2>
-
-        <p className="max-w-2xl text-lg text-zinc-400 mb-10">
-          Delivering high-performance steel structures, heavy fabrication,
-          and turnkey erection services across India with safety,
-          precision, and reliability.
-        </p>
-
-        <div className="flex gap-6">
-            <form
-  action="https://aken-backend-1.onrender.com/api/leads"
-  method="POST"
-  className="flex flex-col gap-4 w-full max-w-md mt-10"
->
-  <input
-    type="text"
-    name="name"
-    placeholder="Your Name"
-    required
-    className="px-4 py-3 rounded-md bg-zinc-800 border border-zinc-700 focus:outline-none"
-  />
-
-  <input
-    type="email"
-    name="email"
-    placeholder="Your Email"
-    required
-    className="px-4 py-3 rounded-md bg-zinc-800 border border-zinc-700 focus:outline-none"
-  />
-
-  <input
-    type="text"
-    name="phone"
-    placeholder="Phone Number"
-    required
-    className="px-4 py-3 rounded-md bg-zinc-800 border border-zinc-700 focus:outline-none"
-  />
-
-  <textarea
-    name="message"
-    placeholder="Project Requirement"
-    required
-    rows="4"
-    className="px-4 py-3 rounded-md bg-zinc-800 border border-zinc-700 focus:outline-none"
-  />
-
-  <button
-    type="submit"
-    className="px-8 py-4 bg-white text-black font-semibold rounded-md hover:bg-gray-300 transition"
-  >
-    Submit Enquiry
-  </button>
-</form>
-
-          <button className="px-8 py-4 bg-white text-black font-semibold rounded-md hover:bg-gray-300 transition">
-            Request Proposal
-          </button>
-
-          <button className="px-8 py-4 border border-white font-semibold rounded-md hover:bg-white hover:text-black transition">
-            View Projects
-          </button>
-        </div>
-
-      </section>
-
-      {/* SERVICES */}
-      <section className="py-20 px-6 bg-zinc-900">
-        <h3 className="text-3xl font-bold text-center mb-16">
-          Our Core Services
-        </h3>
-
-        <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-
-          <div className="p-8 bg-zinc-800 rounded-xl hover:bg-zinc-700 transition">
-            <h4 className="text-xl font-bold mb-4">
-              PEB Structures
-            </h4>
-            <p className="text-zinc-400">
-              Complete design, fabrication and erection of industrial PEB
-              buildings for manufacturing, warehousing and power sectors.
-            </p>
-          </div>
-
-          <div className="p-8 bg-zinc-800 rounded-xl hover:bg-zinc-700 transition">
-            <h4 className="text-xl font-bold mb-4">
-              Structural Fabrication
-            </h4>
-            <p className="text-zinc-400">
-              Heavy MS fabrication, trusses, platforms, gantries,
-              pipe racks and industrial steel components.
-            </p>
-          </div>
-
-          <div className="p-8 bg-zinc-800 rounded-xl hover:bg-zinc-700 transition">
-            <h4 className="text-xl font-bold mb-4">
-              Erection & Installation
-            </h4>
-            <p className="text-zinc-400">
-              Safe and compliant on-site execution for PSU,
-              cement, mining and power plant industries.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="text-center py-8 border-t border-zinc-800 text-zinc-500">
-        © {new Date().getFullYear()} A K ENGINEERING | Sambalpur, Odisha | Industrial EPC Experts
-      </footer>
-
+      {status && <p className="mt-4">{status}</p>}
     </div>
   );
 }
