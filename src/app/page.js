@@ -28,6 +28,51 @@ export default function Home() {
         </p>
 
         <div className="flex gap-6">
+            <form
+  action="https://aken-backend-1.onrender.com/api/leads"
+  method="POST"
+  className="flex flex-col gap-4 w-full max-w-md mt-10"
+>
+  <input
+    type="text"
+    name="name"
+    placeholder="Your Name"
+    required
+    className="px-4 py-3 rounded-md bg-zinc-800 border border-zinc-700 focus:outline-none"
+  />
+
+  <input
+    type="email"
+    name="email"
+    placeholder="Your Email"
+    required
+    className="px-4 py-3 rounded-md bg-zinc-800 border border-zinc-700 focus:outline-none"
+  />
+
+  <input
+    type="text"
+    name="phone"
+    placeholder="Phone Number"
+    required
+    className="px-4 py-3 rounded-md bg-zinc-800 border border-zinc-700 focus:outline-none"
+  />
+
+  <textarea
+    name="message"
+    placeholder="Project Requirement"
+    required
+    rows="4"
+    className="px-4 py-3 rounded-md bg-zinc-800 border border-zinc-700 focus:outline-none"
+  />
+
+  <button
+    type="submit"
+    className="px-8 py-4 bg-white text-black font-semibold rounded-md hover:bg-gray-300 transition"
+  >
+    Submit Enquiry
+  </button>
+</form>
+
           <button className="px-8 py-4 bg-white text-black font-semibold rounded-md hover:bg-gray-300 transition">
             Request Proposal
           </button>
