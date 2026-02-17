@@ -38,4 +38,17 @@ export default function Home() {
           </div>
 
           <div className="p-6 bg-white shadow rounded-lg">
-            <h4 cl
+            <h4 className="text-xl font-bold mb-3">Erection Services</h4>
+            <p>On-site installation and execution with safety compliance.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="text-center py-6 border-t">
+        © {new Date().getFullYear()} A K ENGINEERING | Sambalpur, Odisha
+      </footer>
+
+    </div>
+  );
+}
