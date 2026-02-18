@@ -6,6 +6,7 @@ export default function Home() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+const [phone, setPhone] = useState("");
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
@@ -36,6 +37,10 @@ export default function Home() {
         <input name="contactPerson" placeholder="Your Name" required className="p-3 rounded text-black" />
         <input name="email" placeholder="Your Email" required className="p-3 rounded text-black" />
         <input name="companyName" placeholder="Company Name" required className="p-3 rounded text-black" />
+        <input   type="text"   placeholder="Phone Number"   value={phone}   onChange={(e) => setPhone(e.target.value)}
+  required
+/>
+
         <textarea name="message" placeholder="Project Requirement" required className="p-3 rounded text-black" />
 
         <button type="submit" className="bg-white text-black py-3 rounded font-semibold">
