@@ -10,13 +10,17 @@ export default function Home() {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
 
-    const res = await fetch("https://aken-backend-1.onrender.com/api/leads", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const res = await fetch(
+  `${process.env.NEXT_PUBLIC_API_URL}/api/leads`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }
+);
+
 
     if (res.ok) {
       setStatus("✅ Enquiry submitted successfully!");
