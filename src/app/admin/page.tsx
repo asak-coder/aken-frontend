@@ -11,6 +11,7 @@ interface Lead {
   message: string;
   status: string;
   createdAt: string;
+  dealValue?: number;
 }
 
 export default function AdminDashboard() {
@@ -23,6 +24,15 @@ export default function AdminDashboard() {
   Won: leads.filter((l) => l.status === "Won").length,
   Lost: leads.filter((l) => l.status === "Lost").length,
 };
+const totalRevenue = leads
+  .filter((l) => l.status === "Won")
+  .reduce((sum, l) => sum + (l.dealValue || 0), 0);
+
+const totalPipelineValue = leads.reduce(
+  (sum, l) => sum + (l.dealValue || 0),
+  0
+);
+
 
 function getStatusColor(status: string) {
   switch (status) {
@@ -91,6 +101,8 @@ function getStatusColor(status: string) {
             <th className="p-3">Company</th>
             <th className="p-3">Phone</th>
             <th className="p-3">Status</th>
+            <th className="p-3">Deal Value (₹)</th>
+
           </tr>
         </thead>
        <tbody>
@@ -99,6 +111,10 @@ function getStatusColor(status: string) {
       <td className="p-3">{lead.contactPerson}</td>
       <td className="p-3">{lead.companyName}</td>
       <td className="p-3">{lead.phone}</td>
+      <td className="p-3">
+  ₹ {lead.dealValue?.toLocaleString() || 0}
+</td>
+
 <td className="p-3">
   <div className="flex items-center gap-3">
     <span
@@ -147,6 +163,22 @@ function getStatusColor(status: string) {
 </tbody>
 
       </table>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+        <div className="bg-green-700 p-6 rounded-lg text-white text-center">
+          <p className="text-sm">Total Won Revenue</p>
+          <p className="text-3xl font-bold">
+            ₹ {totalRevenue.toLocaleString()}
+          </p>
+        </div>
+
+        <div className="bg-indigo-700 p-6 rounded-lg text-white text-center">
+          <p className="text-sm">Total Pipeline Value</p>
+          <p className="text-3xl font-bold">
+            ₹ {totalPipelineValue.toLocaleString()}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
