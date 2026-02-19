@@ -114,6 +114,62 @@ function getStatusColor(status: string) {
       <td className="p-3">
   ₹ {lead.dealValue?.toLocaleString() || 0}
 </td>
+<td className="p-3">
+  <input
+    type="number"
+    value={lead.dealValue || 0}
+    onChange={async (e) => {
+      const newValue = Number(e.target.value);
+
+      await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/leads/${lead._id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ dealValue: newValue }),
+        }
+      );
+
+      setLeads((prev) =>
+        prev.map((l) =>
+          l._id === lead._id ? { ...l, dealValue: newValue } : l
+        )
+      );
+    }}
+    className="text-black p-1 rounded w-24"
+  />
+</td>
+<td className="p-3">
+  <select
+    value={lead.status}
+    onChange={async (e) => {
+      const newStatus = e.target.value;
+
+      await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/leads/${lead._id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: newStatus }),
+        }
+      );
+
+      setLeads((prev) =>
+        prev.map((l) =>
+          l._id === lead._id ? { ...l, status: newStatus } : l
+        )
+      );
+    }}
+    className="text-black p-1 rounded"
+  >
+    <option value="New">New</option>
+    <option value="Contacted">Contacted</option>
+    <option value="Quoted">Quoted</option>
+    <option value="Won">Won</option>
+    <option value="Lost">Lost</option>
+  </select>
+</td>
+
 
 <td className="p-3">
   <div className="flex items-center gap-3">
