@@ -27,28 +27,48 @@ interface Lead {
 }
 
 export default function RevenueChart({ leads }: { leads: Lead[] }) {
-  const monthlyRevenue: Record<string, number> = {};
+  const monthlyWon: Record<string, number> = {};
+  const monthlyPipeline: Record<string, number> = {};
 
   leads.forEach((lead) => {
-    if (lead.status === "Won") {
-      const date = new Date(lead.createdAt);
-      const month = date.toLocaleString("default", { month: "short" });
+    const date = new Date(lead.createdAt);
+    const month = date.toLocaleString("default", { month: "short" });
 
-      monthlyRevenue[month] =
-        (monthlyRevenue[month] || 0) + (lead.dealValue || 0);
+    const value = lead.dealValue || 0;
+
+    if (lead.status === "Won") {
+      monthlyWon[month] = (monthlyWon[month] || 0) + value;
+    }
+
+    if (
+      lead.status === "New" ||
+      lead.status === "Contacted" ||
+      lead.status === "Qualified"
+    ) {
+      monthlyPipeline[month] =
+        (monthlyPipeline[month] || 0) + value;
     }
   });
 
-  const labels = Object.keys(monthlyRevenue);
-  const dataValues = Object.values(monthlyRevenue);
+  const allMonths = Array.from(
+    new Set([...Object.keys(monthlyWon), ...Object.keys(monthlyPipeline)])
+  );
+
+  const wonData = allMonths.map((m) => monthlyWon[m] || 0);
+  const pipelineData = allMonths.map((m) => monthlyPipeline[m] || 0);
 
   const data = {
-    labels,
+    labels: allMonths,
     datasets: [
       {
-        label: "Monthly Won Revenue (₹)",
-        data: dataValues,
-        tension: 0.4, // smooth curve
+        label: "Won Revenue (₹)",
+        data: wonData,
+        tension: 0.4,
+      },
+      {
+        label: "Pipeline Revenue (₹)",
+        data: pipelineData,
+        tension: 0.4,
       },
     ],
   };
@@ -56,7 +76,7 @@ export default function RevenueChart({ leads }: { leads: Lead[] }) {
   return (
     <div className="bg-gray-900 p-6 rounded-xl mt-8">
       <h2 className="text-xl font-bold mb-4">
-        Revenue Growth Trend
+        Pipeline vs Won Revenue
       </h2>
       <Line data={data} />
     </div>
