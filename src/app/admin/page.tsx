@@ -16,6 +16,24 @@ interface Lead {
 export default function AdminDashboard() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(true);
+function getStatusColor(status: string) {
+  switch (status) {
+    case "New":
+      return "bg-yellow-500";
+    case "Contacted":
+      return "bg-blue-500";
+    case "Quoted":
+      return "bg-purple-500";
+    case "Won":
+      return "bg-green-600";
+    case "Lost":
+      return "bg-red-600";
+    default:
+      return "bg-gray-500";
+  }
+}
+
+
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/leads`)
@@ -47,39 +65,49 @@ export default function AdminDashboard() {
       <td className="p-3">{lead.contactPerson}</td>
       <td className="p-3">{lead.companyName}</td>
       <td className="p-3">{lead.phone}</td>
+<td className="p-3">
+  <div className="flex items-center gap-3">
+    <span
+      className={`px-3 py-1 rounded-full text-sm text-white ${getStatusColor(
+        lead.status
+      )}`}
+    >
+      {lead.status}
+    </span>
 
-      <td className="p-3">
-        <select
-          value={lead.status}
-          onChange={async (e) => {
-            const newStatus = e.target.value;
+    <select
+      value={lead.status}
+      onChange={async (e) => {
+        const newStatus = e.target.value;
 
-            await fetch(
-              `${process.env.NEXT_PUBLIC_API_URL}/api/leads/${lead._id}/status`,
-              {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ status: newStatus }),
-              }
-            );
+        await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/leads/${lead._id}/status`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ status: newStatus }),
+          }
+        );
 
-            setLeads((prev) =>
-              prev.map((l) =>
-                l._id === lead._id ? { ...l, status: newStatus } : l
-              )
-            );
-          }}
-          className="bg-gray-800 p-2 rounded"
-        >
-          <option value="New">New</option>
-          <option value="Contacted">Contacted</option>
-          <option value="Quoted">Quoted</option>
-          <option value="Won">Won</option>
-          <option value="Lost">Lost</option>
-        </select>
-      </td>
+        setLeads((prev) =>
+          prev.map((l) =>
+            l._id === lead._id ? { ...l, status: newStatus } : l
+          )
+        );
+      }}
+      className="bg-gray-800 p-2 rounded text-white"
+    >
+      <option value="New">New</option>
+      <option value="Contacted">Contacted</option>
+      <option value="Quoted">Quoted</option>
+      <option value="Won">Won</option>
+      <option value="Lost">Lost</option>
+    </select>
+  </div>
+</td>
+
     </tr>
   ))}
 </tbody>
