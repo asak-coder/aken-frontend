@@ -16,6 +16,14 @@ interface Lead {
 export default function AdminDashboard() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(true);
+  const statusCounts = {
+  New: leads.filter((l) => l.status === "New").length,
+  Contacted: leads.filter((l) => l.status === "Contacted").length,
+  Quoted: leads.filter((l) => l.status === "Quoted").length,
+  Won: leads.filter((l) => l.status === "Won").length,
+  Lost: leads.filter((l) => l.status === "Lost").length,
+};
+
 function getStatusColor(status: string) {
   switch (status) {
     case "New":
@@ -49,6 +57,32 @@ function getStatusColor(status: string) {
   return (
     <div className="min-h-screen bg-black text-white p-10">
       <h1 className="text-3xl font-bold mb-8">Admin Dashboard – Leads</h1>
+<div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
+  <div className="bg-yellow-500 p-4 rounded-lg text-black text-center">
+    <p className="text-sm">New</p>
+    <p className="text-2xl font-bold">{statusCounts.New}</p>
+  </div>
+
+  <div className="bg-blue-500 p-4 rounded-lg text-white text-center">
+    <p className="text-sm">Contacted</p>
+    <p className="text-2xl font-bold">{statusCounts.Contacted}</p>
+  </div>
+
+  <div className="bg-purple-600 p-4 rounded-lg text-white text-center">
+    <p className="text-sm">Quoted</p>
+    <p className="text-2xl font-bold">{statusCounts.Quoted}</p>
+  </div>
+
+  <div className="bg-green-600 p-4 rounded-lg text-white text-center">
+    <p className="text-sm">Won</p>
+    <p className="text-2xl font-bold">{statusCounts.Won}</p>
+  </div>
+
+  <div className="bg-red-600 p-4 rounded-lg text-white text-center">
+    <p className="text-sm">Lost</p>
+    <p className="text-2xl font-bold">{statusCounts.Lost}</p>
+  </div>
+</div>
 
       <table className="min-w-full bg-gray-900 rounded-lg">
         <thead className="bg-gray-800">
