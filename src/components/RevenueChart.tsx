@@ -4,13 +4,21 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  BarElement,
+  PointElement,
+  LineElement,
   Tooltip,
   Legend,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Legend
+);
 
 interface Lead {
   dealValue?: number;
@@ -40,6 +48,7 @@ export default function RevenueChart({ leads }: { leads: Lead[] }) {
       {
         label: "Monthly Won Revenue (₹)",
         data: dataValues,
+        tension: 0.4, // smooth curve
       },
     ],
   };
@@ -47,9 +56,9 @@ export default function RevenueChart({ leads }: { leads: Lead[] }) {
   return (
     <div className="bg-gray-900 p-6 rounded-xl mt-8">
       <h2 className="text-xl font-bold mb-4">
-        Monthly Revenue Performance
+        Revenue Growth Trend
       </h2>
-      <Bar data={data} />
+      <Line data={data} />
     </div>
   );
 }
