@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-
 interface Lead {
   _id: string;
   contactPerson: string;
