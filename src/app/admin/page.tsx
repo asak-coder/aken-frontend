@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+// import KPICards from "@/components/KPICards";
+
 
 interface Lead {
   _id: string;
@@ -219,6 +221,9 @@ function getStatusColor(status: string) {
 </tbody>
 
       </table>
+{/*
+<KPICards leads={leads} />
+*/}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
         <div className="bg-green-700 p-6 rounded-lg text-white text-center">
