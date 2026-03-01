@@ -1,5 +1,6 @@
 import "./globals.css";
 import Script from "next/script";
+import AttributionTracker from "@/components/AttributionTracker";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID; // e.g. G-XXXXX
@@ -24,7 +25,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </>
         )}
       </head>
-      <body>{children}</body>
+      <body>
+        <AttributionTracker />
+        {children}
+      </body>
     </html>
   );
 }

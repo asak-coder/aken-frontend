@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { trackEvent } from "@/lib/analytics";
+import { getLeadAttributionPayload } from "@/lib/utm";
 
 trackEvent("generate_lead", {
   event_category: "conversion",
@@ -16,6 +17,11 @@ export default function Home() {
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
+    const attribution = getLeadAttributionPayload();
+    const payload = {
+      ...data,
+      ...attribution,
+    };
 
     const res = await fetch(
   `${process.env.NEXT_PUBLIC_API_URL}/api/leads`,
@@ -24,7 +30,7 @@ export default function Home() {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(payload),
   }
 );
 

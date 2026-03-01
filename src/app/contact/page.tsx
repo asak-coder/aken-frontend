@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { trackEvent } from "@/lib/analytics";
+import { getLeadAttributionPayload } from "@/lib/utm";
 
 export default function ContactPage() {
   const [success, setSuccess] = useState(false);
@@ -15,6 +16,11 @@ export default function ContactPage() {
 
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
+    const attribution = getLeadAttributionPayload();
+    const payload = {
+      ...data,
+      ...attribution,
+    };
 
     try {
       const res = await fetch(
@@ -22,7 +28,7 @@ export default function ContactPage() {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
+          body: JSON.stringify(payload),
         }
       );
 
