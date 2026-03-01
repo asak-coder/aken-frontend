@@ -34,3 +34,19 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Environment security
+
+- Any variable that starts with `NEXT_PUBLIC_` is exposed to every browser user.
+- Never place passwords, tokens, private keys, database strings, or secrets in `NEXT_PUBLIC_*` variables.
+- Server-only values must stay unprefixed (for example: `ADMIN_PASSWORD`, `ADMIN_AUTH_SECRET`).
+
+### Automated secret exposure check
+
+Run this before deploy:
+
+```bash
+npm run security:env-check
+```
+
+`npm run build` also runs the same check automatically via `prebuild`.

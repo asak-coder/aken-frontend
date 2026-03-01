@@ -1,4 +1,15 @@
 const DEFAULT_DEV_API_URL = "http://localhost:5000";
+const SAFE_PUBLIC_ENV_KEYS = new Set([
+  "NEXT_PUBLIC_API_URL",
+  "NEXT_PUBLIC_GA_ID",
+  "NEXT_PUBLIC_GOOGLE_ADS_ID",
+  "NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL",
+  "NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION",
+  "NEXT_PUBLIC_GOOGLE_CLIENT_ID",
+]);
+
+const PUBLIC_SECRET_KEY_PATTERN =
+  /(SECRET|PASSWORD|TOKEN|PRIVATE|API_KEY|ACCESS_KEY|AUTH|JWT|MONGO|DATABASE|SMTP|WEBHOOK|STRIPE|RAZORPAY)/i;
 
 function normalizeHttpUrl(rawValue: string | undefined): string {
   const value = (rawValue || "").trim();
@@ -20,6 +31,14 @@ function normalizeHttpUrl(rawValue: string | undefined): string {
 
 function getNodeEnv() {
   return process.env.NODE_ENV || "development";
+}
+
+function getLeakedPublicEnvKeys() {
+  return Object.keys(process.env)
+    .filter((key) => key.startsWith("NEXT_PUBLIC_"))
+    .filter((key) => !SAFE_PUBLIC_ENV_KEYS.has(key))
+    .filter((key) => PUBLIC_SECRET_KEY_PATTERN.test(key))
+    .sort();
 }
 
 export function getPublicApiBaseUrl() {
@@ -145,13 +164,13 @@ export function getPublicEnvChecklist() {
       : "Search Console verification token is not set.",
   });
 
-  const leakedGoogleClientSecret = (process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET || "").trim();
+  const leakedPublicKeys = getLeakedPublicEnvKeys();
   checks.push({
-    key: "NEXT_PUBLIC_GOOGLE_CLIENT_SECRET",
-    status: leakedGoogleClientSecret ? "error" : "ok",
-    message: leakedGoogleClientSecret
-      ? "Secret leak risk: remove NEXT_PUBLIC_GOOGLE_CLIENT_SECRET immediately."
-      : "No exposed Google client secret found in public env.",
+    key: "NEXT_PUBLIC_SECRET_SCAN",
+    status: leakedPublicKeys.length ? "error" : "ok",
+    message: leakedPublicKeys.length
+      ? `Secret leak risk: remove ${leakedPublicKeys.join(", ")} immediately.`
+      : "No exposed secrets found in public environment variables.",
   });
 
   return checks;
@@ -168,9 +187,10 @@ export function getEnvWarnings() {
     }
   }
 
-  if ((process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET || "").trim()) {
+  const leakedPublicKeys = getLeakedPublicEnvKeys();
+  if (leakedPublicKeys.length) {
     warnings.push(
-      "NEXT_PUBLIC_GOOGLE_CLIENT_SECRET must be removed. Public env variables are exposed to every browser.",
+      `Remove secret-like public env keys: ${leakedPublicKeys.join(", ")}. NEXT_PUBLIC_ values are exposed to every browser.`,
     );
   }
 

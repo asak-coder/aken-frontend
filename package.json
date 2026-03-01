@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "security:env-check": "node scripts/check-public-env.mjs",
+    "prebuild": "npm run security:env-check",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
