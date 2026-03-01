@@ -241,6 +241,12 @@ export default function AdminQuotationsPage() {
             >
               Revenue
             </Link>
+            <Link
+              href="/admin/system"
+              className="rounded-lg border border-fuchsia-400 px-4 py-2 text-sm font-semibold text-fuchsia-200 hover:bg-fuchsia-500 hover:text-white"
+            >
+              System Check
+            </Link>
           </div>
         </div>
 
