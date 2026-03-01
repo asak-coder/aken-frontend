@@ -6,6 +6,7 @@ import {
   CONTACT_PHONE_E164,
   CONTACT_WHATSAPP_URL,
 } from "@/lib/contact";
+import { getStructuredDataJson } from "@/lib/schema";
 
 export const metadata = {
   title:
@@ -53,6 +54,13 @@ const trustPoints = [
   "Engineering-driven fabrication quality and dimensional accuracy",
 ];
 
+const compliancePoints = [
+  "Direct contractor communication through official phone and email channels",
+  "Transparent enquiry-to-quotation process with scope clarification before pricing",
+  "Dedicated policy pages for privacy and usage terms",
+  "No misleading guaranteed claims on cost, timeline, or approvals",
+];
+
 const faqItems = [
   {
     q: "What type of projects does A K ENGINEERING handle?",
@@ -71,6 +79,11 @@ const faqItems = [
 export default function HomePage() {
   return (
     <main className="bg-white text-gray-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: getStructuredDataJson() }}
+      />
+
       <section className="bg-black px-6 py-24 text-white">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-start">
           <div>
@@ -184,6 +197,56 @@ export default function HomePage() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="bg-white px-6 py-16">
+        <div className="mx-auto max-w-7xl rounded-2xl border border-gray-200 bg-gray-50 p-8">
+          <h2 className="text-3xl font-bold text-gray-900">
+            Business Credibility and Compliance
+          </h2>
+          <p className="mt-3 max-w-4xl text-gray-700">
+            We maintain a clear communication and quotation process suitable for
+            industrial procurement workflows and digital ad compliance standards.
+          </p>
+
+          <ul className="mt-6 grid gap-3 md:grid-cols-2">
+            {compliancePoints.map((point) => (
+              <li key={point} className="rounded-lg bg-white px-4 py-3 text-gray-800 shadow-sm">
+                {point}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <TrackedLink
+              href="/privacy-policy"
+              ctaName="Privacy Policy"
+              ctaLocation="home_compliance"
+              eventName="policy_click"
+              className="rounded-lg border border-gray-400 px-5 py-2 text-sm font-semibold text-gray-800 hover:bg-gray-100 transition"
+            >
+              View Privacy Policy
+            </TrackedLink>
+            <TrackedLink
+              href="/terms-and-conditions"
+              ctaName="Terms and Conditions"
+              ctaLocation="home_compliance"
+              eventName="policy_click"
+              className="rounded-lg border border-gray-400 px-5 py-2 text-sm font-semibold text-gray-800 hover:bg-gray-100 transition"
+            >
+              View Terms and Conditions
+            </TrackedLink>
+            <TrackedLink
+              href="/contact"
+              ctaName="Official Contact Page"
+              ctaLocation="home_compliance"
+              eventName="cta_click"
+              className="rounded-lg border border-gray-400 px-5 py-2 text-sm font-semibold text-gray-800 hover:bg-gray-100 transition"
+            >
+              Official Contact Details
+            </TrackedLink>
+          </div>
+        </div>
       </section>
 
       <section className="bg-black px-6 py-20 text-white">

@@ -4,6 +4,8 @@ export interface BlogPost {
   description: string;
   content: string;
   date: string;
+  updatedAt?: string;
+  keywords: string[];
 }
 
 export const blogPosts: BlogPost[] = [
@@ -13,6 +15,14 @@ export const blogPosts: BlogPost[] = [
     description:
       "Discover why Pre-Engineered Buildings (PEB) are cost-effective, faster to construct and ideal for industrial infrastructure projects.",
     date: "2026-02-22",
+    updatedAt: "2026-02-22",
+    keywords: [
+      "pre engineered buildings",
+      "PEB benefits",
+      "industrial construction",
+      "industrial warehouse structure",
+      "A K ENGINEERING",
+    ],
     content: `
 Pre-Engineered Buildings (PEB) have transformed industrial construction across India.
 
@@ -37,6 +47,14 @@ Industries like power plants, cement factories, warehouses and manufacturing uni
     description:
       "Compare Pre-Engineered Buildings and RCC structures for industrial shed and factory construction projects.",
     date: "2026-02-20",
+    updatedAt: "2026-02-20",
+    keywords: [
+      "PEB vs RCC",
+      "industrial shed construction",
+      "steel structure vs RCC",
+      "factory building comparison",
+      "A K ENGINEERING",
+    ],
     content: `
 When choosing between PEB and RCC for industrial construction, consider:
 

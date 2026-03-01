@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { getPublicApiBaseUrl } from "@/lib/env";
 
@@ -88,6 +89,8 @@ export default function AdminQuotationsPage() {
   const [quotations, setQuotations] = useState<Quotation[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const [actionMessage, setActionMessage] = useState("");
+  const [convertingId, setConvertingId] = useState("");
 
   const loadQuotations = useCallback(async () => {
     if (!API_BASE_URL) {
@@ -129,6 +132,54 @@ export default function AdminQuotationsPage() {
     void loadQuotations();
   }, [loadQuotations]);
 
+  const convertToProject = useCallback(async (quotationId: string) => {
+    if (!API_BASE_URL || !quotationId) {
+      return;
+    }
+
+    setConvertingId(quotationId);
+    setActionMessage("");
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/quotations/${quotationId}/convert`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const payload = (await response.json()) as ApiResponse<{
+        alreadyExists?: boolean;
+      }>;
+
+      if (!response.ok) {
+        const message =
+          "error" in payload && payload.error?.message
+            ? payload.error.message
+            : "Could not convert quotation to project.";
+        throw new Error(message);
+      }
+
+      const alreadyExists = Boolean(payload.data?.alreadyExists);
+
+      setActionMessage(
+        alreadyExists
+          ? "Project already existed for this quotation."
+          : "Quotation converted to project successfully.",
+      );
+
+      await loadQuotations();
+    } catch (convertError) {
+      setActionMessage(
+        convertError instanceof Error
+          ? convertError.message
+          : "Could not convert quotation to project.",
+      );
+    } finally {
+      setConvertingId("");
+    }
+  }, [loadQuotations]);
+
   const dashboardStats = useMemo(() => {
     const approvedCount = quotations.filter(
       (quotation) => quotation.status === "Approved",
@@ -159,12 +210,38 @@ export default function AdminQuotationsPage() {
             </p>
           </div>
 
-          <button
-            onClick={() => void loadQuotations()}
-            className="rounded-lg border border-white px-5 py-2 text-sm font-semibold hover:bg-white hover:text-black"
-          >
-            Refresh
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => void loadQuotations()}
+              className="rounded-lg border border-white px-5 py-2 text-sm font-semibold hover:bg-white hover:text-black"
+            >
+              Refresh
+            </button>
+            <a
+              href={API_BASE_URL ? `${API_BASE_URL}/api/export/quotations?format=csv` : "#"}
+              className="rounded-lg border border-lime-400 px-4 py-2 text-sm font-semibold text-lime-200 hover:bg-lime-500 hover:text-white"
+            >
+              Export Excel
+            </a>
+            <Link
+              href="/admin/leads"
+              className="rounded-lg border border-cyan-400 px-4 py-2 text-sm font-semibold text-cyan-200 hover:bg-cyan-500 hover:text-white"
+            >
+              Lead Analytics
+            </Link>
+            <Link
+              href="/admin/projects"
+              className="rounded-lg border border-emerald-400 px-4 py-2 text-sm font-semibold text-emerald-200 hover:bg-emerald-500 hover:text-white"
+            >
+              Projects
+            </Link>
+            <Link
+              href="/admin/revenue"
+              className="rounded-lg border border-amber-400 px-4 py-2 text-sm font-semibold text-amber-200 hover:bg-amber-500 hover:text-white"
+            >
+              Revenue
+            </Link>
+          </div>
         </div>
 
         <section className="mb-8 grid gap-4 md:grid-cols-4">
@@ -203,6 +280,12 @@ export default function AdminQuotationsPage() {
           </div>
         ) : null}
 
+        {actionMessage ? (
+          <div className="mb-6 rounded-xl border border-cyan-500 bg-cyan-950 p-4 text-cyan-100">
+            {actionMessage}
+          </div>
+        ) : null}
+
         {!isLoading && !error ? (
           <section className="overflow-hidden rounded-xl border border-gray-800">
             <div className="overflow-x-auto">
@@ -216,13 +299,14 @@ export default function AdminQuotationsPage() {
                     <th className="px-4 py-3">Status</th>
                     <th className="px-4 py-3">Valid Till</th>
                     <th className="px-4 py-3">Created</th>
+                    <th className="px-4 py-3">Action</th>
                   </tr>
                 </thead>
 
                 <tbody>
                   {quotations.length === 0 ? (
                     <tr>
-                      <td colSpan={7} className="px-4 py-8 text-center text-gray-400">
+                      <td colSpan={8} className="px-4 py-8 text-center text-gray-400">
                         No quotations found.
                       </td>
                     </tr>
@@ -263,6 +347,22 @@ export default function AdminQuotationsPage() {
 
                           <td className="px-4 py-3 text-gray-300">
                             {formatDate(quotation.createdAt)}
+                          </td>
+
+                          <td className="px-4 py-3">
+                            {quotation.status === "Rejected" ? (
+                              <span className="text-xs text-gray-500">Not eligible</span>
+                            ) : (
+                              <button
+                                onClick={() => void convertToProject(quotation._id)}
+                                disabled={convertingId === quotation._id}
+                                className="rounded border border-emerald-400 px-3 py-1 text-xs font-semibold text-emerald-200 hover:bg-emerald-600 hover:text-white disabled:opacity-50"
+                              >
+                                {convertingId === quotation._id
+                                  ? "Converting..."
+                                  : "Convert to Project"}
+                              </button>
+                            )}
                           </td>
                         </tr>
                       );

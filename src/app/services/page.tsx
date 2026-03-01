@@ -1,7 +1,7 @@
-import Script from "next/script";
 import TrackedAnchor from "@/components/TrackedAnchor";
 import TrackedLink from "@/components/TrackedLink";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_E164, CONTACT_WHATSAPP_URL } from "@/lib/contact";
+import { getServiceStructuredDataJson } from "@/lib/schema";
 
 export const metadata = {
   title:
@@ -15,25 +15,9 @@ export const metadata = {
 export default function ServicesPage() {
   return (
     <main className="bg-white text-gray-900">
-      <Script
-        id="service-schema"
+      <script
         type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            serviceType: "Industrial EPC & Pre Engineered Building Services",
-            provider: {
-              "@type": "Organization",
-              name: "A K ENGINEERING",
-            },
-            areaServed: {
-              "@type": "Country",
-              name: "India",
-            },
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: getServiceStructuredDataJson() }}
       />
 
       <section className="bg-black text-white py-20 text-center px-6">

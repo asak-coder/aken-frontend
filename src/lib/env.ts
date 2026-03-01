@@ -64,6 +64,99 @@ export function getPublicGoogleAdsLeadSendTo() {
   return `${adsId}/${label}`;
 }
 
+export type PublicEnvCheckStatus = "ok" | "warning" | "error";
+
+export type PublicEnvCheckItem = {
+  key: string;
+  status: PublicEnvCheckStatus;
+  message: string;
+};
+
+export function getPublicEnvChecklist() {
+  const checks: PublicEnvCheckItem[] = [];
+  const nodeEnv = getNodeEnv();
+  const isProduction = nodeEnv === "production";
+
+  const apiUrl = normalizeHttpUrl(process.env.NEXT_PUBLIC_API_URL);
+  checks.push({
+    key: "NEXT_PUBLIC_API_URL",
+    status: apiUrl ? "ok" : isProduction ? "error" : "warning",
+    message: apiUrl
+      ? "Frontend can reach backend API."
+      : isProduction
+        ? "Missing/invalid API URL. Lead forms and admin dashboards will fail."
+        : "Using local fallback API URL in development.",
+  });
+
+  const gaIdRaw = (process.env.NEXT_PUBLIC_GA_ID || "").trim();
+  const gaId = getPublicGaId();
+  checks.push({
+    key: "NEXT_PUBLIC_GA_ID",
+    status: gaIdRaw
+      ? gaId
+        ? "ok"
+        : "error"
+      : "warning",
+    message: gaIdRaw
+      ? gaId
+        ? "GA4 measurement ID is valid."
+        : "GA4 ID format is invalid. Expected G-XXXXXXXXXX."
+      : "GA4 ID is not configured.",
+  });
+
+  const adsIdRaw = (process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || "").trim();
+  const adsId = getPublicGoogleAdsId();
+  checks.push({
+    key: "NEXT_PUBLIC_GOOGLE_ADS_ID",
+    status: adsIdRaw
+      ? adsId
+        ? "ok"
+        : "error"
+      : "warning",
+    message: adsIdRaw
+      ? adsId
+        ? "Google Ads ID is valid."
+        : "Google Ads ID format is invalid. Expected AW-123456789."
+      : "Google Ads ID is not configured.",
+  });
+
+  const leadLabelRaw = (process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL || "").trim();
+  const leadLabel = getPublicGoogleAdsLeadLabel();
+  checks.push({
+    key: "NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL",
+    status: leadLabelRaw
+      ? leadLabel
+        ? "ok"
+        : "error"
+      : "warning",
+    message: leadLabelRaw
+      ? leadLabel
+        ? "Google Ads lead label format is valid."
+        : "Lead label format is invalid. Use only letters, numbers, '_' or '-'."
+      : "Google Ads lead label is not configured.",
+  });
+
+  const siteVerificationRaw = (process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "").trim();
+  checks.push({
+    key: "NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION",
+    status: siteVerificationRaw ? "ok" : "warning",
+    message: siteVerificationRaw
+      ? "Search Console verification token is present."
+      : "Search Console verification token is not set.",
+  });
+
+  const leakedGoogleClientSecret = (process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET || "").trim();
+  checks.push({
+    key: "NEXT_PUBLIC_GOOGLE_CLIENT_SECRET",
+    status: leakedGoogleClientSecret ? "error" : "ok",
+    message: leakedGoogleClientSecret
+      ? "Secret leak risk: remove NEXT_PUBLIC_GOOGLE_CLIENT_SECRET immediately."
+      : "No exposed Google client secret found in public env.",
+  });
+
+  return checks;
+}
+
 export function getEnvWarnings() {
   const warnings: string[] = [];
 
