@@ -1,9 +1,17 @@
 import "./globals.css";
 import Script from "next/script";
 import AttributionTracker from "@/components/AttributionTracker";
+import { getEnvWarnings, getPublicGaId } from "@/lib/env";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const GA_ID = process.env.NEXT_PUBLIC_GA_ID; // e.g. G-XXXXX
+  const GA_ID = getPublicGaId();
+  const envWarnings = getEnvWarnings();
+
+  if (envWarnings.length > 0) {
+    for (const warning of envWarnings) {
+      console.warn(`[env-warning] ${warning}`);
+    }
+  }
 
   return (
     <html lang="en">

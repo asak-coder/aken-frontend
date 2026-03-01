@@ -3,10 +3,12 @@
 import { useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { getLeadAttributionPayload } from "@/lib/utm";
+import { getPublicApiBaseUrl } from "@/lib/env";
 
 export default function ContactPage() {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+  const apiBaseUrl = getPublicApiBaseUrl();
 
   async function handleSubmit(
     e: React.FormEvent<HTMLFormElement>
@@ -23,14 +25,15 @@ export default function ContactPage() {
     };
 
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/leads`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        }
-      );
+      if (!apiBaseUrl) {
+        throw new Error("NEXT_PUBLIC_API_URL is missing or invalid.");
+      }
+
+      const res = await fetch(`${apiBaseUrl}/api/leads`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
       if (res.ok) {
         setSuccess(true);
@@ -195,7 +198,7 @@ export default function ContactPage() {
       {/* FOOTER */}
       <footer className="bg-black text-white py-10 text-center text-sm">
         <p>
-          © {new Date().getFullYear()} A K ENGINEERING. All Rights Reserved.
+          (c) {new Date().getFullYear()} A K ENGINEERING. All Rights Reserved.
         </p>
         <p className="mt-2 text-gray-400">
           Industrial EPC | PEB Structures | Steel Fabrication | Industrial Erection Services
@@ -205,3 +208,4 @@ export default function ContactPage() {
     </main>
   );
 }
+

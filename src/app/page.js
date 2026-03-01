@@ -1,7 +1,9 @@
 "use client";
+
 import { useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { getLeadAttributionPayload } from "@/lib/utm";
+import { getPublicApiBaseUrl } from "@/lib/env";
 
 trackEvent("generate_lead", {
   event_category: "conversion",
@@ -11,6 +13,7 @@ trackEvent("generate_lead", {
 
 export default function Home() {
   const [status, setStatus] = useState("");
+  const apiBaseUrl = getPublicApiBaseUrl();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -23,30 +26,35 @@ export default function Home() {
       ...attribution,
     };
 
-    const res = await fetch(
-  `${process.env.NEXT_PUBLIC_API_URL}/api/leads`,
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  }
-);
+    if (!apiBaseUrl) {
+      setStatus("Service unavailable. Configuration is incomplete.");
+      return;
+    }
 
+    try {
+      const res = await fetch(`${apiBaseUrl}/api/leads`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-    if (res.ok) {
-      setStatus("✅ Enquiry submitted successfully!");
-      e.target.reset();
-    } else {
-      setStatus("❌ Something went wrong.");
+      if (res.ok) {
+        setStatus("Enquiry submitted successfully.");
+        e.target.reset();
+      } else {
+        setStatus("Something went wrong. Please try again.");
+      }
+    } catch {
+      setStatus("Network error. Please try again.");
     }
   }
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white p-10">
       <h1 className="text-4xl font-bold mb-6">
-        A K ENGINEERING – Industrial EPC Solutions
+        A K ENGINEERING - Industrial EPC Solutions
       </h1>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full max-w-md">

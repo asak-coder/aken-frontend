@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { getPublicApiBaseUrl } from "@/lib/env";
 
 type LeadSummary = {
   contactPerson?: string;
@@ -18,7 +19,17 @@ type Quotation = {
   createdAt?: string;
 };
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+type ApiResponse<T> = {
+  success?: boolean;
+  data?: T;
+  requestId?: string | null;
+  error?: {
+    code?: string;
+    message?: string;
+  };
+};
+
+const API_BASE_URL = getPublicApiBaseUrl();
 
 function formatCurrency(amount?: number) {
   if (typeof amount !== "number") {
@@ -99,8 +110,13 @@ export default function AdminQuotationsPage() {
         throw new Error("Failed to fetch quotations");
       }
 
-      const data = (await response.json()) as Quotation[];
-      setQuotations(Array.isArray(data) ? data : []);
+      const payload = (await response.json()) as ApiResponse<Quotation[]> | Quotation[];
+      const list = Array.isArray(payload)
+        ? payload
+        : Array.isArray(payload?.data)
+          ? payload.data
+          : [];
+      setQuotations(list);
     } catch {
       setError("Could not load quotations. Please try again.");
       setQuotations([]);
