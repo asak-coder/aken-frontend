@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { blogPosts } from "@/lib/blog-data";
+import TrackedLink from "@/components/TrackedLink";
 
 type BlogPostRouteParams = {
   slug: string;
@@ -70,9 +70,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </article>
 
         <div className="mt-10 border-t border-gray-200 pt-6">
-          <Link href="/blog" className="font-semibold text-blue-600 hover:underline">
+          <TrackedLink
+            href="/blog"
+            ctaName="Back to all articles"
+            ctaLocation="blog_post_footer"
+            eventName="blog_back_click"
+            className="font-semibold text-blue-600 hover:underline"
+          >
             Back to all articles
-          </Link>
+          </TrackedLink>
         </div>
       </section>
     </main>

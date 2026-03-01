@@ -41,6 +41,29 @@ export function getPublicGaId() {
   return validGaId.test(gaId) ? gaId : "";
 }
 
+export function getPublicGoogleAdsId() {
+  const adsId = (process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || "").trim();
+  const validAdsId = /^AW-\d+$/i;
+  return validAdsId.test(adsId) ? adsId : "";
+}
+
+export function getPublicGoogleAdsLeadLabel() {
+  const label = (process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL || "").trim();
+  const validLabel = /^[A-Za-z0-9_-]+$/;
+  return validLabel.test(label) ? label : "";
+}
+
+export function getPublicGoogleAdsLeadSendTo() {
+  const adsId = getPublicGoogleAdsId();
+  const label = getPublicGoogleAdsLeadLabel();
+
+  if (!adsId || !label) {
+    return "";
+  }
+
+  return `${adsId}/${label}`;
+}
+
 export function getEnvWarnings() {
   const warnings: string[] = [];
 
@@ -56,6 +79,31 @@ export function getEnvWarnings() {
     warnings.push(
       "NEXT_PUBLIC_GOOGLE_CLIENT_SECRET must be removed. Public env variables are exposed to every browser.",
     );
+  }
+
+  const rawAdsId = (process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || "").trim();
+  const rawLeadLabel = (process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL || "").trim();
+  const validAdsId = getPublicGoogleAdsId();
+  const validLeadLabel = getPublicGoogleAdsLeadLabel();
+
+  if (rawAdsId && !validAdsId) {
+    warnings.push(
+      "NEXT_PUBLIC_GOOGLE_ADS_ID is invalid. Expected format: AW-123456789.",
+    );
+  }
+
+  if (rawLeadLabel && !validLeadLabel) {
+    warnings.push(
+      "NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL is invalid. Use only letters, numbers, '_' or '-'.",
+    );
+  }
+
+  if (getNodeEnv() === "production") {
+    if ((validAdsId && !validLeadLabel) || (!validAdsId && validLeadLabel)) {
+      warnings.push(
+        "Google Ads conversion setup is incomplete. Set both NEXT_PUBLIC_GOOGLE_ADS_ID and NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL.",
+      );
+    }
   }
 
   return warnings;

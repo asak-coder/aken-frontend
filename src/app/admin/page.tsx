@@ -1,5 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
+import TrackedAnchor from "@/components/TrackedAnchor";
+import TrackedLink from "@/components/TrackedLink";
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_E164 } from "@/lib/contact";
 
 export const metadata = {
   title:
@@ -27,19 +28,25 @@ export default function Home() {
         </p>
 
         <div className="flex justify-center gap-4 flex-wrap">
-          <Link
+          <TrackedLink
             href="/contact"
+            ctaName="Request Industrial Quotation"
+            ctaLocation="admin_home_hero"
+            eventName="request_quotation_click"
             className="bg-yellow-500 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition"
           >
             Request Industrial Quotation
-          </Link>
+          </TrackedLink>
 
-          <a
-            href="tel:+919999999999"
+          <TrackedAnchor
+            href={`tel:${CONTACT_PHONE_E164}`}
+            ctaName="Call Now"
+            ctaLocation="admin_home_hero"
             className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-black transition"
+            eventName="phone_click"
           >
-            Call Now
-          </a>
+            {CONTACT_PHONE_DISPLAY}
+          </TrackedAnchor>
         </div>
       </section>
 
@@ -174,18 +181,21 @@ export default function Home() {
           Contact A K ENGINEERING today for a detailed technical consultation
           and competitive quotation.
         </p>
-        <Link
+        <TrackedLink
           href="/contact"
+          ctaName="Get Started Now"
+          ctaLocation="admin_home_cta"
+          eventName="request_quotation_click"
           className="bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition"
         >
           Get Started Now
-        </Link>
+        </TrackedLink>
       </section>
 
       {/* FOOTER */}
       <footer className="bg-black text-white py-10 text-center text-sm">
         <p>
-          © {new Date().getFullYear()} A K ENGINEERING. All Rights Reserved.
+          (c) {new Date().getFullYear()} A K ENGINEERING. All Rights Reserved.
         </p>
         <p className="mt-2 text-gray-400">
           Industrial EPC | PEB Structures | Steel Fabrication | Industrial
@@ -196,3 +206,4 @@ export default function Home() {
     </main>
   );
 }
+

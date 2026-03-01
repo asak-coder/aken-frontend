@@ -1,3 +1,5 @@
+import TrackedLink from "@/components/TrackedLink";
+
 export const metadata = {
   title: "About A K ENGINEERING | Industrial EPC & PEB Contractor",
   description:
@@ -164,21 +166,25 @@ export default function AboutPage() {
           competitive project execution.
         </p>
 
-        <a
+        <TrackedLink
           href="/contact"
+          ctaName="Contact Us"
+          ctaLocation="about_cta"
+          eventName="request_quotation_click"
           className="bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition"
         >
           Contact Us
-        </a>
+        </TrackedLink>
       </section>
 
       {/* FOOTER */}
       <footer className="bg-black text-white py-10 text-center text-sm">
         <p>
-          © {new Date().getFullYear()} A K ENGINEERING. All Rights Reserved.
+          (c) {new Date().getFullYear()} A K ENGINEERING. All Rights Reserved.
         </p>
       </footer>
 
     </main>
   );
 }
+

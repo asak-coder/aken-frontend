@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { blogPosts } from "@/lib/blog-data";
+import TrackedLink from "@/components/TrackedLink";
 
 export const metadata = {
   title: "Blog Library | A K ENGINEERING",
@@ -26,12 +26,15 @@ export default function BlogLibraryPage() {
             <p className="mb-2 text-sm text-gray-500">Published on {post.date}</p>
             <h2 className="text-2xl font-semibold">{post.title}</h2>
             <p className="mt-3 text-gray-700">{post.description}</p>
-            <Link
+            <TrackedLink
               href={`/blog/${post.slug}`}
+              ctaName={post.title}
+              ctaLocation="blog_library"
+              eventName="blog_article_click"
               className="mt-4 inline-block font-semibold text-blue-600 hover:underline"
             >
               Read article
-            </Link>
+            </TrackedLink>
           </article>
         ))}
       </section>

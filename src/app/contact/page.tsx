@@ -1,13 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackLeadConversion, trackCtaClick } from "@/lib/analytics";
 import { getLeadAttributionPayload } from "@/lib/utm";
 import { getPublicApiBaseUrl } from "@/lib/env";
+import TrackedAnchor from "@/components/TrackedAnchor";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_E164,
+  CONTACT_WHATSAPP_URL,
+} from "@/lib/contact";
 
 export default function ContactPage() {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [didStartForm, setDidStartForm] = useState(false);
   const apiBaseUrl = getPublicApiBaseUrl();
 
   async function handleSubmit(
@@ -36,19 +44,31 @@ export default function ContactPage() {
       });
 
       if (res.ok) {
-        setSuccess(true);
+        const responseBody = await res.json().catch(() => null);
+        const leadId = responseBody?.data?.leadId as string | undefined;
 
-        // GA4 Conversion Event
-        trackEvent("generate_lead", {
-          event_category: "conversion",
-          event_label: "Contact Form Submission",
-          value: 1,
+        trackLeadConversion({
+          formName: "contact_page_enquiry_form",
+          pagePath: "/contact",
+          leadId,
         });
 
+        setSuccess(true);
+
         e.currentTarget.reset();
+        setDidStartForm(false);
+      } else {
+        trackEvent("lead_submit_failed", {
+          form_name: "contact_page_enquiry_form",
+          page_path: "/contact",
+        });
       }
-    } catch (error) {
-      console.error("Submission error:", error);
+    } catch {
+      trackEvent("lead_submit_failed", {
+        form_name: "contact_page_enquiry_form",
+        page_path: "/contact",
+      });
+      console.error("Submission error.");
     }
 
     setLoading(false);
@@ -85,28 +105,43 @@ export default function ContactPage() {
 
             <p>
               <strong>Email:</strong>{" "}
-              <a
-                href="mailto:web.akengg@gmail.com"
+              <TrackedAnchor
+                href={`mailto:${CONTACT_EMAIL}`}
+                ctaName="Send Email"
+                ctaLocation="contact_business_info"
                 className="text-blue-600 underline"
+                eventName="email_click"
               >
-                web.akengg@gmail.com
-              </a>
+                {CONTACT_EMAIL}
+              </TrackedAnchor>
             </p>
 
             <p>
               <strong>Phone:</strong>{" "}
-              <a
-                href="tel:+919999999999"
+              <TrackedAnchor
+                href={`tel:${CONTACT_PHONE_E164}`}
+                ctaName="Call Contact Page"
+                ctaLocation="contact_business_info"
                 className="text-blue-600 underline"
-                onClick={() =>
-                  trackEvent("phone_click", {
-                    event_category: "engagement",
-                    event_label: "Phone Click Contact Page",
-                  })
-                }
+                eventName="phone_click"
               >
-                +91 99999 99999
-              </a>
+                {CONTACT_PHONE_DISPLAY}
+              </TrackedAnchor>
+            </p>
+
+            <p>
+              <strong>WhatsApp:</strong>{" "}
+              <TrackedAnchor
+                href={CONTACT_WHATSAPP_URL}
+                ctaName="WhatsApp Contact Page"
+                ctaLocation="contact_business_info"
+                className="text-green-700 underline"
+                eventName="whatsapp_click"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Start Chat
+              </TrackedAnchor>
             </p>
 
             <p><strong>Office Location:</strong> Sambalpur, Odisha, India</p>
@@ -128,6 +163,15 @@ export default function ContactPage() {
               placeholder="Your Name"
               required
               className="w-full p-3 border rounded-lg"
+              onFocus={() => {
+                if (!didStartForm) {
+                  setDidStartForm(true);
+                  trackEvent("form_start", {
+                    form_name: "contact_page_enquiry_form",
+                    page_path: "/contact",
+                  });
+                }
+              }}
             />
 
             <input
@@ -164,6 +208,15 @@ export default function ContactPage() {
               type="submit"
               disabled={loading}
               className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition"
+              onClick={() => {
+                trackCtaClick({
+                  ctaName: "Submit Enquiry",
+                  ctaLocation: "contact_form",
+                  destination: "/api/leads",
+                  ctaType: "button",
+                  eventName: "form_submit_click",
+                });
+              }}
             >
               {loading ? "Submitting..." : "Submit Enquiry"}
             </button>
