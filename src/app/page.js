@@ -1,5 +1,12 @@
 "use client";
 import { useState } from "react";
+import { trackEvent } from "@/lib/analytics";
+
+trackEvent("generate_lead", {
+  event_category: "conversion",
+  event_label: "Contact Form Submission",
+  value: 1,
+});
 
 export default function Home() {
   const [status, setStatus] = useState("");

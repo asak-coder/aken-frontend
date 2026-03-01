@@ -1,12 +1,29 @@
 import Link from "next/link";
 import { blogPosts } from "@/lib/blog-data";
+import { trackEvent } from "@/lib/analytics";
 
 export const metadata = {
   title: "Industrial Engineering Blog | A K ENGINEERING",
   description:
     "Read expert articles on Pre-Engineered Buildings, Industrial Steel Fabrication and EPC project execution.",
 };
-
+<><a
+    href="https://wa.me/919999999999"
+    onClick={() => trackEvent("whatsapp_click", {
+        event_category: "engagement",
+        event_label: "WhatsApp Button",
+    })}
+>
+    WhatsApp
+</a><a
+    href="tel:+919999999999"
+    onClick={() => trackEvent("phone_click", {
+        event_category: "engagement",
+        event_label: "Phone Call Button",
+    })}
+>
+        Call Now
+    </a></>
 export default function BlogPage() {
   return (
     <main className="bg-white text-gray-900 min-h-screen">

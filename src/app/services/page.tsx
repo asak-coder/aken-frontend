@@ -1,3 +1,32 @@
+import Script from "next/script";
+import { trackEvent } from "@/lib/analytics";
+<><Script
+    id="service-schema"
+    type="application/ld+json"
+    strategy="afterInteractive"
+    dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            serviceType: "Industrial EPC & Pre Engineered Building Services",
+            provider: {
+                "@type": "Organization",
+                name: "A K ENGINEERING",
+            },
+            areaServed: {
+                "@type": "Country",
+                name: "India",
+            },
+        }),
+    }} /><a
+        href="/contact"
+        onClick={() => trackEvent("request_quotation_click", {
+            event_category: "conversion_intent",
+            event_label: "Request Quotation CTA",
+        })}
+    >
+        Request Quotation
+    </a></>
 export const metadata = {
   title:
     "Industrial EPC & PEB Services | Steel Fabrication & Erection Contractor India",
