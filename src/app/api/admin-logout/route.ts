@@ -1,18 +1,18 @@
 import { NextResponse } from "next/server";
-import { getAdminCookieName } from "@/lib/adminAuth";
+
+function getBackendUrl() {
+  const url = (process.env.BACKEND_API_URL || "").trim();
+  return url || "http://localhost:5000";
+}
 
 export async function POST() {
+  // Call backend to clear cookies.
+  await fetch(`${getBackendUrl()}/api/auth/logout`, {
+    method: "POST",
+    credentials: "include",
+  }).catch(() => null);
+
   const response = NextResponse.json({ success: true });
-
-  response.cookies.set(getAdminCookieName(), "", {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-    path: "/",
-    maxAge: 0,
-    priority: "high",
-  });
   response.headers.set("Cache-Control", "no-store");
-
   return response;
 }

@@ -1,25 +1,25 @@
-import { NextRequest, NextResponse } from "next/server";
-import { getAdminCookieName, verifyAdminSessionToken } from "@/lib/adminAuth";
+import { NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
-  const cookie = req.cookies.get(getAdminCookieName())?.value;
-  if (!cookie) {
-    const response = NextResponse.json({ authenticated: false }, { status: 401 });
-    response.headers.set("Cache-Control", "no-store");
-    return response;
-  }
+function getBackendUrl() {
+  const url = (process.env.BACKEND_API_URL || "").trim();
+  return url || "http://localhost:5000";
+}
 
-  const payload = verifyAdminSessionToken(cookie);
-  if (!payload) {
-    const response = NextResponse.json({ authenticated: false }, { status: 401 });
-    response.headers.set("Cache-Control", "no-store");
-    return response;
-  }
-
-  const response = NextResponse.json({
-    authenticated: true,
-    expiresAt: payload.exp,
+export async function GET() {
+  const backendRes = await fetch(`${getBackendUrl()}/api/auth/session`, {
+    method: "GET",
+    credentials: "include",
   });
+
+  if (!backendRes.ok) {
+    const response = NextResponse.json({ authenticated: false }, { status: backendRes.status });
+    response.headers.set("Cache-Control", "no-store");
+    return response;
+  }
+
+  const data = await backendRes.json().catch(() => ({}));
+
+  const response = NextResponse.json({ ...data?.data, authenticated: true });
   response.headers.set("Cache-Control", "no-store");
   return response;
 }

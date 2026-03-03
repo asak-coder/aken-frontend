@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-  const [username, setUsername] = useState("admin");
+  const [email, setEmail] = useState("admin@aken.firm.in");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -41,7 +41,7 @@ export default function LoginPage() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ email, password }),
     });
 
     const data = await res.json();
@@ -65,11 +65,11 @@ export default function LoginPage() {
 
         <form onSubmit={handleLogin}>
           <input
-            type="text"
-            placeholder="Admin Username"
+            type="email"
+            placeholder="Admin Email"
             className="w-full p-2 text-black rounded mb-3"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             autoComplete="username"
           />
 
