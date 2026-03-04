@@ -179,12 +179,9 @@ export default function AdminLeadsPage() {
     setError("");
 
     try {
-      const response = await fetch(
-        `${API_BASE_URL}/api/leads/analytics/summary?months=${months}`,
-        {
-          cache: "no-store",
-        },
-      );
+      const response = await fetch(`/api/admin-proxy/leads/analytics/summary?months=${months}`, {
+        cache: "no-store",
+      });
 
       const json = (await response.json()) as ApiEnvelope<LeadAnalytics> | LeadAnalytics;
       if (!response.ok) {
@@ -220,7 +217,7 @@ export default function AdminLeadsPage() {
     setActionMessage("");
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/projects/from-lead/${leadId}`, {
+      const response = await fetch(`/api/admin-proxy/projects/from-lead/${leadId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -296,7 +293,7 @@ export default function AdminLeadsPage() {
               Refresh
             </button>
             <a
-              href={API_BASE_URL ? `${API_BASE_URL}/api/export/leads?format=csv` : "#"}
+              href="/api/admin-proxy/export/leads?format=csv"
               className="rounded-lg border border-lime-400 px-4 py-2 text-sm font-semibold text-lime-200 hover:bg-lime-500 hover:text-white"
             >
               Export Excel
