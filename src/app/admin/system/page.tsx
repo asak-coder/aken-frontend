@@ -100,7 +100,7 @@ export default function AdminSystemEnvPage() {
     setError("");
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/system/env-check`, {
+      const response = await fetch(`/api/admin-proxy/system/env-check`, {
         cache: "no-store",
       });
       const payload = (await response.json()) as ApiResponse<BackendEnvDiagnostics>;
@@ -266,4 +266,3 @@ function MetricCard({ title, value }: { title: string; value: string }) {
     </div>
   );
 }
-

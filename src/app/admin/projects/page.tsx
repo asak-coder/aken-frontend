@@ -187,13 +187,13 @@ export default function AdminProjectsPage() {
 
     try {
       const [summaryRes, projectsRes, marginRes] = await Promise.all([
-        fetch(`${API_BASE_URL}/api/projects/summary`, {
+        fetch(`/api/admin-proxy/projects/summary`, {
           cache: "no-store",
         }),
-        fetch(`${API_BASE_URL}/api/projects?limit=50${statusQuery}`, {
+        fetch(`/api/admin-proxy/projects?limit=50${statusQuery}`, {
           cache: "no-store",
         }),
-        fetch(`${API_BASE_URL}/api/projects/margin/overview`, {
+        fetch(`/api/admin-proxy/projects/margin/overview`, {
           cache: "no-store",
         }),
       ]);
@@ -292,7 +292,7 @@ export default function AdminProjectsPage() {
               Refresh
             </button>
             <a
-              href={API_BASE_URL ? `${API_BASE_URL}/api/export/projects?format=csv` : "#"}
+              href="/api/admin-proxy/export/projects?format=csv"
               className="rounded-lg border border-lime-400 px-4 py-2 text-sm font-semibold text-lime-200 hover:bg-lime-500 hover:text-white"
             >
               Export Excel

@@ -167,7 +167,7 @@ export default function AdminRevenuePage() {
 
     try {
       const response = await fetch(
-        `${API_BASE_URL}/api/revenue/overview?months=${rangeMonths}`,
+        `/api/admin-proxy/revenue/overview?months=${rangeMonths}`,
         {
           cache: "no-store",
         },
@@ -230,7 +230,7 @@ export default function AdminRevenuePage() {
               Refresh
             </button>
             <a
-              href={API_BASE_URL ? `${API_BASE_URL}/api/export/invoices?format=csv` : "#"}
+              href="/api/admin-proxy/export/invoices?format=csv"
               className="rounded-lg border border-lime-400 px-4 py-2 text-sm font-semibold text-lime-200 hover:bg-lime-500 hover:text-white"
             >
               Export Excel
