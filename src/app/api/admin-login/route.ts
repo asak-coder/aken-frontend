@@ -34,12 +34,12 @@ export async function POST(req: NextRequest) {
     return response;
   }
 
-  // Call backend login, but keep cookies in the browser (credentials include).
+  // Call backend login and COPY its Set-Cookie header to the browser response.
+  // IMPORTANT: `credentials: "include"` here does NOT forward cookies to the browser,
+  // because this fetch happens server-side (Vercel). We must pass Set-Cookie ourselves.
   const backendRes = await fetch(`${getBackendUrl()}/api/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    // IMPORTANT: this lets the browser store the HttpOnly cookie from backend.
-    credentials: "include",
     body: JSON.stringify({ email, password }),
   });
 
@@ -58,5 +58,12 @@ export async function POST(req: NextRequest) {
 
   const response = NextResponse.json({ success: true, ...data?.data });
   response.headers.set("Cache-Control", "no-store");
+
+  const setCookie = backendRes.headers.get("set-cookie");
+  if (setCookie) {
+    // Forward backend HttpOnly cookie to the browser.
+    response.headers.set("set-cookie", setCookie);
+  }
+
   return response;
 }
