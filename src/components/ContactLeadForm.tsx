@@ -3,13 +3,11 @@
 import { useState } from "react";
 import { trackCtaClick, trackEvent, trackLeadConversion } from "@/lib/analytics";
 import { getLeadAttributionPayload } from "@/lib/utm";
-import { getPublicApiBaseUrl } from "@/lib/env";
 
 export default function ContactLeadForm() {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [didStartForm, setDidStartForm] = useState(false);
-  const apiBaseUrl = getPublicApiBaseUrl();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -24,11 +22,7 @@ export default function ContactLeadForm() {
     };
 
     try {
-      if (!apiBaseUrl) {
-        throw new Error("NEXT_PUBLIC_API_URL is missing or invalid.");
-      }
-
-      const res = await fetch(`${apiBaseUrl}/api/leads`, {
+      const res = await fetch(`/api/public/leads`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -120,7 +114,7 @@ export default function ContactLeadForm() {
           trackCtaClick({
             ctaName: "Submit Enquiry",
             ctaLocation: "contact_form",
-            destination: "/api/leads",
+            destination: "/api/public/leads",
             ctaType: "button",
             eventName: "form_submit_click",
           });

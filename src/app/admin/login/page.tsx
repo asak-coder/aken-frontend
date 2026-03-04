@@ -76,7 +76,7 @@ function LoginPageInner() {
     const data = await res.json();
 
     if (res.ok) {
-      router.replace(nextPath);
+      router.replace("/admin/leads");
     } else {
       setError(data.error || "Login failed.");
     }

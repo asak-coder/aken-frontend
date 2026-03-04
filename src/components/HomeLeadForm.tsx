@@ -3,12 +3,10 @@
 import { useState } from "react";
 import { trackEvent, trackLeadConversion, trackCtaClick } from "@/lib/analytics";
 import { getLeadAttributionPayload } from "@/lib/utm";
-import { getPublicApiBaseUrl } from "@/lib/env";
 
 export default function HomeLeadForm() {
   const [status, setStatus] = useState("");
   const [didStartForm, setDidStartForm] = useState(false);
-  const apiBaseUrl = getPublicApiBaseUrl();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -21,13 +19,8 @@ export default function HomeLeadForm() {
       ...attribution,
     };
 
-    if (!apiBaseUrl) {
-      setStatus("Service unavailable. Configuration is incomplete.");
-      return;
-    }
-
     try {
-      const res = await fetch(`${apiBaseUrl}/api/leads`, {
+      const res = await fetch(`/api/public/leads`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -120,7 +113,7 @@ export default function HomeLeadForm() {
           trackCtaClick({
             ctaName: "Submit Enquiry",
             ctaLocation: "home_form",
-            destination: "/api/leads",
+            destination: "/api/public/leads",
             ctaType: "button",
             eventName: "form_submit_click",
           });
