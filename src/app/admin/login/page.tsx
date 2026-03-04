@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 function sanitizeNextPath(nextValue: string | null) {
@@ -23,11 +24,12 @@ function sanitizeNextPath(nextValue: string | null) {
   return trimmed;
 }
 
-export default function LoginPage() {
+function LoginPageInner() {
   const [email, setEmail] = useState("admin@aken.firm.in");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -118,5 +120,13 @@ export default function LoginPage() {
         {error && <p className="text-red-500 mt-3">{error}</p>}
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginPageInner />
+    </Suspense>
   );
 }
