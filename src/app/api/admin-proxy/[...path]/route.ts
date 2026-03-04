@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const runtime = "nodejs";
+
 function getBackendUrl() {
   const url = (process.env.BACKEND_API_URL || "").trim();
   return url || "http://localhost:5000";
@@ -29,7 +31,7 @@ async function proxyRequest(req: NextRequest, pathParts: string[] | undefined) {
   let body: BodyInit | undefined = undefined;
   if (req.method !== "GET" && req.method !== "HEAD") {
     const arrayBuffer = await req.arrayBuffer();
-    body = arrayBuffer.byteLength ? Buffer.from(arrayBuffer) : undefined;
+    body = arrayBuffer.byteLength ? arrayBuffer : undefined;
   }
 
   const backendRes = await fetch(targetUrl, {
