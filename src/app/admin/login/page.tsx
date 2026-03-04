@@ -1,6 +1,27 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+
+function sanitizeNextPath(nextValue: string | null) {
+  if (!nextValue) {
+    return "/admin/leads";
+  }
+
+  // Take only first token before any whitespace/newlines to prevent polluted URLs like "%0A3".
+  const trimmed = nextValue.trim().split(/\s+/)[0] || "";
+
+  // Only allow internal admin routes.
+  if (!trimmed.startsWith("/admin/")) {
+    return "/admin/leads";
+  }
+
+  // Extra hardening: block protocol-relative or path traversal.
+  if (trimmed.startsWith("//") || trimmed.includes("..")) {
+    return "/admin/leads";
+  }
+
+  return trimmed;
+}
 
 export default function LoginPage() {
   const [email, setEmail] = useState("admin@aken.firm.in");
@@ -8,6 +29,12 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const nextPath = useMemo(() => {
+    const nextValue = searchParams.get("next");
+    return sanitizeNextPath(nextValue);
+  }, [searchParams]);
 
   useEffect(() => {
     let mounted = true;
@@ -47,10 +74,7 @@ export default function LoginPage() {
     const data = await res.json();
 
     if (res.ok) {
-      const nextPath = typeof window !== "undefined"
-        ? new URLSearchParams(window.location.search).get("next")
-        : null;
-      router.replace(nextPath || "/admin/leads");
+      router.replace(nextPath);
     } else {
       setError(data.error || "Login failed.");
     }
