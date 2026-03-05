@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import { getPublicApiBaseUrl } from "@/lib/env";
 
 type AnalyticsOverview = {
   totalLeads: number;
@@ -85,7 +84,6 @@ type ApiEnvelope<T> = {
   };
 };
 
-const API_BASE_URL = getPublicApiBaseUrl();
 
 const DEFAULT_OVERVIEW: AnalyticsOverview = {
   totalLeads: 0,
@@ -167,14 +165,6 @@ export default function AdminLeadsPage() {
   const [convertingLeadId, setConvertingLeadId] = useState("");
 
   const loadAnalytics = useCallback(async (months: number) => {
-    if (!API_BASE_URL) {
-      setError(
-        "NEXT_PUBLIC_API_URL is missing. Add it in frontend environment settings.",
-      );
-      setLoading(false);
-      return;
-    }
-
     setLoading(true);
     setError("");
 
@@ -209,7 +199,7 @@ export default function AdminLeadsPage() {
   }, []);
 
   const convertLeadToProject = useCallback(async (leadId: string) => {
-    if (!API_BASE_URL || !leadId) {
+    if (!leadId) {
       return;
     }
 
