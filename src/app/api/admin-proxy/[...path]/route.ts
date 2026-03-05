@@ -49,11 +49,17 @@ async function proxyRequest(req: NextRequest, pathParts: string[] | undefined) {
     cache: "no-store",
   });
 
-  // Pass through response (including set-cookie) so session + CSRF cookies persist.
+  // NOTE: To avoid `ERR_CONTENT_DECODING_FAILED` we do NOT forward compressed
+  // responses (br/gzip) across proxy boundaries. We fetch as identity, and we
+  // also strip any upstream content-encoding headers.
+  const raw = await backendRes.arrayBuffer();
+
   const resHeaders = new Headers(backendRes.headers);
   resHeaders.set("Cache-Control", "no-store");
+  resHeaders.delete("content-encoding");
+  resHeaders.delete("content-length");
 
-  return new NextResponse(backendRes.body, {
+  return new NextResponse(raw, {
     status: backendRes.status,
     headers: resHeaders,
   });
