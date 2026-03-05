@@ -1,14 +1,17 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 function getBackendUrl() {
   const url = (process.env.BACKEND_API_URL || "").trim();
   return url || "http://localhost:5000";
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   const backendRes = await fetch(`${getBackendUrl()}/api/auth/session`, {
     method: "GET",
-    credentials: "include",
+    headers: {
+      // Forward browser cookies to backend so it can validate session.
+      cookie: req.headers.get("cookie") || "",
+    },
   });
 
   if (!backendRes.ok) {
