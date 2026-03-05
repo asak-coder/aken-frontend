@@ -34,12 +34,18 @@ async function proxyRequest(req: NextRequest, pathParts: string[] | undefined) {
     body = arrayBuffer.byteLength ? arrayBuffer : undefined;
   }
 
+  // IMPORTANT:
+  // This runs server-side (Vercel). `credentials: "include"` does NOT forward
+  // the browser cookies to the backend. We must explicitly pass the Cookie header.
+  const cookie = req.headers.get("cookie");
+  if (cookie) {
+    headers.set("cookie", cookie);
+  }
+
   const backendRes = await fetch(targetUrl, {
     method: req.method,
     headers,
     body,
-    // IMPORTANT: include backend cookies coming from the browser
-    credentials: "include",
     cache: "no-store",
   });
 
