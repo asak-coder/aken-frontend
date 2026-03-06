@@ -229,9 +229,12 @@ export default function AdminRevenuePage() {
             >
               Refresh
             </button>
+            { }
             <a
               href="/api/admin-proxy/export/invoices?format=csv"
               className="rounded-lg border border-lime-400 px-4 py-2 text-sm font-semibold text-lime-200 hover:bg-lime-500 hover:text-white"
+              download
+              rel="nofollow"
             >
               Export Excel
             </a>

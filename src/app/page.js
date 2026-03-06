@@ -1,4 +1,6 @@
+import Image from "next/image";
 import HomeLeadForm from "@/components/HomeLeadForm";
+import HeroMedia from "@/components/HeroMedia";
 import TrackedAnchor from "@/components/TrackedAnchor";
 import TrackedLink from "@/components/TrackedLink";
 import {
@@ -111,19 +113,9 @@ export default function HomePage() {
         WhatsApp
       </TrackedAnchor>
 
-      {/* HERO (Heavy-Duty Minimalist) */}
+      {/* HERO (Cinematic enterprise) */}
       <section className="relative isolate overflow-hidden bg-slate-950 text-white">
-        <div className="absolute inset-0">
-          {/* Background image (swap to video later if desired) */}
-          <img
-            src="/hero-steel.jpg"
-            alt=""
-            className="h-full w-full object-cover opacity-55"
-            loading="eager"
-          />
-          {/* Dark gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
-        </div>
+        <HeroMedia posterSrc="/hero-fabrication-placeholder.svg" />
 
         <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-28">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
@@ -193,7 +185,7 @@ export default function HomePage() {
       </section>
 
       {/* TRUST STATS BAR (animated counters hook via data-count) */}
-      <section className="bg-slate-900 text-white">
+      <section className="bg-slate-900 text-white reveal">
         <div className="mx-auto max-w-7xl px-6 py-10">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-xl border border-white/10 bg-white/5 p-5">
@@ -232,15 +224,16 @@ export default function HomePage() {
       </section>
 
       {/* CORPORATE PROFILE OVERVIEW (split) */}
-      <section className="mx-auto max-w-7xl px-6 py-20">
+      <section className="mx-auto max-w-7xl px-6 py-20 reveal">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-6">
             <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
-              <img
+              <Image
                 src="/engineers-blueprint.jpg"
                 alt="Engineers reviewing industrial drawings"
-                className="h-[360px] w-full object-cover"
-                loading="lazy"
+                className="object-cover"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
@@ -272,7 +265,7 @@ export default function HomePage() {
       </section>
 
       {/* CORE SERVICES GRID (4 cards) */}
-      <section className="bg-slate-50">
+      <section className="bg-slate-50 reveal">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
@@ -363,7 +356,7 @@ export default function HomePage() {
       </section>
 
       {/* LEAD CAPTURE SECTION */}
-      <section className="bg-slate-950 text-white">
+      <section className="bg-slate-950 text-white reveal">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-8">

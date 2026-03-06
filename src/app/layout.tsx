@@ -6,6 +6,7 @@ import AttributionTracker from "@/components/AttributionTracker";
 import GA4PageTracker from "@/components/GA4PageTracker";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import RevealOnScroll from "@/components/RevealOnScroll";
 import { getEnvWarnings, getPublicGaId, getPublicGoogleAdsId } from "@/lib/env";
 
 const SITE_URL = "https://aken.firm.in";
@@ -124,6 +125,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
       </head>
       <body className="min-h-screen antialiased">
+        <RevealOnScroll />
         <AttributionTracker />
         <Suspense fallback={null}>
           <GA4PageTracker />
