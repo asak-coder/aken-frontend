@@ -24,6 +24,26 @@ const nextConfig = {
       },
     ];
   },
+
+  /**
+   * Try to override any platform-level header injection (e.g. Vercel project/team headers).
+   * We explicitly do NOT want ACAO on normal HTML pages.
+   *
+   * Note: If a team-level rule appends ACAO after this, code cannot fully override it.
+   * In that case an admin must remove the global rule.
+   */
+  async headers() {
+    return [
+      {
+        // Apply to all pages + assets served by Next (safe to include; we explicitly set empty)
+        source: "/:path*",
+        headers: [
+          // Remove wildcard CORS on pages; browsers treat empty as not present.
+          { key: "Access-Control-Allow-Origin", value: "" },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
