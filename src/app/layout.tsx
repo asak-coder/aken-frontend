@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import AttributionTracker from "@/components/AttributionTracker";
 import GA4PageTracker from "@/components/GA4PageTracker";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import { getEnvWarnings, getPublicGaId, getPublicGoogleAdsId } from "@/lib/env";
 
 const SITE_URL = "https://aken.firm.in";
@@ -129,6 +130,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Suspense>
         <SiteHeader />
         <div id="app-root">{children}</div>
+        <SiteFooter />
       </body>
     </html>
   );

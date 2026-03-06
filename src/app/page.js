@@ -78,140 +78,352 @@ const faqItems = [
 
 export default function HomePage() {
   return (
-    <main className="bg-white text-gray-900">
+    <main className="bg-white text-slate-900">
+      {/* JSON-LD (Organization + LocalBusiness placeholders are emitted by getStructuredDataJson) */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: getStructuredDataJson() }}
       />
 
-      <section className="bg-black px-6 py-24 text-white">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-start">
-          <div>
-            <h1 className="text-4xl font-bold leading-tight md:text-5xl">
-              Industrial EPC Contractor in India for PEB, Steel Fabrication, and Erection
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-gray-300">
-              A K ENGINEERING delivers industrial EPC solutions for pre-engineered
-              buildings, structural steel fabrication, and site erection services.
-              We support PSU and private sector industrial projects with execution discipline,
-              safety compliance, and schedule-focused delivery.
-            </p>
-            <p className="mt-4 text-lg leading-relaxed text-gray-300">
-              Our team works across power plants, cement industries, mining operations,
-              and manufacturing facilities where reliable infrastructure execution directly
-              impacts production and business continuity.
-            </p>
+      {/* Floating WhatsApp */}
+      <TrackedAnchor
+        href={CONTACT_WHATSAPP_URL}
+        ctaName="WhatsApp Floating"
+        ctaLocation="global_floating"
+        eventName="whatsapp_click"
+        className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-emerald-500 px-4 py-3 text-sm font-semibold text-black shadow-lg shadow-black/20 hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+      >
+        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black/10">
+          {/* WhatsApp icon */}
+          <svg
+            viewBox="0 0 32 32"
+            className="h-5 w-5"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M19.11 17.56c-.27-.14-1.59-.78-1.84-.87-.25-.09-.43-.14-.61.14-.18.27-.7.87-.86 1.05-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.62-1.52-1.89-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.46.09-.18.05-.34-.02-.48-.07-.14-.61-1.46-.84-2-.22-.54-.45-.46-.61-.46h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.28s.98 2.64 1.11 2.82c.14.18 1.93 2.94 4.68 4.12.65.28 1.16.45 1.56.58.66.21 1.26.18 1.73.11.53-.08 1.59-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.12-.25-.18-.52-.32z" />
+            <path d="M26.7 5.3A13.3 13.3 0 0 0 16 1C8.8 1 3 6.8 3 14c0 2.3.6 4.5 1.7 6.5L3 31l10.7-1.7c1.9 1 4 1.6 6.3 1.6h0c7.2 0 13-5.8 13-13 0-3.5-1.4-6.8-3.3-9.6ZM16 28.4h0c-2 0-3.9-.5-5.6-1.5l-.4-.2-6.4 1 1-6.2-.3-.4A11.2 11.2 0 0 1 4.8 14C4.8 7.9 9.8 2.8 16 2.8c3 0 5.8 1.2 7.9 3.3a11.1 11.1 0 0 1 3.3 7.9c0 6.2-5.1 11.2-11.2 11.2Z" />
+          </svg>
+        </span>
+        WhatsApp
+      </TrackedAnchor>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <TrackedLink
-                href="/contact"
-                ctaName="Request Industrial Quotation"
-                ctaLocation="home_hero"
-                eventName="request_quotation_click"
-                className="rounded-lg bg-yellow-500 px-6 py-3 font-semibold text-black hover:bg-yellow-400 transition"
-              >
-                Request Industrial Quotation
-              </TrackedLink>
+      {/* HERO (Heavy-Duty Minimalist) */}
+      <section className="relative isolate overflow-hidden bg-slate-950 text-white">
+        <div className="absolute inset-0">
+          {/* Background image (swap to video later if desired) */}
+          <img
+            src="/hero-steel.jpg"
+            alt=""
+            className="h-full w-full object-cover opacity-55"
+            loading="eager"
+          />
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
+        </div>
 
-              <TrackedAnchor
-                href={`tel:${CONTACT_PHONE_E164}`}
-                ctaName="Call Now"
-                ctaLocation="home_hero"
-                eventName="phone_click"
-                className="rounded-lg border border-white px-6 py-3 hover:bg-white hover:text-black transition"
-              >
-                {CONTACT_PHONE_DISPLAY}
-              </TrackedAnchor>
+        <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-28">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-7">
+              <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold tracking-wide text-white/90">
+                Hirakud, Sambalpur • Industrial EPC • Steel Fabrication • PEB
+              </p>
 
-              <TrackedAnchor
-                href={CONTACT_WHATSAPP_URL}
-                ctaName="WhatsApp"
-                ctaLocation="home_hero"
-                eventName="whatsapp_click"
-                className="rounded-lg bg-green-500 px-6 py-3 font-semibold text-black hover:bg-green-400 transition"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                WhatsApp
-              </TrackedAnchor>
+              <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
+                Engineering Strength for India’s Industrial Infrastructure.
+              </h1>
+
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
+                A K ENGINEERING is a premier EPC and steel fabrication contractor. From heavy
+                structural erection to complete Pre-Engineered Buildings (PEB), we deliver
+                precision-engineered solutions safely, on time, and built to last.
+              </p>
+
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <TrackedLink
+                  href="/contact"
+                  ctaName="Request Project Quote"
+                  ctaLocation="home_hero"
+                  eventName="request_quotation_click"
+                  className="rounded-lg bg-orange-500 px-6 py-3 text-sm font-semibold text-black hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-200 transition"
+                >
+                  Request Project Quote
+                </TrackedLink>
+
+                <TrackedLink
+                  href="/services"
+                  ctaName="View Our Capabilities"
+                  ctaLocation="home_hero"
+                  eventName="cta_click"
+                  className="rounded-lg border border-white/30 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30 transition"
+                >
+                  View Our Capabilities
+                </TrackedLink>
+
+                <TrackedAnchor
+                  href={`tel:${CONTACT_PHONE_E164}`}
+                  ctaName="Call Now"
+                  ctaLocation="home_hero"
+                  eventName="phone_click"
+                  className="rounded-lg border border-white/25 px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/10 transition"
+                >
+                  {CONTACT_PHONE_DISPLAY}
+                </TrackedAnchor>
+              </div>
+
+              <p className="mt-5 text-xs text-white/60">
+                Trusted by industrial teams in power, cement, mining, and manufacturing.
+              </p>
+            </div>
+
+            <div className="lg:col-span-5">
+              {/* Reuse existing lead form (B2B) */}
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-xl shadow-black/20 backdrop-blur">
+                <HomeLeadForm />
+                <p className="mt-3 text-xs text-white/70">
+                  Your technical drawings are kept strictly confidential.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TRUST STATS BAR (animated counters hook via data-count) */}
+      <section className="bg-slate-900 text-white">
+        <div className="mx-auto max-w-7xl px-6 py-10">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-xl border border-white/10 bg-white/5 p-5">
+              <div className="text-3xl font-extrabold tracking-tight">
+                <span className="js-counter" data-count="15">
+                  0
+                </span>
+                <span>+</span>
+              </div>
+              <div className="mt-1 text-sm text-white/70">Years Experience</div>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-white/5 p-5">
+              <div className="text-3xl font-extrabold tracking-tight">
+                <span className="js-counter" data-count="500">
+                  0
+                </span>
+                <span>+</span>
+              </div>
+              <div className="mt-1 text-sm text-white/70">Tons Fabricated</div>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-white/5 p-5">
+              <div className="text-3xl font-extrabold tracking-tight">
+                <span className="js-counter" data-count="100">
+                  0
+                </span>
+                <span>%</span>
+              </div>
+              <div className="mt-1 text-sm text-white/70">Safety Compliance</div>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-white/5 p-5">
+              <div className="text-3xl font-extrabold tracking-tight">Pan-India</div>
+              <div className="mt-1 text-sm text-white/70">Execution</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CORPORATE PROFILE OVERVIEW (split) */}
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-6">
+            <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
+              <img
+                src="/engineers-blueprint.jpg"
+                alt="Engineers reviewing industrial drawings"
+                className="h-[360px] w-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
           </div>
 
-          <HomeLeadForm />
+          <div className="lg:col-span-6">
+            <h2 className="text-3xl font-extrabold tracking-tight text-slate-900">
+              Delivering Heavy Industrial Solutions with Precision.
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-slate-700">
+              Operating out of our heavy fabrication hub in Hirakud, we serve as a critical
+              partner for the power, cement, and mining sectors. We specialize in end-to-end
+              industrial EPC services—transforming complex blueprints into robust reality with
+              stringent quality control.
+            </p>
+
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+              {trustPoints.map((point) => (
+                <li
+                  key={point}
+                  className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 shadow-sm"
+                >
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20">
-        <h2 className="text-3xl font-bold">Core Industrial Services</h2>
-        <p className="mt-4 max-w-4xl text-lg text-gray-700">
-          We execute practical, production-oriented project scopes that reduce downtime and
-          improve long-term industrial infrastructure reliability.
-        </p>
+      {/* CORE SERVICES GRID (4 cards) */}
+      <section className="bg-slate-50">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h2 className="text-3xl font-extrabold tracking-tight text-slate-900">
+                Core Services
+              </h2>
+              <p className="mt-2 max-w-2xl text-slate-700">
+                Heavy-duty capability, engineered execution, procurement-friendly communication.
+              </p>
+            </div>
+            <TrackedLink
+              href="/services"
+              ctaName="Explore All Services"
+              ctaLocation="home_services"
+              eventName="cta_click"
+              className="inline-flex w-fit items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 hover:bg-slate-100 transition"
+            >
+              Explore All Services
+            </TrackedLink>
+          </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {serviceBlocks.map((service) => (
-            <article key={service.title} className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-semibold">{service.title}</h3>
-              <p className="mt-3 text-gray-700">{service.text}</p>
-            </article>
-          ))}
-        </div>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: "Pre-Engineered Buildings (PEB)",
+                desc: "Design, detailing, fabrication, and rapid erection for industrial sheds, warehouses, and production facilities.",
+                href: "/services",
+              },
+              {
+                title: "Heavy Steel Fabrication",
+                desc: "Beams, columns, trusses, platforms, and process-support structures with dimensional accuracy and QA.",
+                href: "/services",
+              },
+              {
+                title: "Structural Steel Erection",
+                desc: "Site execution with strict safety compliance, shutdown planning, and controlled timelines.",
+                href: "/services",
+              },
+              {
+                title: "Mechanical Maintenance & Retrofitting",
+                desc: "Strengthening, replacement, and retrofit scopes to extend asset life and reduce downtime risks.",
+                href: "/services",
+              },
+            ].map((s) => (
+              <article
+                key={s.title}
+                className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-slate-900 text-white">
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      aria-hidden="true"
+                    >
+                      <path d="M4 20V10l8-6 8 6v10" />
+                      <path d="M9 20v-7h6v7" />
+                    </svg>
+                  </div>
+                  <span className="rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-700">
+                    Learn More
+                  </span>
+                </div>
 
-        <div className="mt-8">
-          <TrackedLink
-            href="/services"
-            ctaName="Explore Services"
-            ctaLocation="home_services"
-            eventName="request_quotation_click"
-            className="font-semibold text-blue-700 underline"
-          >
-            View complete service capabilities
-          </TrackedLink>
-        </div>
-      </section>
+                <h3 className="mt-4 text-lg font-bold text-slate-900">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">{s.desc}</p>
 
-      <section className="bg-gray-100 px-6 py-20">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="text-3xl font-bold">Industries We Serve</h2>
-          <p className="mt-4 max-w-4xl text-lg text-gray-700">
-            Our execution model is built for heavy industrial environments where schedule,
-            structural integrity, and operational safety are non-negotiable.
-          </p>
+                <TrackedLink
+                  href={s.href}
+                  ctaName={`Service Card: ${s.title}`}
+                  ctaLocation="home_services"
+                  eventName="cta_click"
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 group-hover:decoration-slate-900"
+                >
+                  View capability <span aria-hidden="true">→</span>
+                </TrackedLink>
 
-          <ul className="mt-8 grid gap-4 md:grid-cols-2">
-            {industries.map((industry) => (
-              <li key={industry} className="rounded-xl bg-black px-5 py-4 text-white">
-                {industry}
-              </li>
+                <div className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100">
+                  <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-orange-500/10 blur-2xl" />
+                </div>
+              </article>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20">
-        <h2 className="text-3xl font-bold">Why Industrial Teams Choose A K ENGINEERING</h2>
-        <ul className="mt-8 grid gap-4 md:grid-cols-2">
-          {trustPoints.map((point) => (
-            <li key={point} className="rounded-xl border border-gray-200 px-5 py-4 text-gray-800">
-              {point}
-            </li>
-          ))}
-        </ul>
+      {/* LEAD CAPTURE SECTION */}
+      <section className="bg-slate-950 text-white">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-8">
+              <h2 className="text-3xl font-extrabold tracking-tight">
+                Ready to Discuss Your Next Project?
+              </h2>
+              <p className="mt-3 max-w-3xl text-white/75">
+                Submit your project parameters or technical drawings for a detailed technical
+                consultation.
+              </p>
+            </div>
+            <div className="lg:col-span-4 lg:flex lg:justify-end">
+              <TrackedLink
+                href="/contact"
+                ctaName="Submit Project Requirement"
+                ctaLocation="home_lead_section"
+                eventName="request_quotation_click"
+                className="inline-flex w-full items-center justify-center rounded-lg bg-orange-500 px-6 py-3 text-sm font-semibold text-black hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-200 transition lg:w-auto"
+              >
+                Submit Project Requirement
+              </TrackedLink>
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+              <h3 className="text-lg font-bold">Fast procurement response</h3>
+              <p className="mt-2 text-sm text-white/75">
+                Share scope, drawings, and timelines. We align requirements before issuing a
+                quotation.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+              <h3 className="text-lg font-bold">Confidential drawings handling</h3>
+              <p className="mt-2 text-sm text-white/75">
+                Your technical documents are treated strictly confidential and used only for
+                estimation and engineering discussion.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
+      {/* Keep existing compliance + FAQ + bottom CTA for now (already strong). */}
       <section className="bg-white px-6 py-16">
         <div className="mx-auto max-w-7xl rounded-2xl border border-gray-200 bg-gray-50 p-8">
           <h2 className="text-3xl font-bold text-gray-900">
             Business Credibility and Compliance
           </h2>
           <p className="mt-3 max-w-4xl text-gray-700">
-            We maintain a clear communication and quotation process suitable for
-            industrial procurement workflows and digital ad compliance standards.
+            We maintain a clear communication and quotation process suitable for industrial
+            procurement workflows and digital ad compliance standards.
           </p>
 
           <ul className="mt-6 grid gap-3 md:grid-cols-2">
             {compliancePoints.map((point) => (
-              <li key={point} className="rounded-lg bg-white px-4 py-3 text-gray-800 shadow-sm">
+              <li
+                key={point}
+                className="rounded-lg bg-white px-4 py-3 text-gray-800 shadow-sm"
+              >
                 {point}
               </li>
             ))}
@@ -263,7 +475,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-yellow-500 px-6 py-20 text-center text-black">
+      <section className="bg-orange-500 px-6 py-20 text-center text-black">
         <h2 className="text-3xl font-bold">Planning an Industrial Expansion or New Facility?</h2>
         <p className="mx-auto mt-4 max-w-3xl text-lg">
           Discuss your scope with our engineering team and get a practical quotation aligned with
@@ -300,6 +512,48 @@ export default function HomePage() {
           </TrackedLink>
         </div>
       </section>
+
+      {/* Minimal JS for counters (client only) */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+(function () {
+  if (typeof window === 'undefined') return;
+
+  function animateCounter(el) {
+    var target = parseInt(el.getAttribute('data-count') || '0', 10);
+    if (!target) return;
+    var duration = 1200;
+    var start = 0;
+    var startTime = null;
+
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var p = Math.min(1, (ts - startTime) / duration);
+      var val = Math.floor(start + (target - start) * p);
+      el.textContent = String(val);
+      if (p < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  var counters = Array.prototype.slice.call(document.querySelectorAll('.js-counter'));
+  if (!counters.length) return;
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        animateCounter(e.target);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  counters.forEach(function (c) { io.observe(c); });
+})();`,
+        }}
+      />
     </main>
   );
 }
