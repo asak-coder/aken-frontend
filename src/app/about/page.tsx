@@ -263,14 +263,9 @@ export default function AboutPage() {
                 </h2>
 
                 <blockquote className="mt-6 text-base leading-relaxed text-slate-700 sm:text-lg">
-                  "In the EPC and structural fabrication sector, trust is built
-                  exactly like our steel structures: weld by weld, project by
-                  project. At A K ENGINEERING, our philosophy is anchored in
-                  absolute accountability. We do not over-promise, and we do not
-                  under-deliver. When we take on your project, my team and I
-                  treat your operational deadlines as our own. We enforce the
-                  strictest safety protocols, demand engineering perfection, and
-                  stand behind every single ton of steel we erect."
+                  {
+                    '"In the EPC and structural fabrication sector, trust is built exactly like our steel structures: weld by weld, project by project. At A K ENGINEERING, our philosophy is anchored in absolute accountability. We do not over-promise, and we do not under-deliver. When we take on your project, my team and I treat your operational deadlines as our own. We enforce the strictest safety protocols, demand engineering perfection, and stand behind every single ton of steel we erect."'
+                  }
                 </blockquote>
 
                 <p className="mt-6 text-sm font-semibold text-slate-900">
@@ -406,7 +401,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <p className="text-base font-semibold text-white">
-                    "Zero-Harm" Safety Culture
+                    {'"Zero-Harm" Safety Culture'}
                   </p>
                   <p className="mt-2 text-sm leading-relaxed text-white/70">
                     We operate under the strict belief that no project is
