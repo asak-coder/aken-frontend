@@ -9,7 +9,8 @@ import Image from "next/image";
  * - Respects `prefers-reduced-motion`
  */
 export default function HeroMedia({
-  posterSrc = "/hero-fabrication-placeholder.svg",
+  // Use an existing public asset by default (prevents 404s in production)
+  posterSrc = "/hero-steel.jpg",
   videoMp4Src = "/hero-fabrication.mp4",
   videoWebmSrc = "/hero-fabrication.webm",
   alt = "",

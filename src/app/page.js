@@ -115,7 +115,7 @@ export default function HomePage() {
 
       {/* HERO (Cinematic enterprise) */}
       <section className="relative isolate overflow-hidden bg-slate-950 text-white">
-        <HeroMedia posterSrc="/hero-fabrication-placeholder.svg" />
+        <HeroMedia />
 
         <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-28">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
@@ -228,12 +228,11 @@ export default function HomePage() {
         <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-6">
             <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
-              <Image
+              <img
                 src="/engineers-blueprint.jpg"
                 alt="Engineers reviewing industrial drawings"
-                className="object-cover"
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="h-full w-full object-cover"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
