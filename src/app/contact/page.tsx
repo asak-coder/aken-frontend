@@ -87,12 +87,6 @@ export default function ContactPage() {
         <LazyMapEmbed />
       </section>
 
-      <footer className="bg-black text-white py-10 text-center text-sm">
-        <p>(c) {new Date().getFullYear()} A K ENGINEERING. All Rights Reserved.</p>
-        <p className="mt-2 text-gray-400">
-          Industrial EPC | PEB Structures | Steel Fabrication | Industrial Erection Services
-        </p>
-      </footer>
     </main>
   );
 }

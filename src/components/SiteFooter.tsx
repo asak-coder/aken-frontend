@@ -159,7 +159,7 @@ export default function SiteFooter() {
             © {new Date().getFullYear()} A K ENGINEERING. All rights reserved.
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2">
-            <span>Founder/Proprietor: Ashis Mahato</span>
+            <span>A K ENGINEERING - Premier EPC & Steel Fabrication Contractors</span>
             <span className="hidden md:inline">•</span>
             <Link className="underline hover:text-white" href="/contact">
               Request a Quote

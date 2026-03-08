@@ -172,9 +172,6 @@ export default function ServicesPage() {
         </TrackedLink>
       </section>
 
-      <footer className="bg-black text-white py-10 text-center text-sm">
-        <p>(c) {new Date().getFullYear()} A K ENGINEERING. All Rights Reserved.</p>
-      </footer>
     </main>
   );
 }
