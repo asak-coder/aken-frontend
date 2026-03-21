@@ -9,9 +9,7 @@ export const runtime = "nodejs";
 
 function normalizeBackendBaseUrl(rawValue: string | undefined) {
   const value = (rawValue || "").trim();
-  if (!value) {
-    return "";
-  }
+  if (!value) return "";
 
   try {
     const parsed = new URL(value);
@@ -31,29 +29,25 @@ function isLocalhostTarget(target: string) {
 function getBackendBaseUrlOrThrow() {
   const nodeEnv = (process.env.NODE_ENV || "development").toLowerCase();
   const isProduction = nodeEnv === "production";
-
   const backendBaseUrl = normalizeBackendBaseUrl(process.env.BACKEND_API_URL);
 
   if (!backendBaseUrl) {
-    if (isProduction) {
-      const error = new Error("BACKEND_API_URL is missing or invalid in production.");
-      // @ts-expect-error - attach metadata for handler
-      error.statusCode = 500;
-      // @ts-expect-error - attach metadata for handler
-      error.code = "BACKEND_API_URL_MISSING";
-      throw error;
-    }
-
-    // Development fallback to local backend.
-    return "http://localhost:5000";
+    const error = new Error("BACKEND_API_URL is missing or invalid.");
+    // @ts-expect-error custom metadata
+    error.statusCode = 500;
+    // @ts-expect-error custom metadata
+    error.code = isProduction ? "BACKEND_API_URL_MISSING" : "BACKEND_API_URL_INVALID";
+    throw error;
   }
 
-  if (isProduction && isLocalhostTarget(backendBaseUrl)) {
-    const error = new Error("BACKEND_API_URL must not point to localhost in production.");
-    // @ts-expect-error - attach metadata for handler
+  if (isLocalhostTarget(backendBaseUrl)) {
+    const error = new Error("BACKEND_API_URL must not point to localhost.");
+    // @ts-expect-error custom metadata
     error.statusCode = 500;
-    // @ts-expect-error - attach metadata for handler
-    error.code = "BACKEND_API_URL_LOCALHOST_FORBIDDEN";
+    // @ts-expect-error custom metadata
+    error.code = isProduction
+      ? "BACKEND_API_URL_LOCALHOST_FORBIDDEN"
+      : "BACKEND_API_URL_LOCALHOST";
     throw error;
   }
 
@@ -62,6 +56,7 @@ function getBackendBaseUrlOrThrow() {
 
 export async function POST(req: NextRequest) {
   let targetUrl = "";
+
   try {
     const backendBaseUrl = getBackendBaseUrlOrThrow();
     targetUrl = `${backendBaseUrl}/api/leads`;
@@ -89,7 +84,6 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // Only forward what we must.
   const contentType = req.headers.get("content-type") || "application/json";
 
   let body: BodyInit | undefined;
@@ -126,7 +120,6 @@ export async function POST(req: NextRequest) {
       ok: upstreamRes.ok,
     });
 
-    // Pass through status + response body; prevent caching.
     return new NextResponse(upstreamRes.body, {
       status: upstreamRes.status,
       headers: {
