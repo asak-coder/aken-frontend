@@ -1,6 +1,8 @@
+import type { Metadata } from "next";
 import SmartEnquiryWizard from "@/components/SmartEnquiryWizard";
 import LazyMapEmbed from "@/components/LazyMapEmbed";
 import TrackedAnchor from "@/components/TrackedAnchor";
+import TrackedLink from "@/components/TrackedLink";
 import {
   CONTACT_EMAIL,
   CONTACT_PHONE_DISPLAY,
@@ -8,17 +10,54 @@ import {
   CONTACT_WHATSAPP_PREFILL_URL,
 } from "@/lib/contact";
 
+export const metadata: Metadata = {
+  title: "Contact AKEN | A K ENGINEERING",
+  description:
+    "Contact AKEN, a brand of A K ENGINEERING, to discuss structural, fabrication, erection or industrial engineering requirements. Get in touch for Industrial EPC Projects, PEB, steel fabrication and industrial maintenance.",
+};
+
 export default function ContactPage() {
   return (
     <main className="bg-white text-gray-900">
-      <section className="bg-black text-white py-20 text-center px-6">
+      <section className="relative isolate overflow-hidden bg-black text-white py-20 text-center px-6">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{ backgroundImage: "url(/hero-steel.jpg)" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/85" />
+        <div className="relative">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          Contact A K ENGINEERING
+          LET&rsquo;S BUILD SOMETHING STRONGER
         </h1>
         <p className="max-w-3xl mx-auto text-lg text-gray-300">
-          Get in touch with our engineering team for Industrial EPC Projects,
-          Pre-Engineered Buildings, Structural Steel Fabrication and Erection Services.
+          Have an industrial project in mind? Tell us what you are planning. Our
+          team can discuss your structural, fabrication, erection or industrial
+          engineering requirements and identify the right execution approach.
         </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <TrackedLink
+            href="/enquiry"
+            ctaName="Send Your Enquiry"
+            ctaLocation="contact_hero"
+            eventName="request_quotation_click"
+            className="bg-yellow-500 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition"
+          >
+            Send Your Enquiry
+          </TrackedLink>
+          <TrackedAnchor
+            href={CONTACT_WHATSAPP_PREFILL_URL}
+            ctaName="WhatsApp Contact Page"
+            ctaLocation="contact_hero"
+            className="bg-green-500 text-black px-8 py-3 rounded-lg font-semibold hover:bg-green-400 transition"
+            eventName="whatsapp_click"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp Us
+          </TrackedAnchor>
+        </div>
+        </div>
       </section>
 
       <section className="py-20 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
@@ -26,7 +65,12 @@ export default function ContactPage() {
           <h2 className="text-2xl font-bold mb-6">Business Information</h2>
 
           <div className="space-y-4 text-lg">
-            <p><strong>Company Name:</strong> A K ENGINEERING</p>
+            <p>
+              <strong>Company Name:</strong> A K ENGINEERING
+            </p>
+            <p className="text-sm text-gray-600">
+              AKEN is a brand of A K ENGINEERING.
+            </p>
             <p><strong>Business Type:</strong> Industrial EPC Contractor</p>
             <p><strong>Specialization:</strong> PEB Structures, Steel Fabrication, Industrial Shed Construction & Erection</p>
             <p><strong>Service Area:</strong> Pan India</p>
@@ -97,7 +141,7 @@ export default function ContactPage() {
           <div className="rounded-2xl border border-gray-200 bg-white overflow-hidden shadow-sm">
             <div className="p-5">
               <h3 className="text-lg font-semibold">
-                A K ENGINEERING – Bhubaneswar Office
+                AKEN (A K ENGINEERING) – Bhubaneswar Office
               </h3>
               <p className="mt-1 text-sm text-gray-600">A K ENGINEERING</p>
             </div>
@@ -105,7 +149,7 @@ export default function ContactPage() {
             <div className="px-5 pb-5">
               <div className="rounded-xl overflow-hidden border border-gray-200">
                 <LazyMapEmbed
-                  title="A K ENGINEERING – Bhubaneswar Office"
+                  title="AKEN – Bhubaneswar Office"
                   lat={20.273165901094252}
                   lng={85.8028445394262}
                 />
@@ -135,7 +179,7 @@ export default function ContactPage() {
           <div className="rounded-2xl border border-gray-200 bg-white overflow-hidden shadow-sm">
             <div className="p-5">
               <h3 className="text-lg font-semibold">
-                A K ENGINEERING – Hirakud
+                AKEN (A K ENGINEERING) – Hirakud
               </h3>
               <p className="mt-1 text-sm text-gray-600">A K ENGINEERING</p>
             </div>
@@ -143,7 +187,7 @@ export default function ContactPage() {
             <div className="px-5 pb-5">
               <div className="rounded-xl overflow-hidden border border-gray-200">
                 <LazyMapEmbed
-                  title="A K ENGINEERING – Hirakud"
+                  title="AKEN – Hirakud"
                   lat={21.5367316772452}
                   lng={83.89499883022955}
                 />
@@ -171,7 +215,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
     </main>
   );
 }

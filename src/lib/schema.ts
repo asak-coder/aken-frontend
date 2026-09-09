@@ -11,21 +11,33 @@ const LOCAL_BUSINESS_ID = `${SITE_URL}/#localbusiness`;
 const SERVICE_ITEMS = [
   {
     id: `${SITE_URL}/services#peb`,
-    name: "Pre-Engineered Building (PEB) Solutions",
+    name: "Pre-Engineered Buildings (PEB)",
     description:
-      "Industrial PEB design, fabrication, and erection for warehouses, production units, and infrastructure facilities.",
+      "Efficient and durable PEB solutions for warehouses, industrial facilities and other large-span applications.",
   },
   {
-    id: `${SITE_URL}/services#steel-fabrication`,
+    id: `${SITE_URL}/services#fabrication`,
     name: "Structural Steel Fabrication",
     description:
-      "Heavy structural steel fabrication for beams, columns, trusses, process-support frames, and industrial platforms.",
+      "Precision fabrication of structural steel components with focus on dimensional accuracy and workmanship.",
   },
   {
-    id: `${SITE_URL}/services#industrial-erection`,
-    name: "Industrial Erection and Installation Services",
+    id: `${SITE_URL}/services#erection`,
+    name: "Structural Steel Erection",
     description:
-      "On-site industrial erection, installation support, and shutdown execution with safety and schedule controls.",
+      "Professional site erection with emphasis on safety, alignment, lifting coordination and execution quality.",
+  },
+  {
+    id: `${SITE_URL}/services#roofing`,
+    name: "Roofing & Wall Cladding",
+    description:
+      "Industrial roofing and wall cladding solutions designed for durability, weather protection and long-term performance.",
+  },
+  {
+    id: `${SITE_URL}/services#maintenance`,
+    name: "Industrial Maintenance & Shutdown Services",
+    description:
+      "Planned maintenance, modification, strengthening and shutdown execution for industrial facilities.",
   },
 ];
 
@@ -37,9 +49,14 @@ export function getStructuredDataGraph() {
         "@type": "Organization",
         "@id": ORG_ID,
         name: "A K ENGINEERING",
+        alternateName: "AKEN",
         url: SITE_URL,
         email: CONTACT_EMAIL,
         telephone: CONTACT_PHONE_E164,
+        brand: {
+          "@type": "Brand",
+          name: "AKEN",
+        },
         contactPoint: [
           {
             "@type": "ContactPoint",
@@ -55,6 +72,7 @@ export function getStructuredDataGraph() {
         "@type": ["LocalBusiness", "GeneralContractor"],
         "@id": LOCAL_BUSINESS_ID,
         name: "A K ENGINEERING",
+        alternateName: "AKEN",
         url: SITE_URL,
         telephone: CONTACT_PHONE_E164,
         email: CONTACT_EMAIL,
@@ -95,7 +113,7 @@ export function getStructuredDataGraph() {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
         url: SITE_URL,
-        name: "A K ENGINEERING",
+        name: "AKEN",
         publisher: {
           "@id": ORG_ID,
         },
@@ -104,7 +122,7 @@ export function getStructuredDataGraph() {
         "@type": "WebPage",
         "@id": `${SITE_URL}/#homepage`,
         url: SITE_URL,
-        name: "Industrial EPC Contractor in India | A K ENGINEERING",
+        name: "AKEN | A K ENGINEERING | Industrial Engineering & Steel Construction",
         isPartOf: {
           "@id": `${SITE_URL}/#website`,
         },

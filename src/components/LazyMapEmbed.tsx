@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { trackCtaClick } from "@/lib/analytics";
 
-const DEFAULT_MAP_TITLE = "A K ENGINEERING Location Map";
+const DEFAULT_MAP_TITLE = "AKEN Location Map";
 const DEFAULT_LAT = 21.5367316772452;
 const DEFAULT_LNG = 83.89499883022955;
 

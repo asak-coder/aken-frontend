@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions",
+  title: "Terms and Conditions | AKEN – A K ENGINEERING",
   description:
-    "Terms and conditions governing enquiry submission, project consultation, and communication with A K ENGINEERING.",
+    "Terms and conditions governing enquiry submission, project consultation, and communication with A K ENGINEERING, the registered business behind AKEN.",
 };
 
 export default function TermsAndConditionsPage() {
@@ -16,8 +16,9 @@ export default function TermsAndConditionsPage() {
 
       <section className="mx-auto max-w-4xl space-y-8 px-6 py-14 text-lg leading-relaxed">
         <p>
-          These Terms and Conditions apply to all users of the A K ENGINEERING
-          website and to all enquiry submissions made through this platform.
+          AKEN is a brand of A K ENGINEERING. These Terms and Conditions apply
+          to all users of the A K ENGINEERING website and to all enquiry
+          submissions made through this platform.
         </p>
 
         <section>

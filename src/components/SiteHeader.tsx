@@ -12,15 +12,15 @@ import {
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
-  { href: "/about", label: "About Us" },
+  { href: "/about", label: "About AKEN" },
   { href: "/blog", label: "Insights" },
 ];
 
 const servicesLinks = [
   { href: "/services#peb", label: "Pre-Engineered Buildings (PEB)" },
-  { href: "/services#fabrication", label: "Heavy Steel Fabrication" },
+  { href: "/services#fabrication", label: "Structural Steel Fabrication" },
   { href: "/services#erection", label: "Structural Steel Erection" },
-  { href: "/services#maintenance", label: "Mechanical Maintenance & Retrofitting" },
+  { href: "/services#maintenance", label: "Industrial Maintenance & Shutdown" },
 ];
 
 export default function SiteHeader() {
@@ -63,54 +63,44 @@ export default function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Slim top bar (trust line) */}
+      {/* Slim top bar (brand trust line) */}
       <div className="bg-slate-950 px-4 py-2 text-center text-xs font-semibold tracking-wide text-white/90 md:text-sm">
-        Industrial EPC Contractor • Hirakud, Sambalpur • Pan-India Project Execution
+        AKEN — A Brand of A K ENGINEERING • Hirakud, Sambalpur • Pan-India Execution
       </div>
 
       {/* Main nav */}
       <div
         className={[
-          "border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80",
-          isStuck ? "shadow-sm" : "",
+          "border-b border-white/10 bg-slate-900/95 backdrop-blur supports-[backdrop-filter]:bg-slate-900/85",
+          isStuck ? "shadow-lg shadow-black/20" : "",
         ].join(" ")}
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-4 py-4">
           {/* Brand */}
-          <div className="flex min-w-0 items-center gap-3">
+          <div className="flex min-w-0 flex-col items-start gap-0.5">
             <Link
               href="/"
               className="flex shrink-0 items-center"
-              aria-label="A K ENGINEERING Home"
+              aria-label="AKEN Home"
               onClick={closeAll}
             >
               <Image
-                src="/logo/logo.svg"
-                alt="A K ENGINEERING"
-                width={40}
-                height={40}
+                src="/logo/logo-white.svg"
+                alt="AKEN"
+                width={1000}
+                height={300}
                 priority
-                className="h-10 w-10 object-contain"
+                className="h-8 w-auto object-contain md:h-9"
               />
             </Link>
-
-            <div className="min-w-0">
-              <Link
-                href="/"
-                className="block truncate text-lg font-extrabold tracking-tight text-slate-900 md:text-xl"
-                onClick={closeAll}
-              >
-                A K ENGINEERING
-              </Link>
-              <p className="truncate text-xs text-slate-600 md:text-sm">
-                EPC • Steel Fabrication • Structural Erection • PEB
-              </p>
-            </div>
+            <p className="truncate text-[11px] font-medium text-white/70 md:text-xs">
+              A Brand of A K ENGINEERING
+            </p>
           </div>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-6 text-sm font-semibold text-slate-800 lg:flex">
-            <Link href="/" className="hover:text-slate-950">
+          <nav className="hidden items-center gap-6 text-sm font-semibold text-slate-200 lg:flex">
+            <Link href="/" className="hover:text-white">
               Home
             </Link>
 
@@ -118,7 +108,7 @@ export default function SiteHeader() {
             <div className="relative" ref={servicesRef}>
               <button
                 type="button"
-                className="inline-flex items-center gap-2 hover:text-slate-950"
+                className="inline-flex items-center gap-2 hover:text-white"
                 aria-haspopup="menu"
                 aria-expanded={servicesOpen}
                 onClick={() => setServicesOpen((v) => !v)}
@@ -144,13 +134,13 @@ export default function SiteHeader() {
               {servicesOpen ? (
                 <div
                   role="menu"
-                  className="absolute left-0 top-full mt-3 w-[360px] overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl"
+                  className="absolute left-0 top-full mt-3 w-[360px] overflow-hidden rounded-2xl border border-slate-700 bg-slate-900 shadow-xl"
                 >
-                  <div className="border-b border-slate-100 bg-slate-50 px-5 py-3">
-                    <div className="text-xs font-extrabold tracking-wide text-slate-900">
-                      CORE CAPABILITIES
+                  <div className="border-b border-slate-800 bg-slate-950 px-5 py-3">
+                    <div className="text-xs font-extrabold tracking-wide text-white">
+                      AKEN CORE CAPABILITIES
                     </div>
-                    <div className="mt-1 text-xs text-slate-600">
+                    <div className="mt-1 text-xs text-white/60">
                       Procurement-friendly scopes • Technical consultation
                     </div>
                   </div>
@@ -160,7 +150,7 @@ export default function SiteHeader() {
                       <Link
                         key={l.href}
                         href={l.href}
-                        className="block rounded-xl px-4 py-3 text-sm text-slate-800 hover:bg-slate-50 hover:text-slate-950"
+                        className="block rounded-xl px-4 py-3 text-sm text-slate-200 hover:bg-slate-800 hover:text-white"
                         role="menuitem"
                         onClick={closeAll}
                       >
@@ -170,7 +160,7 @@ export default function SiteHeader() {
                     <div className="px-2 pb-2 pt-1">
                       <Link
                         href="/services"
-                        className="block rounded-xl bg-slate-950 px-4 py-3 text-sm font-semibold text-white hover:bg-slate-900"
+                        className="block rounded-xl bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100"
                         onClick={closeAll}
                       >
                         View all services →
@@ -184,7 +174,7 @@ export default function SiteHeader() {
             {navLinks
               .filter((l) => l.href !== "/")
               .map((l) => (
-                <Link key={l.href} href={l.href} className="hover:text-slate-950">
+                <Link key={l.href} href={l.href} className="hover:text-white">
                   {l.label}
                 </Link>
               ))}
@@ -194,13 +184,13 @@ export default function SiteHeader() {
           <div className="hidden items-center gap-2 lg:flex">
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50"
+              className="rounded-lg border border-white/20 bg-white/5 px-3 py-2 text-sm font-semibold text-slate-100 hover:bg-white/10"
             >
               {CONTACT_EMAIL}
             </a>
             <a
               href={`tel:${CONTACT_PHONE_E164}`}
-              className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+              className="rounded-lg border border-white/20 bg-white/5 px-3 py-2 text-sm font-semibold text-white hover:bg-white/10"
             >
               {CONTACT_PHONE_DISPLAY}
             </a>
@@ -215,7 +205,7 @@ export default function SiteHeader() {
           {/* Mobile toggle */}
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50 lg:hidden"
+            className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-3 py-2 text-sm font-semibold text-white hover:bg-white/10 lg:hidden"
             aria-label="Open menu"
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((v) => !v)}
@@ -239,22 +229,22 @@ export default function SiteHeader() {
 
         {/* Mobile panel */}
         {mobileOpen ? (
-          <div className="border-t border-slate-200 bg-white lg:hidden">
+          <div className="border-t border-slate-800 bg-slate-900 lg:hidden">
             <div className="mx-auto max-w-7xl px-4 py-4">
               <div className="grid gap-2">
                 <Link
                   href="/"
-                  className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+                  className="rounded-lg px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800"
                   onClick={closeAll}
                 >
                   Home
                 </Link>
 
-                <details className="rounded-lg border border-slate-200 bg-white px-3 py-2">
-                  <summary className="cursor-pointer list-none text-sm font-semibold text-slate-900">
+                <details className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2">
+                  <summary className="cursor-pointer list-none text-sm font-semibold text-white">
                     <span className="inline-flex items-center justify-between w-full">
                       Services
-                      <span className="text-slate-500">▾</span>
+                      <span className="text-slate-400">▾</span>
                     </span>
                   </summary>
                   <div className="mt-2 grid gap-1">
@@ -262,7 +252,7 @@ export default function SiteHeader() {
                       <Link
                         key={l.href}
                         href={l.href}
-                        className="rounded-md px-2 py-2 text-sm text-slate-800 hover:bg-slate-50"
+                        className="rounded-md px-2 py-2 text-sm text-slate-200 hover:bg-slate-800"
                         onClick={closeAll}
                       >
                         {l.label}
@@ -270,7 +260,7 @@ export default function SiteHeader() {
                     ))}
                     <Link
                       href="/services"
-                      className="rounded-md bg-slate-950 px-2 py-2 text-sm font-semibold text-white hover:bg-slate-900"
+                      className="rounded-md bg-white px-2 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-100"
                       onClick={closeAll}
                     >
                       View all services →
@@ -280,21 +270,21 @@ export default function SiteHeader() {
 
                 <Link
                   href="/projects"
-                  className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+                  className="rounded-lg px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800"
                   onClick={closeAll}
                 >
                   Projects
                 </Link>
                 <Link
                   href="/about"
-                  className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+                  className="rounded-lg px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800"
                   onClick={closeAll}
                 >
-                  About Us
+                  About AKEN
                 </Link>
                 <Link
                   href="/blog"
-                  className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+                  className="rounded-lg px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800"
                   onClick={closeAll}
                 >
                   Insights
@@ -303,13 +293,13 @@ export default function SiteHeader() {
                 <div className="mt-2 grid gap-2">
                   <a
                     href={`mailto:${CONTACT_EMAIL}`}
-                    className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50"
+                    className="rounded-lg border border-white/20 bg-white/5 px-3 py-2 text-sm font-semibold text-slate-100 hover:bg-white/10"
                   >
                     {CONTACT_EMAIL}
                   </a>
                   <a
                     href={`tel:${CONTACT_PHONE_E164}`}
-                    className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+                    className="rounded-lg border border-white/20 bg-white/5 px-3 py-2 text-sm font-semibold text-white hover:bg-white/10"
                   >
                     {CONTACT_PHONE_DISPLAY}
                   </a>
@@ -325,14 +315,14 @@ export default function SiteHeader() {
                 <div className="mt-2 grid grid-cols-2 gap-2 text-xs">
                   <Link
                     href="/privacy-policy"
-                    className="rounded-lg border border-slate-200 bg-white px-3 py-2 font-semibold text-slate-800 hover:bg-slate-50"
+                    className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 font-semibold text-slate-200 hover:bg-slate-800"
                     onClick={closeAll}
                   >
                     Privacy
                   </Link>
                   <Link
                     href="/terms-and-conditions"
-                    className="rounded-lg border border-slate-200 bg-white px-3 py-2 font-semibold text-slate-800 hover:bg-slate-50"
+                    className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 font-semibold text-slate-200 hover:bg-slate-800"
                     onClick={closeAll}
                   >
                     Terms

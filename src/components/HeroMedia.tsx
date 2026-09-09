@@ -4,25 +4,22 @@ import Image from "next/image";
 
 /**
  * HeroMedia
- * - Desktop (>= md): autoplay muted looping background video (if available)
- * - Mobile: poster-only for performance (per user preference A)
- * - Respects `prefers-reduced-motion`
+ * - Poster-only hero background (mobile + desktop) using the industrial steel image
+ * - Respects `prefers-reduced-motion` via static image (no autoplay video)
+ * - The video element is intentionally omitted until real video assets exist,
+ *   avoiding 404s from non-existent source files.
  */
 export default function HeroMedia({
   // Use an existing public asset by default (prevents 404s in production)
   posterSrc = "/hero-steel.jpg",
-  videoMp4Src = "/hero-fabrication.mp4",
-  videoWebmSrc = "/hero-fabrication.webm",
   alt = "",
 }: {
   posterSrc?: string;
-  videoMp4Src?: string;
-  videoWebmSrc?: string;
   alt?: string;
 }) {
   return (
     <div className="absolute inset-0">
-      {/* Mobile poster (default) */}
+      {/* Mobile poster */}
       <Image
         src={posterSrc}
         alt={alt}
@@ -32,23 +29,7 @@ export default function HeroMedia({
         sizes="100vw"
       />
 
-      {/* Desktop video */}
-      <video
-        className="hidden h-full w-full object-cover opacity-60 md:block motion-reduce:hidden"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster={posterSrc}
-        aria-hidden="true"
-      >
-        {/* If you later add real assets, keep both sources for best coverage */}
-        <source src={videoWebmSrc} type="video/webm" />
-        <source src={videoMp4Src} type="video/mp4" />
-      </video>
-
-      {/* Desktop fallback (if video fails) */}
+      {/* Desktop poster */}
       <Image
         src={posterSrc}
         alt={alt}

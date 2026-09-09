@@ -18,6 +18,7 @@ function getPostBySlug(slug: string) {
 const SITE_URL = "https://aken.firm.in";
 const BLOG_BASE_URL = `${SITE_URL}/blog`;
 const ORG_NAME = "A K ENGINEERING";
+const SITE_BRAND = "AKEN";
 
 function getPostUrl(slug: string) {
   return `${BLOG_BASE_URL}/${slug}`;
@@ -46,7 +47,7 @@ export async function generateMetadata({
 
   if (!post) {
     return {
-      title: "Blog Post Not Found | A K ENGINEERING",
+      title: "Blog Post Not Found | AKEN",
       description: "The requested article is not available.",
       robots: {
         index: false,
@@ -60,7 +61,7 @@ export async function generateMetadata({
   const modifiedTime = new Date(post.updatedAt || post.date).toISOString();
 
   return {
-    title: `${post.title} | A K ENGINEERING`,
+    title: `${post.title} | AKEN`,
     description: post.description,
     keywords: post.keywords,
     alternates: {
@@ -71,7 +72,7 @@ export async function generateMetadata({
       url: canonicalUrl,
       title: post.title,
       description: post.description,
-      siteName: ORG_NAME,
+      siteName: SITE_BRAND,
       publishedTime,
       modifiedTime,
       authors: [ORG_NAME],

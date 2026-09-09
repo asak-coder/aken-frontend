@@ -2,9 +2,9 @@ import { blogPosts } from "@/lib/blog-data";
 import TrackedLink from "@/components/TrackedLink";
 
 export const metadata = {
-  title: "Blog Library | A K ENGINEERING",
+  title: "Blog Library | AKEN",
   description:
-    "Browse published articles from A K ENGINEERING on PEB, steel fabrication and EPC execution.",
+    "Browse published articles from AKEN, a brand of A K ENGINEERING, on PEB, steel fabrication and EPC execution.",
 };
 
 export default function BlogLibraryPage() {

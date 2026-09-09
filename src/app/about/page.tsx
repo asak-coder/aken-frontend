@@ -1,9 +1,10 @@
+import Image from "next/image";
 import TrackedLink from "@/components/TrackedLink";
 
 export const metadata = {
-  title: "About Us | A K ENGINEERING",
+  title: "About AKEN | A Brand of A K ENGINEERING",
   description:
-    "A K ENGINEERING is a premier EPC, heavy structural steel fabrication, and construction contractor based in Hirakud, Odisha.",
+    "AKEN is a brand of A K ENGINEERING, representing our customer-facing identity for industrial engineering, steel fabrication and project execution services based in Hirakud, Odisha.",
 };
 
 function IconShield(props: React.SVGProps<SVGSVGElement>) {
@@ -73,28 +74,55 @@ function IconStopwatch(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+const values = [
+  "Safety First",
+  "Engineering Excellence",
+  "Quality",
+  "Integrity",
+  "Accountability",
+  "Reliability",
+  "Customer Focus",
+  "Continuous Improvement",
+];
+
+const whyAken = [
+  {
+    title: "Engineering-Led Execution",
+    text: "Technical understanding from planning through site execution.",
+  },
+  {
+    title: "Fabrication Capability",
+    text: "Controlled fabrication processes focused on accuracy and reliable assembly.",
+  },
+  {
+    title: "Safety-Driven Operations",
+    text: "Safety integrated into planning, lifting, fabrication and erection activities.",
+  },
+  {
+    title: "Project-Focused Delivery",
+    text: "Coordination between engineering, fabrication, logistics and site execution.",
+  },
+  {
+    title: "Quality Commitment",
+    text: "Attention to materials, workmanship, dimensional accuracy and project requirements.",
+  },
+  {
+    title: "Industrial Experience",
+    text: "Solutions developed around the practical demands of industrial environments.",
+  },
+];
+
 export default function AboutPage() {
   return (
     <main className="bg-white text-slate-900">
-      {/* =========================================================
-          ABOUT US / CORPORATE PROFILE — A K ENGINEERING
-          Design System: Heavy-Duty Minimalist (Engineering Blue, Construction Orange, Steel Grey)
-          Notes:
-          - Background image placeholders are provided via /public/hero-steel.jpg and /public/engineers-blueprint.jpg
-          - Replace headshot placeholder with an actual photo when available
-         ========================================================= */}
-
       {/* SECTION 1: THE HERO HEADER */}
       <section className="relative isolate overflow-hidden bg-slate-950">
-        {/* Background image placeholder */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url(/hero-steel.jpg)" }}
         />
-        {/* Dark overlay */}
         <div className="absolute inset-0 bg-slate-950/70" />
 
-        {/* Subtle cinematic edge highlights */}
         <div className="absolute inset-0 opacity-40">
           <div className="absolute -top-24 left-1/2 h-72 w-[52rem] -translate-x-1/2 rounded-full bg-sky-500/20 blur-3xl" />
           <div className="absolute -bottom-28 right-[-10%] h-72 w-[44rem] rounded-full bg-orange-500/15 blur-3xl" />
@@ -102,19 +130,30 @@ export default function AboutPage() {
 
         <div className="relative mx-auto max-w-6xl px-6 py-20 sm:py-24 lg:py-28">
           <div className="max-w-3xl">
-            <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium tracking-wide text-white/80">
-              <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
-              About Us / Corporate Profile
-            </p>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/logo/logo-white.svg"
+                alt="AKEN"
+                width={1000}
+                height={300}
+                priority
+                className="h-7 w-auto object-contain md:h-8"
+              />
+              <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium tracking-wide text-white/80">
+                <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
+                About AKEN
+              </p>
+            </div>
 
             <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Engineering the Backbone of India’s Heavy Industry.
+              The Brand Behind Dependable Industrial Engineering.
             </h1>
 
             <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-white/80 sm:text-lg">
-              A K ENGINEERING is a premier EPC, heavy structural steel
-              fabrication, and construction contractor based in Hirakud, Odisha.
-              We transform complex blueprints into unyielding industrial reality.
+              AKEN is a brand of A K ENGINEERING, representing our customer-facing
+              identity for industrial engineering, steel fabrication and project
+              execution services. From our hub in Hirakud, Odisha, we transform
+              complex blueprints into unyielding industrial reality.
             </p>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -142,7 +181,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* SECTION 2: THE CORPORATE PROFILE */}
+      {/* SECTION 2: ABOUT AKEN / CORPORATE PROFILE */}
       <section className="bg-white">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 lg:grid-cols-12 lg:py-20">
           <div className="lg:col-span-5">
@@ -151,15 +190,17 @@ export default function AboutPage() {
                 <div className="mt-1 h-10 w-1 rounded-full bg-slate-800" />
                 <div>
                   <h2 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
-                    Precision Scale. Uncompromising Execution.
+                    ABOUT AKEN
                   </h2>
                   <p className="mt-4 text-sm leading-relaxed text-slate-600">
-                    Strategically headquartered in the industrial heartland of
-                    Hirakud, Sambalpur, A K ENGINEERING serves as a
-                    single-source EPC partner for the power, cement, mining, and
-                    manufacturing sectors. We do not just construct buildings;
-                    we engineer the critical frameworks that keep heavy
-                    industries operational.
+                    AKEN is a brand of A K ENGINEERING, representing our
+                    customer-facing identity for industrial engineering, steel
+                    fabrication and project execution services. Headquartered in
+                    the industrial heartland of Hirakud, Sambalpur, we serve as
+                    an EPC and fabrication partner for the power, cement,
+                    mining, and manufacturing sectors. We do not just construct
+                    buildings; we engineer the critical frameworks that keep
+                    heavy industries operational.
                   </p>
                 </div>
               </div>
@@ -194,11 +235,22 @@ export default function AboutPage() {
               <p className="text-base leading-relaxed text-slate-700 sm:text-lg">
                 From the rapid manufacturing of Pre-Engineered Buildings (PEB)
                 to high-tonnage structural steel erection and live-environment
-                mechanical retrofitting, our capability spans the entire
+                mechanical retrofitting, AKEN&rsquo;s capability spans the entire
                 industrial construction lifecycle. By controlling the fabrication
-                process within our own advanced facility, we eliminate
-                third-party bottlenecks, ensuring strict metallurgical
-                tolerances and aggressive project delivery timelines.
+                process within our own facility, we eliminate third-party
+                bottlenecks, ensuring strict metallurgical tolerances and
+                aggressive project delivery timelines.
+              </p>
+
+              <p className="mt-4 text-base leading-relaxed text-slate-700 sm:text-lg">
+                Our approach brings together technical capability, skilled
+                execution and disciplined project management — from engineering
+                and structural steel fabrication to site erection, roofing,
+                mechanical equipment installation and industrial maintenance.
+              </p>
+
+              <p className="mt-6 text-sm font-bold uppercase tracking-wider text-slate-900">
+                AKEN — A Brand of A K ENGINEERING
               </p>
 
               <div className="mt-10 rounded-xl bg-slate-50 p-6 ring-1 ring-slate-200">
@@ -227,11 +279,67 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* SECTION 3: THE LEADERSHIP GUARANTEE */}
+      {/* SECTION 3: VISION / MISSION / VALUES */}
       <section className="bg-slate-50">
         <div className="mx-auto max-w-6xl px-6 py-16 lg:py-20">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <div className="flex items-start gap-4">
+                <div className="mt-1 h-10 w-1 rounded-full bg-slate-800" />
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
+                    Vision, Mission & Values
+                  </p>
+                  <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
+                    Our Vision
+                  </h2>
+                  <p className="mt-4 text-sm leading-relaxed text-slate-600">
+                    To become a trusted engineering and steel construction
+                    partner known for dependable execution, technical capability
+                    and long-term customer value.
+                  </p>
+
+                  <h2 className="mt-8 text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
+                    Our Mission
+                  </h2>
+                  <p className="mt-4 text-sm leading-relaxed text-slate-600">
+                    To deliver practical, safe and quality-focused engineering
+                    and construction solutions through disciplined planning,
+                    skilled execution and continuous improvement.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-8">
+              <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+                <h3 className="text-xl font-semibold tracking-tight text-slate-950">
+                  Our Values
+                </h3>
+                <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  {values.map((value) => (
+                    <div
+                      key={value}
+                      className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-4 text-center text-xs font-semibold text-slate-800"
+                    >
+                      {value}
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-6 text-sm text-slate-600">
+                  These values guide how we plan, fabricate, erect and deliver
+                  for every client across every industry we serve.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: LEADERSHIP */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-6 py-16 lg:py-20">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
-            {/* Headshot placeholder */}
             <div className="lg:col-span-4">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                 <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-gradient-to-br from-slate-200 to-slate-100">
@@ -251,11 +359,10 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Blockquote */}
             <div className="lg:col-span-8">
               <div className="relative rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
                 <div className="pointer-events-none absolute -top-6 left-6 select-none text-7xl font-semibold text-slate-200">
-                  “
+                  &ldquo;
                 </div>
 
                 <h2 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
@@ -277,8 +384,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* SECTION 4: OUR TURNKEY EXECUTION METHODOLOGY */}
-      <section className="bg-white">
+      {/* SECTION 5: TURNKEY EXECUTION METHODOLOGY */}
+      <section className="bg-slate-50">
         <div className="mx-auto max-w-6xl px-6 py-16 lg:py-20">
           <div className="flex flex-col gap-4">
             <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
@@ -289,9 +396,8 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          {/* 4-step timeline / card grid */}
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-7 shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
               <div className="flex items-start gap-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-sky-600 text-sm font-semibold text-white">
                   1
@@ -301,15 +407,15 @@ export default function AboutPage() {
                     Phase 1: Advanced Design & Detailing
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    (Translating your technical requirements into precise
-                    AutoCAD and STAAD.Pro structural models to ensure zero
-                    site-fitment issues.)
+                    Translating your technical requirements into precise
+                    structural models (AutoCAD and STAAD.Pro) to ensure zero
+                    site-fitment issues.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-7 shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
               <div className="flex items-start gap-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-sky-600 text-sm font-semibold text-white">
                   2
@@ -319,15 +425,15 @@ export default function AboutPage() {
                     Phase 2: Heavy Fabrication in Hirakud
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    (Utilizing advanced CNC cutting, submerged arc welding
-                    (SAW), and rigorous non-destructive testing (NDT) to
-                    manufacture high-tensile structural components.)
+                    Advanced CNC cutting, submerged arc welding (SAW), and
+                    rigorous non-destructive testing (NDT) to manufacture
+                    high-tensile structural components.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-7 shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
               <div className="flex items-start gap-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-sky-600 text-sm font-semibold text-white">
                   3
@@ -337,15 +443,15 @@ export default function AboutPage() {
                     Phase 3: Strategic Logistics
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    (Coordinating the safe, sequenced transportation of heavy
+                    Coordinating the safe, sequenced transportation of heavy
                     fabricated members from our Sambalpur facility directly to
-                    your project site.)
+                    your project site.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-7 shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
               <div className="flex items-start gap-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-sky-600 text-sm font-semibold text-white">
                   4
@@ -355,16 +461,15 @@ export default function AboutPage() {
                     Phase 4: Mechanized Site Erection
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    (Deploying expert rigging teams, heavy-lifting equipment,
-                    and strict fall-protection protocols to assemble your
-                    structure rapidly and safely.)
+                    Expert rigging teams, heavy-lifting equipment, and strict
+                    fall-protection protocols to assemble your structure rapidly
+                    and safely.
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* optional central graphic placeholder */}
           <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
@@ -381,78 +486,107 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* SECTION 5: CORE VALUES & SAFETY */}
+      {/* SECTION 6: WHY CHOOSE AKEN */}
       <section className="bg-slate-950">
         <div className="mx-auto max-w-6xl px-6 py-16 lg:py-20">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-widest text-white/60">
-              Core Values & Safety
+              Why Choose AKEN
             </p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-              The A K ENGINEERING Standard
+              WHY AKEN
+            </h2>
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {whyAken.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border border-white/10 bg-white/5 p-7"
+              >
+                <h3 className="text-base font-semibold text-white">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/70">
+                  {item.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7: CORE VALUES & SAFETY */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-6 py-16 lg:py-20">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
+              Core Values & Safety
+            </p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
+              The AKEN Standard
             </h2>
           </div>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-7">
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-7">
               <div className="flex items-start gap-4">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-500/15 text-orange-300 ring-1 ring-orange-400/20">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-500/15 text-orange-600 ring-1 ring-orange-400/20">
                   <IconShield className="h-6 w-6" />
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-white">
-                    {'"Zero-Harm" Safety Culture'}
+                  <p className="text-base font-semibold text-slate-950">
+                    &ldquo;Zero-Harm&rdquo; Safety Culture
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-white/70">
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
                     We operate under the strict belief that no project is
-                    successful unless every engineer and rigger goes home safely.
-                    Comprehensive site safety management and engineered lifting
-                    plans are non-negotiable on our sites.
+                    successful unless every engineer and rigger goes home
+                    safely. Comprehensive site safety management and engineered
+                    lifting plans are non-negotiable on our sites.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-7">
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-7">
               <div className="flex items-start gap-4">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-500/15 text-orange-300 ring-1 ring-orange-400/20">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-500/15 text-orange-600 ring-1 ring-orange-400/20">
                   <IconBlueprint className="h-6 w-6" />
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-white">
+                  <p className="text-base font-semibold text-slate-950">
                     Unyielding Quality Control
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-white/70">
-                    100% material traceability. Every beam, column, and truss
-                    undergoes rigorous in-house dimensional and welding
-                    inspections before it ever leaves our shop floor.
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                    Material traceability. Every beam, column, and truss
+                    undergoes dimensional and welding inspections before it
+                    leaves the shop floor.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-7">
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-7">
               <div className="flex items-start gap-4">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-500/15 text-orange-300 ring-1 ring-orange-400/20">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-500/15 text-orange-600 ring-1 ring-orange-400/20">
                   <IconStopwatch className="h-6 w-6" />
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-white">
+                  <p className="text-base font-semibold text-slate-950">
                     Timeline Integrity
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-white/70">
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
                     Downtime is the enemy of industry. Our synchronized
                     fabrication and erection schedules are designed to get your
-                    facility online, producing revenue, months faster than
-                    conventional civil construction.
+                    facility online faster.
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6">
-            <p className="text-sm text-white/75">
+          <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-6">
+            <p className="text-sm text-slate-600">
               Procurement-ready delivery: engineered lifting plans, documented
               inspections, and disciplined sequencing that protects both people
               and operations.
@@ -461,14 +595,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* SECTION 6: THE FINAL CALL-TO-ACTION */}
-      <section className="bg-slate-50">
+      {/* SECTION 8: FINAL CALL-TO-ACTION */}
+      <section className="bg-slate-950">
         <div className="mx-auto max-w-6xl px-6 py-16 lg:py-20">
-          <div className="rounded-3xl border border-slate-200 bg-white p-10 text-center shadow-sm">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
-              Partner With a Proven EPC Contractor
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-10 text-center shadow-sm">
+            <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+              Partner With AKEN
             </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
+            <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-white/70 sm:text-lg">
               Whether you are planning a massive multi-span logistics park,
               require heavy structural fabrication, or need immediate industrial
               shed retrofitting, our engineering team is ready to mobilize.
@@ -490,7 +624,7 @@ export default function AboutPage() {
                 ctaName="Talk to Engineering"
                 ctaLocation="about_final_cta"
                 eventName="about_talk_to_engineering_click"
-                className="inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+                className="inline-flex items-center justify-center rounded-md border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
               >
                 Talk to Engineering
               </TrackedLink>
@@ -498,7 +632,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
     </main>
   );
 }

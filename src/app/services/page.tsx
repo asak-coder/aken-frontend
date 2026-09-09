@@ -9,23 +9,22 @@ import {
 import { getServiceStructuredDataJson } from "@/lib/schema";
 
 export const metadata = {
-  title:
-    "Industrial EPC & PEB Services | Steel Fabrication & Erection | A K ENGINEERING",
+  title: "Industrial Engineering & Steel Fabrication Services | AKEN",
   description:
-    "A K ENGINEERING delivers industrial EPC execution, PEB construction, structural steel fabrication, steel structure erection, roofing & cladding, and PUF panel installation services across Odisha and India. Request a project quotation for your plant, warehouse, or expansion works.",
+    "AKEN, a brand of A K ENGINEERING, delivers industrial EPC execution, PEB construction, structural steel fabrication, steel structure erection, roofing & cladding, mechanical installation and industrial maintenance services across Odisha and India. Request a project quotation for your plant, warehouse, or expansion works.",
   keywords:
-    "PEB contractor Odisha, steel fabrication contractor Sambalpur, structural steel fabrication services, industrial steel structure erection, PUF panel installation contractor, roofing sheeting cladding contractor, industrial maintenance shutdown services, industrial shed construction Odisha, A K ENGINEERING",
+    "PEB contractor Odisha, steel fabrication contractor Sambalpur, structural steel fabrication services, industrial steel structure erection, roofing sheeting cladding contractor, industrial maintenance shutdown services, industrial shed construction Odisha, AKEN A K ENGINEERING",
 };
 
 const pebGallery: ProjectGalleryItem[] = [
   {
     src: "/projects/peb-warehouse-construction.jpg",
-    alt: "Industrial warehouse PEB construction work by A K ENGINEERING",
-    title: "Warehouse PEB Construction",
+    alt: "Pre-engineered warehouse steel frame under construction at an Indian industrial site",
+    title: "PEB Warehouse Construction",
   },
   {
-    src: "/projects/peb-shed-erection-sambalpur.jpg",
-    alt: "PEB shed erection work at an industrial site in Sambalpur by A K ENGINEERING",
+    src: "/projects/peb-shed-erection.jpg",
+    alt: "PEB steel shed frame erected at an Indian industrial construction site",
     title: "PEB Shed Erection",
   },
 ];
@@ -33,12 +32,12 @@ const pebGallery: ProjectGalleryItem[] = [
 const fabricationGallery: ProjectGalleryItem[] = [
   {
     src: "/projects/steel-fabrication-workshop-cutting-welding.jpg",
-    alt: "Structural steel fabrication in workshop showing cutting and welding work by A K ENGINEERING",
+    alt: "Structural steel cutting and welding work in an Indian fabrication workshop",
     title: "Workshop Fabrication",
   },
   {
     src: "/projects/steel-beam-column-fabrication.jpg",
-    alt: "Steel beam and column fabrication work in workshop by A K ENGINEERING",
+    alt: "Fabricated steel beams and columns prepared in an Indian fabrication workshop",
     title: "Beam & Column Fabrication",
   },
 ];
@@ -46,13 +45,13 @@ const fabricationGallery: ProjectGalleryItem[] = [
 const pufGallery: ProjectGalleryItem[] = [
   {
     src: "/projects/puf-panel-installation-insulated-shed.jpg",
-    alt: "PUF insulated panel installation work on industrial shed by A K ENGINEERING",
-    title: "PUF Panel Installation",
+    alt: "Insulated panel installation on an industrial shed at an Indian site",
+    title: "Insulated Panel Installation",
   },
   {
     src: "/projects/puf-panel-roofing-installation.jpg",
-    alt: "PUF panel roofing installation work for industrial shed by A K ENGINEERING",
-    title: "PUF Panel Roofing",
+    alt: "Roofing and cladding installation on an industrial steel shed in India",
+    title: "Roofing & Cladding",
   },
 ];
 
@@ -66,12 +65,13 @@ export default function ServicesPage() {
 
       <section className="bg-black text-white py-20 text-center px-6">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          Industrial EPC & Engineering Services
+          ENGINEERED FOR PERFORMANCE. BUILT FOR INDUSTRY.
         </h1>
         <p className="max-w-3xl mx-auto text-lg text-gray-300 mb-8">
-          Comprehensive engineering solutions including Pre-Engineered Buildings,
-          Structural Steel Fabrication, Industrial Shed Construction and
-          Equipment Erection Services across India.
+          AKEN, a brand of A K ENGINEERING, delivers industrial engineering and
+          steel construction solutions across structural steel fabrication, PEB,
+          erection, roofing, mechanical installation and industrial maintenance
+          across India.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
         <TrackedLink
@@ -111,12 +111,12 @@ export default function ServicesPage() {
       <section className="py-20 px-6 max-w-6xl mx-auto">
         <div className="space-y-14">
           {/* PEB */}
-          <div className="border rounded-2xl p-8">
+          <div id="peb" className="border rounded-2xl p-8">
             <h2 className="text-3xl font-bold mb-4">
               Pre-Engineered Building (PEB) Construction
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              A K ENGINEERING delivers turnkey PEB execution for industrial
+              AKEN delivers turnkey PEB execution for industrial
               warehouses, factory sheds and logistics facilities. We coordinate
               design intent with fabrication and on-site erection to reduce
               cycle time and maintain structural accuracy—ideal for fast-track
@@ -195,14 +195,14 @@ export default function ServicesPage() {
           </div>
 
           {/* Fabrication */}
-          <div className="border rounded-2xl p-8">
+          <div id="fabrication" className="border rounded-2xl p-8">
             <h2 className="text-3xl font-bold mb-4">Structural Steel Fabrication</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               As a trusted{" "}
               <span className="font-semibold">
                 structural steel fabrication services
               </span>{" "}
-              provider, A K ENGINEERING fabricates industrial steel components
+              provider, AKEN fabricates industrial steel components
               that assemble faster on site and perform reliably in demanding
               plant environments. Our fabrication team focuses on fit-up
               accuracy, weld quality and consistent marking for smooth erection.
@@ -282,7 +282,7 @@ export default function ServicesPage() {
           </div>
 
           {/* Erection */}
-          <div className="border rounded-2xl p-8">
+          <div id="erection" className="border rounded-2xl p-8">
             <h2 className="text-3xl font-bold mb-4">Steel Structure Erection</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               We execute safe and dependable steel erection for industrial sheds,
@@ -357,7 +357,7 @@ export default function ServicesPage() {
           </div>
 
           {/* Roofing & Cladding */}
-          <div className="border rounded-2xl p-8">
+          <div id="roofing" className="border rounded-2xl p-8">
             <h2 className="text-3xl font-bold mb-4">Roofing, Sheeting & Cladding</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               Roofing and cladding quality directly impacts leak resistance,
@@ -433,10 +433,10 @@ export default function ServicesPage() {
           </div>
 
           {/* PUF */}
-          <div className="border rounded-2xl p-8">
+          <div id="puf" className="border rounded-2xl p-8">
             <h2 className="text-3xl font-bold mb-4">PUF Panel Installation</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              A K ENGINEERING is a reliable{" "}
+              AKEN is a reliable{" "}
               <span className="font-semibold">
                 PUF panel installation contractor
               </span>{" "}
@@ -517,7 +517,7 @@ export default function ServicesPage() {
           </div>
 
           {/* Maintenance, Shutdown, Dismantling, Custom */}
-          <div className="border rounded-2xl p-8">
+          <div id="maintenance" className="border rounded-2xl p-8">
             <h2 className="text-3xl font-bold mb-4">
               Industrial Maintenance & Shutdown Services
             </h2>
@@ -717,7 +717,7 @@ export default function ServicesPage() {
 
       {/* Advantages */}
       <section className="py-20 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8">Advantages of A K ENGINEERING</h2>
+        <h2 className="text-3xl font-bold mb-8">Why AKEN</h2>
         <div className="grid md:grid-cols-2 gap-6">
           <div className="border rounded-xl p-6">
             <h3 className="text-xl font-semibold mb-2">Execution-Ready Teams</h3>

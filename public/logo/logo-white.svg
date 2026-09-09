@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" role="img" aria-label="AKEN">
   <title>AKEN</title>
-  <g fill="#2E3136">
+  <g fill="#FFFFFF">
     <!-- A -->
     <path fill-rule="evenodd" d="M140 30 L240 280 L40 280 Z M140 175 L185 280 L95 280 Z"/>
     <rect x="88" y="198" width="104" height="40"/>

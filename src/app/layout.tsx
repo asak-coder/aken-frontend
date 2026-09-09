@@ -10,10 +10,10 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import { getEnvWarnings, getPublicGaId, getPublicGoogleAdsId } from "@/lib/env";
 
 const SITE_URL = "https://aken.firm.in";
-const SITE_NAME = "A K ENGINEERING";
-const DEFAULT_TITLE = "Industrial EPC Contractor in India";
+const SITE_NAME = "AKEN";
+const DEFAULT_TITLE = "AKEN | A K ENGINEERING | Industrial Engineering & Steel Construction";
 const DEFAULT_DESCRIPTION =
-  "A K ENGINEERING delivers Industrial EPC, PEB structures, structural steel fabrication, and erection services across India.";
+  "AKEN, a brand of A K ENGINEERING, delivers industrial engineering and steel construction solutions across structural steel fabrication, PEB, erection, roofing, mechanical installation and industrial maintenance.";
 
 const GOOGLE_SITE_VERIFICATION = (
   process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || ""
@@ -22,8 +22,8 @@ const GOOGLE_SITE_VERIFICATION = (
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${DEFAULT_TITLE} | ${SITE_NAME}`,
-    template: `%s | ${SITE_NAME}`,
+    default: DEFAULT_TITLE,
+    template: "%s",
   },
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
@@ -31,23 +31,30 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   keywords: [
+    "AKEN",
+    "AKEN brand",
+    "A K ENGINEERING",
     "Industrial EPC contractor",
     "PEB structures",
     "steel fabrication",
     "industrial erection",
-    "A K ENGINEERING",
+    "steel construction",
   ],
+  icons: {
+    icon: "/icon.svg",
+    apple: "/logo/logo.svg",
+  },
   openGraph: {
     type: "website",
     url: SITE_URL,
-    title: `${DEFAULT_TITLE} | ${SITE_NAME}`,
+    title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
     siteName: SITE_NAME,
     locale: "en_IN",
   },
   twitter: {
     card: "summary",
-    title: `${DEFAULT_TITLE} | ${SITE_NAME}`,
+    title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
   },
   robots: {

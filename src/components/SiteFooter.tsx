@@ -4,193 +4,150 @@ import {
   CONTACT_EMAIL,
   CONTACT_PHONE_DISPLAY,
   CONTACT_PHONE_E164,
-  CONTACT_WHATSAPP_PREFILL_URL,
   CONTACT_WHATSAPP_URL,
 } from "@/lib/contact";
 
+const companyLinks = [
+  { href: "/about", label: "About AKEN" },
+  { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Insights" },
+  { href: "/careers", label: "Careers" },
+];
+
+const serviceLinks = [
+  { href: "/services#peb", label: "Pre-Engineered Buildings" },
+  { href: "/services#fabrication", label: "Structural Steel Fabrication" },
+  { href: "/services#erection", label: "Structural Steel Erection" },
+  { href: "/services#maintenance", label: "Industrial Maintenance & Shutdown" },
+];
+
+const legalLinks = [
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/terms-and-conditions", label: "Terms & Conditions" },
+];
+
 export default function SiteFooter() {
   return (
-    <footer className="bg-slate-900 text-white">
-      <div className="mx-auto max-w-7xl px-6 py-14">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          {/* Column 1: Company + Trust */}
+    <footer className="bg-slate-950 text-slate-300">
+      <div className="mx-auto w-full max-w-7xl px-4 py-14">
+        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
+          {/* Brand block */}
           <div>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-3"
-              aria-label="A K ENGINEERING Home"
-            >
+            <div className="flex flex-col items-start gap-1">
               <Image
-                src="/logo/logo.svg"
-                alt="A K ENGINEERING"
-                width={44}
-                height={44}
-                className="h-11 w-11 rounded-md bg-white/5 p-1 object-contain"
+                src="/logo/logo-white.svg"
+                alt="AKEN"
+                width={1000}
+                height={300}
+                className="h-9 w-auto object-contain"
               />
-              <div className="text-lg font-extrabold tracking-tight">A K ENGINEERING</div>
-            </Link>
-
-            <p className="mt-3 text-sm leading-relaxed text-white/75">
-              Industrial EPC contractor specializing in steel fabrication, structural erection,
-              and pre-engineered buildings (PEB). Execution-first delivery with safety compliance
-              and procurement-friendly coordination.
+              <div className="text-sm text-slate-400">
+                A Brand of A K ENGINEERING
+              </div>
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-slate-400">
+              Industrial Engineering • Steel Fabrication • PEB • Erection •
+              Industrial Maintenance
             </p>
-
-            <div className="mt-5 grid gap-2 text-xs text-white/70">
-              <div className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2">
-                <span className="h-2 w-2 rounded-full bg-emerald-400" aria-hidden="true" />
-                Safety-first site execution
-              </div>
-              <div className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2">
-                <span className="h-2 w-2 rounded-full bg-orange-400" aria-hidden="true" />
-                Confidential drawings handling
-              </div>
-              <div className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2">
-                <span className="h-2 w-2 rounded-full bg-sky-400" aria-hidden="true" />
-                Pan-India execution capability
-              </div>
-            </div>
+            <p className="mt-4 text-sm leading-relaxed text-slate-400">
+              AKEN is the customer-facing brand of A K ENGINEERING, an
+              engineering and steel construction company focused on dependable
+              execution for industrial and infrastructure projects.
+            </p>
           </div>
 
-          {/* Column 2: Quick links */}
+          {/* Company */}
           <div>
-            <div className="text-sm font-extrabold tracking-wide text-white/90">QUICK LINKS</div>
-            <ul className="mt-4 grid gap-2 text-sm">
-              <li>
-                <Link className="text-white/75 hover:text-white" href="/">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link className="text-white/75 hover:text-white" href="/services">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link className="text-white/75 hover:text-white" href="/projects">
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link className="text-white/75 hover:text-white" href="/about">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link className="text-white/75 hover:text-white" href="/blog">
-                  Insights
-                </Link>
-              </li>
-              <li>
-                <Link className="text-white/75 hover:text-white" href="/contact">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link className="text-white/75 hover:text-white" href="/privacy-policy">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link className="text-white/75 hover:text-white" href="/terms-and-conditions">
-                  Terms & Conditions
-                </Link>
-              </li>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-white">
+              Company
+            </h3>
+            <ul className="mt-4 space-y-3">
+              {companyLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="text-sm text-slate-400 hover:text-white"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 3: Core services */}
+          {/* Services */}
           <div>
-            <div className="text-sm font-extrabold tracking-wide text-white/90">
-              CORE SERVICES
-            </div>
-            <ul className="mt-4 grid gap-2 text-sm">
-              <li className="text-white/75">
-                <Link className="hover:text-white" href="/services#peb">
-                  Pre-Engineered Buildings (PEB)
-                </Link>
-              </li>
-              <li className="text-white/75">
-                <Link className="hover:text-white" href="/services#fabrication">
-                  Heavy Steel Fabrication
-                </Link>
-              </li>
-              <li className="text-white/75">
-                <Link className="hover:text-white" href="/services#erection">
-                  Structural Steel Erection
-                </Link>
-              </li>
-              <li className="text-white/75">
-                <Link className="hover:text-white" href="/services#maintenance">
-                  Mechanical Maintenance & Retrofitting
-                </Link>
-              </li>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-white">
+              Services
+            </h3>
+            <ul className="mt-4 space-y-3">
+              {serviceLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="text-sm text-slate-400 hover:text-white"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 4: Contact operations */}
+          {/* Contact */}
           <div>
-            <div className="text-sm font-extrabold tracking-wide text-white/90">
-              CONTACT OPERATIONS
-            </div>
-
-            <div className="mt-4 grid gap-3 text-sm text-white/75">
-              <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-                <div className="text-xs font-semibold text-white/90">Headquarters</div>
-                <div className="mt-1 leading-relaxed">
-                  Hirakud, Sambalpur, Odisha, India
-                </div>
-              </div>
-
-              <a
-                href={`tel:${CONTACT_PHONE_E164}`}
-                className="rounded-xl border border-white/10 bg-white/5 p-4 hover:bg-white/10"
-              >
-                <div className="text-xs font-semibold text-white/90">Phone</div>
-                <div className="mt-1">{CONTACT_PHONE_DISPLAY}</div>
-              </a>
-
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="rounded-xl border border-white/10 bg-white/5 p-4 hover:bg-white/10"
-              >
-                <div className="text-xs font-semibold text-white/90">Email</div>
-                <div className="mt-1 break-all">{CONTACT_EMAIL}</div>
-              </a>
-
-              <a
-                href={CONTACT_WHATSAPP_PREFILL_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-xl border border-white/10 bg-emerald-500/90 p-4 font-semibold text-black hover:bg-emerald-400"
-              >
-                WhatsApp Business
-              </a>
-            </div>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-white">
+              Contact
+            </h3>
+            <ul className="mt-4 space-y-3 text-sm text-slate-400">
+              <li>
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="hover:text-white"
+                >
+                  {CONTACT_EMAIL}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${CONTACT_PHONE_E164}`}
+                  className="hover:text-white"
+                >
+                  +91 {CONTACT_PHONE_DISPLAY}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={CONTACT_WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white"
+                >
+                  WhatsApp
+                </a>
+              </li>
+              <li>Hirakud, Sambalpur, Odisha, India</li>
+            </ul>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/60 md:flex-row md:items-center md:justify-between">
-          <div>
-            © {new Date().getFullYear()} A K ENGINEERING. All rights reserved.
-          </div>
-          <div className="flex flex-wrap gap-x-4 gap-y-2">
-            <span>A K ENGINEERING - Premier EPC & Steel Fabrication Contractors</span>
-            <span className="hidden md:inline">•</span>
-            <Link className="underline hover:text-white" href="/contact">
-              Request a Quote
-            </Link>
+        {/* Bottom bar */}
+        <div className="mt-12 flex flex-col gap-4 border-t border-slate-800 pt-6 md:flex-row md:items-center md:justify-between">
+          <p className="text-sm text-slate-400">
+            © 2026 A K ENGINEERING. All Rights Reserved.
+          </p>
+          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
+            {legalLinks.map((l) => (
+              <Link key={l.href} href={l.href} className="hover:text-white">
+                {l.label}
+              </Link>
+            ))}
           </div>
         </div>
+        <p className="mt-4 text-xs text-slate-500">
+          AKEN is a brand of A K ENGINEERING.
+        </p>
       </div>
-
-      {/* Optional: in-page quick WhatsApp for footer context */}
-      <a href={CONTACT_WHATSAPP_URL} className="sr-only">
-        {CONTACT_WHATSAPP_URL}
-      </a>
-      <a href={CONTACT_WHATSAPP_PREFILL_URL} className="sr-only">
-        {CONTACT_WHATSAPP_PREFILL_URL}
-      </a>
     </footer>
   );
 }

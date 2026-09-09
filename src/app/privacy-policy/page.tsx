@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | A K ENGINEERING",
+  title: "Privacy Policy | AKEN – A K ENGINEERING",
   description:
-    "Learn how A K ENGINEERING collects, uses and protects contact and project-related information.",
+    "Learn how A K ENGINEERING, the registered business behind AKEN, collects, uses and protects contact and project-related information.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -16,9 +16,10 @@ export default function PrivacyPolicyPage() {
 
       <section className="mx-auto max-w-4xl space-y-8 px-6 py-14 text-lg leading-relaxed">
         <p>
-          This Privacy Policy describes how A K ENGINEERING collects and uses
-          personal information received through this website, enquiry forms, and
-          related communication channels.
+          AKEN is a brand of A K ENGINEERING. This Privacy Policy describes how
+          A K ENGINEERING collects and uses personal information received
+          through this website, enquiry forms, and related communication
+          channels.
         </p>
 
         <section>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="AKEN">
+  <title>AKEN</title>
+  <rect width="100" height="100" rx="14" fill="#0f172a"/>
+  <g fill="#ffffff">
+    <path fill-rule="evenodd" d="M28 22 L40 78 L16 78 Z M28 58 L35 78 L21 78 Z"/>
+    <rect x="21" y="65" width="14" height="9"/>
+    <rect x="47" y="22" width="10" height="56"/>
+    <path d="M57 22 L74 22 L74 38 L57 55 Z"/>
+    <path d="M57 56 L66 56 L74 78 L68 78 Z"/>
+    <rect x="79" y="22" width="10" height="56"/>
+    <rect x="79" y="22" width="7" height="14"/>
+    <rect x="79" y="44" width="6" height="13"/>
+    <rect x="79" y="64" width="7" height="14"/>
+  </g>
+  <line x1="49" y1="90" x2="70" y2="10" stroke="#F97316" stroke-width="8" stroke-linecap="round"/>
+</svg>

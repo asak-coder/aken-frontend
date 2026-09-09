@@ -11,12 +11,11 @@ import {
 import { getStructuredDataJson } from "@/lib/schema";
 
 export const metadata = {
-  title:
-    "Industrial EPC Contractor in India | PEB, Steel Fabrication, Erection - A K ENGINEERING",
+  title: "AKEN | A K ENGINEERING | Industrial Engineering & Steel Construction",
   description:
-    "A K ENGINEERING is an Industrial EPC contractor for PEB structures, structural steel fabrication, industrial shed construction, and erection services across India for PSU, power plants, cement, mining, and manufacturing sectors.",
+    "AKEN, a brand of A K ENGINEERING, delivers industrial engineering and steel construction solutions across structural steel fabrication, PEB, erection, roofing, mechanical installation and industrial maintenance.",
   keywords:
-    "Industrial EPC contractor India, PEB contractor, steel fabrication company, industrial shed construction, structural steel erection, turnkey industrial projects",
+    "AKEN, A K ENGINEERING, industrial EPC contractor India, PEB contractor, structural steel fabrication, industrial shed construction, steel erection, industrial maintenance",
   alternates: {
     canonical: "https://aken.firm.in",
   },
@@ -26,34 +25,25 @@ const serviceBlocks = [
   {
     title: "Pre-Engineered Buildings (PEB)",
     text:
-      "End-to-end PEB design, fabrication, and erection for industrial sheds, warehouses, and production facilities.",
+      "Efficient and durable PEB solutions for warehouses, industrial facilities and other large-span applications.",
   },
   {
     title: "Structural Steel Fabrication",
     text:
-      "Heavy structural fabrication for beams, columns, trusses, platforms, and process-support steel structures.",
+      "Precision fabrication of structural steel components with focus on dimensional accuracy and workmanship.",
   },
   {
     title: "Industrial Erection Services",
     text:
-      "On-site erection, installation, and shutdown execution with controlled timelines, safety compliance, and quality checks.",
+      "Professional site erection with emphasis on safety, alignment, lifting coordination and execution quality.",
   },
 ];
 
-const industries = [
-  "PSU and Government Industrial Projects",
-  "Power Plants and Energy Infrastructure",
-  "Cement and Process Industries",
-  "Mining and Bulk Material Handling",
-  "Manufacturing and Industrial Expansion",
-  "Logistics and Industrial Warehousing",
-];
-
 const trustPoints = [
-  "Execution-focused EPC mindset with practical site coordination",
-  "Safety-first approach for industrial erection and high-risk work zones",
-  "Time-bound delivery planning for shutdown and expansion projects",
-  "Engineering-driven fabrication quality and dimensional accuracy",
+  "Engineering-led execution from planning through site erection",
+  "Controlled fabrication processes focused on accuracy and reliable assembly",
+  "Safety integrated into planning, lifting, fabrication and erection activities",
+  "Coordination between engineering, fabrication, logistics and site execution",
 ];
 
 const compliancePoints = [
@@ -65,12 +55,12 @@ const compliancePoints = [
 
 const faqItems = [
   {
-    q: "What type of projects does A K ENGINEERING handle?",
-    a: "We handle industrial EPC scopes including PEB structures, structural steel fabrication, industrial shed construction, and erection support across India.",
+    q: "What type of projects does AKEN handle?",
+    a: "AKEN handles industrial engineering and steel construction scopes including PEB structures, structural steel fabrication, erection, roofing and industrial maintenance across India.",
   },
   {
-    q: "Do you work with PSU and large industrial clients?",
-    a: "Yes. We target PSU, power, cement, mining, and manufacturing clients where quality, safety, and execution speed are critical.",
+    q: "Who is AKEN?",
+    a: "AKEN is the customer-facing brand of A K ENGINEERING, an engineering and steel construction company focused on dependable execution for industrial and infrastructure projects.",
   },
   {
     q: "How can I request a quotation quickly?",
@@ -120,49 +110,49 @@ export default function HomePage() {
         <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-28">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-3">
+              <div className="inline-flex flex-wrap items-center gap-3">
                 <Image
-                  src="/logo/logo.svg"
-                  alt="A K ENGINEERING"
-                  width={36}
-                  height={36}
+                  src="/logo/logo-white.svg"
+                  alt="AKEN"
+                  width={1000}
+                  height={300}
                   priority
-                  className="h-9 w-9 rounded-md bg-white/5 p-1 object-contain"
+                  className="h-7 w-auto object-contain md:h-8"
                 />
                 <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold tracking-wide text-white/90">
-                  Hirakud, Sambalpur • Industrial EPC • Steel Fabrication • PEB
+                  A Brand of A K ENGINEERING • Hirakud, Sambalpur
                 </p>
               </div>
 
               <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
-                Engineering Strength for India’s Industrial Infrastructure.
+                ENGINEERING WHAT&rsquo;S NEXT. BUILDING WHAT LASTS.
               </h1>
 
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
-                A K ENGINEERING is a premier EPC and steel fabrication contractor. From heavy
-                structural erection to complete Pre-Engineered Buildings (PEB), we deliver
-                precision-engineered solutions safely, on time, and built to last.
+                AKEN, a brand of A K ENGINEERING, delivers industrial engineering and
+                steel construction solutions across structural steel fabrication, PEB,
+                erection, roofing, mechanical installation and industrial maintenance.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <TrackedLink
                   href="/contact"
-                  ctaName="Request Project Quote"
+                  ctaName="Discuss Your Project"
                   ctaLocation="home_hero"
                   eventName="request_quotation_click"
                   className="rounded-lg bg-orange-500 px-6 py-3 text-sm font-semibold text-black hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-200 transition"
                 >
-                  Request Project Quote
+                  Discuss Your Project
                 </TrackedLink>
 
                 <TrackedLink
                   href="/services"
-                  ctaName="View Our Capabilities"
+                  ctaName="Explore Our Capabilities"
                   ctaLocation="home_hero"
                   eventName="cta_click"
                   className="rounded-lg border border-white/30 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30 transition"
                 >
-                  View Our Capabilities
+                  Explore Our Capabilities
                 </TrackedLink>
 
                 <TrackedAnchor
@@ -177,7 +167,8 @@ export default function HomePage() {
               </div>
 
               <p className="mt-5 text-xs text-white/60">
-                Trusted by industrial teams in power, cement, mining, and manufacturing.
+                Serving industrial teams across power, cement, mining, manufacturing and
+                infrastructure.
               </p>
             </div>
 
@@ -194,53 +185,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TRUST STATS BAR (animated counters hook via data-count) */}
+      {/* POSITIONING BAR (verifiable capabilities — no fabricated statistics) */}
       <section className="bg-slate-900 text-white reveal">
         <div className="mx-auto max-w-7xl px-6 py-10">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-xl border border-white/10 bg-white/5 p-5">
-              <div className="text-3xl font-extrabold tracking-tight">
-                <span className="js-counter" data-count="15">
-                  0
-                </span>
-                <span>+</span>
-              </div>
-              <div className="mt-1 text-sm text-white/70">Years Experience</div>
+              <div className="text-xl font-extrabold tracking-tight">Industrial EPC</div>
+              <div className="mt-1 text-sm text-white/70">Engineering-led execution</div>
             </div>
             <div className="rounded-xl border border-white/10 bg-white/5 p-5">
-              <div className="text-3xl font-extrabold tracking-tight">
-                <span className="js-counter" data-count="500">
-                  0
-                </span>
-                <span>+</span>
-              </div>
-              <div className="mt-1 text-sm text-white/70">Tons Fabricated</div>
+              <div className="text-xl font-extrabold tracking-tight">Steel Fabrication</div>
+              <div className="mt-1 text-sm text-white/70">Hirakud fabrication capability</div>
             </div>
             <div className="rounded-xl border border-white/10 bg-white/5 p-5">
-              <div className="text-3xl font-extrabold tracking-tight">
-                <span className="js-counter" data-count="100">
-                  0
-                </span>
-                <span>%</span>
-              </div>
-              <div className="mt-1 text-sm text-white/70">Safety Compliance</div>
+              <div className="text-xl font-extrabold tracking-tight">Site Erection</div>
+              <div className="mt-1 text-sm text-white/70">Safety-driven execution</div>
             </div>
             <div className="rounded-xl border border-white/10 bg-white/5 p-5">
-              <div className="text-3xl font-extrabold tracking-tight">Pan-India</div>
-              <div className="mt-1 text-sm text-white/70">Execution</div>
+              <div className="text-xl font-extrabold tracking-tight">Pan-India</div>
+              <div className="mt-1 text-sm text-white/70">Project delivery</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CORPORATE PROFILE OVERVIEW (split) */}
+      {/* ABOUT AKEN */}
       <section className="mx-auto max-w-7xl px-6 py-20 reveal">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-6">
             <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
               <img
                 src="/engineers-blueprint.jpg"
-                alt="Engineers reviewing industrial drawings"
+                alt="AKEN engineering team reviewing industrial drawings"
                 className="h-full w-full object-cover"
                 loading="lazy"
               />
@@ -250,13 +226,27 @@ export default function HomePage() {
 
           <div className="lg:col-span-6">
             <h2 className="text-3xl font-extrabold tracking-tight text-slate-900">
-              Delivering Heavy Industrial Solutions with Precision.
+              ABOUT AKEN
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-slate-700">
-              Operating out of our heavy fabrication hub in Hirakud, we serve as a critical
-              partner for the power, cement, and mining sectors. We specialize in end-to-end
-              industrial EPC services—transforming complex blueprints into robust reality with
-              stringent quality control.
+              AKEN is the customer-facing brand of A K ENGINEERING, an engineering and
+              steel construction company focused on delivering dependable solutions for
+              industrial and infrastructure projects.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-slate-700">
+              From engineering and structural steel fabrication to site erection, roofing,
+              mechanical equipment installation and industrial maintenance, AKEN brings
+              together technical capability, skilled execution and disciplined project
+              management.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-slate-700">
+              Our approach is simple: understand the requirement, engineer the right
+              solution, execute with precision and deliver with a strong focus on quality,
+              safety and schedule.
+            </p>
+
+            <p className="mt-6 text-sm font-bold uppercase tracking-wider text-slate-900">
+              AKEN — A Brand of A K ENGINEERING
             </p>
 
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -282,7 +272,7 @@ export default function HomePage() {
                 Core Services
               </h2>
               <p className="mt-2 max-w-2xl text-slate-700">
-                Heavy-duty capability, engineered execution, procurement-friendly communication.
+                Engineered for performance. Built for industry.
               </p>
             </div>
             <TrackedLink
@@ -300,23 +290,23 @@ export default function HomePage() {
             {[
               {
                 title: "Pre-Engineered Buildings (PEB)",
-                desc: "Design, detailing, fabrication, and rapid erection for industrial sheds, warehouses, and production facilities.",
-                href: "/services",
+                desc: "Efficient and durable PEB solutions for warehouses, industrial facilities and other large-span applications.",
+                href: "/services#peb",
               },
               {
-                title: "Heavy Steel Fabrication",
-                desc: "Beams, columns, trusses, platforms, and process-support structures with dimensional accuracy and QA.",
-                href: "/services",
+                title: "Structural Steel Fabrication",
+                desc: "Precision fabrication of structural steel components with focus on dimensional accuracy and workmanship.",
+                href: "/services#fabrication",
               },
               {
                 title: "Structural Steel Erection",
-                desc: "Site execution with strict safety compliance, shutdown planning, and controlled timelines.",
-                href: "/services",
+                desc: "Professional site erection with emphasis on safety, alignment and lifting coordination.",
+                href: "/services#erection",
               },
               {
-                title: "Mechanical Maintenance & Retrofitting",
-                desc: "Strengthening, replacement, and retrofit scopes to extend asset life and reduce downtime risks.",
-                href: "/services",
+                title: "Industrial Maintenance & Shutdown",
+                desc: "Planned maintenance, modification and shutdown execution for industrial facilities.",
+                href: "/services#maintenance",
               },
             ].map((s) => (
               <article
@@ -409,7 +399,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Keep existing compliance + FAQ + bottom CTA for now (already strong). */}
+      {/* Business credibility & compliance */}
       <section className="bg-white px-6 py-16">
         <div className="mx-auto max-w-7xl rounded-2xl border border-gray-200 bg-gray-50 p-8">
           <h2 className="text-3xl font-bold text-gray-900">
@@ -487,21 +477,21 @@ export default function HomePage() {
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <TrackedLink
             href="/contact"
-            ctaName="Get Project Consultation"
+            ctaName="Discuss Your Project"
             ctaLocation="home_bottom_cta"
             eventName="request_quotation_click"
             className="rounded-lg bg-black px-8 py-3 font-semibold text-white hover:bg-gray-800 transition"
           >
-            Get Project Consultation
+            Discuss Your Project
           </TrackedLink>
           <TrackedLink
             href="/about"
-            ctaName="About Company"
+            ctaName="About AKEN"
             ctaLocation="home_bottom_cta"
             eventName="cta_click"
             className="rounded-lg border border-black px-8 py-3 font-semibold hover:bg-black hover:text-white transition"
           >
-            About Company
+            About AKEN
           </TrackedLink>
           <TrackedLink
             href="/blog"
@@ -514,48 +504,6 @@ export default function HomePage() {
           </TrackedLink>
         </div>
       </section>
-
-      {/* Minimal JS for counters (client only) */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-(function () {
-  if (typeof window === 'undefined') return;
-
-  function animateCounter(el) {
-    var target = parseInt(el.getAttribute('data-count') || '0', 10);
-    if (!target) return;
-    var duration = 1200;
-    var start = 0;
-    var startTime = null;
-
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      var p = Math.min(1, (ts - startTime) / duration);
-      var val = Math.floor(start + (target - start) * p);
-      el.textContent = String(val);
-      if (p < 1) requestAnimationFrame(step);
-    }
-
-    requestAnimationFrame(step);
-  }
-
-  var counters = Array.prototype.slice.call(document.querySelectorAll('.js-counter'));
-  if (!counters.length) return;
-
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        animateCounter(e.target);
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  counters.forEach(function (c) { io.observe(c); });
-})();`,
-        }}
-      />
     </main>
   );
 }

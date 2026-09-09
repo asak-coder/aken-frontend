@@ -391,7 +391,7 @@ function validateStep(currentStep: number): FieldErrors {
         <header className="border-b border-gray-100 p-6">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="text-xs font-semibold tracking-wide text-gray-500">A K ENGINEERING</p>
+              <p className="text-xs font-semibold tracking-wide text-gray-500">AKEN</p>
               <h1 className="mt-1 text-2xl font-bold text-gray-900">Smart Project Enquiry</h1>
               <p className="mt-2 text-sm text-gray-600">
                 Answer a few quick questions so our engineers can quote faster and more accurately.

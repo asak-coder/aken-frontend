@@ -5,9 +5,9 @@ import TrackedAnchor from "@/components/TrackedAnchor";
 import { CONTACT_PHONE_E164, CONTACT_WHATSAPP_PREFILL_URL } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: "Industrial Project Enquiry | A K ENGINEERING",
+  title: "Industrial Project Enquiry | AKEN – A K ENGINEERING",
   description:
-    "Send an industrial project enquiry for EPC services including PEB sheds, steel structure fabrication, sheet cladding, industrial maintenance, and structural repair. Get a fast engineering callback and quotation support.",
+    "Send an industrial project enquiry to AKEN, a brand of A K ENGINEERING, for EPC services including PEB sheds, steel structure fabrication, sheet cladding, industrial maintenance, and structural repair. Get a fast engineering callback and quotation support.",
 };
 
 export default function EnquiryPage() {

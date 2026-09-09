@@ -4,9 +4,9 @@ import TrackedLink from "@/components/TrackedLink";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_E164, CONTACT_WHATSAPP_URL } from "@/lib/contact";
 
 export const metadata = {
-  title: "Industrial Engineering Blog | A K ENGINEERING",
+  title: "Industrial Engineering Blog | AKEN",
   description:
-    "Read expert articles on Pre-Engineered Buildings, Industrial Steel Fabrication and EPC project execution.",
+    "Read expert articles on Pre-Engineered Buildings, Industrial Steel Fabrication and EPC project execution from AKEN, a brand of A K ENGINEERING.",
 };
 
 export default function BlogPage() {
