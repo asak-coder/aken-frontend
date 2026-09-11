@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import BrandLogo from "@/components/BrandLogo";
 import {
   CONTACT_EMAIL,
   CONTACT_PHONE_DISPLAY,
@@ -34,13 +34,7 @@ export default function SiteFooter() {
           {/* Brand block */}
           <div>
             <div className="flex flex-col items-start gap-1">
-              <Image
-                src="/logo/logo-white.svg"
-                alt="AKEN"
-                width={1000}
-                height={300}
-                className="h-9 w-auto object-contain"
-              />
+              <BrandLogo sizeClassName="h-9" />
               <div className="text-sm text-slate-400">
                 A Brand of A K ENGINEERING
               </div>

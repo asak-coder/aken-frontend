@@ -1,4 +1,4 @@
-import Image from "next/image";
+import BrandLogo from "@/components/BrandLogo";
 import SmartEnquiryWizard from "@/components/SmartEnquiryWizard";
 import HeroMedia from "@/components/HeroMedia";
 import TrackedAnchor from "@/components/TrackedAnchor";
@@ -111,14 +111,7 @@ export default function HomePage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <div className="inline-flex flex-wrap items-center gap-3">
-                <Image
-                  src="/logo/logo-white.svg"
-                  alt="AKEN"
-                  width={1000}
-                  height={300}
-                  priority
-                  className="h-7 w-auto object-contain md:h-8"
-                />
+                <BrandLogo priority sizeClassName="h-7 md:h-8" />
                 <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold tracking-wide text-white/90">
                   A Brand of A K ENGINEERING • Hirakud, Sambalpur
                 </p>

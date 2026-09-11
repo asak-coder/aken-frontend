@@ -1,4 +1,4 @@
-import Image from "next/image";
+import BrandLogo from "@/components/BrandLogo";
 import TrackedLink from "@/components/TrackedLink";
 
 export const metadata = {
@@ -131,14 +131,7 @@ export default function AboutPage() {
         <div className="relative mx-auto max-w-6xl px-6 py-20 sm:py-24 lg:py-28">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3">
-              <Image
-                src="/logo/logo-white.svg"
-                alt="AKEN"
-                width={1000}
-                height={300}
-                priority
-                className="h-7 w-auto object-contain md:h-8"
-              />
+              <BrandLogo priority sizeClassName="h-7 md:h-8" />
               <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium tracking-wide text-white/80">
                 <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
                 About AKEN

@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import BrandLogo from "@/components/BrandLogo";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -92,14 +92,7 @@ function LoginPageInner() {
           aria-label="AKEN Home"
           className="mb-5 inline-flex items-center justify-center gap-3 w-full"
         >
-          <Image
-            src="/logo/logo.svg"
-            alt="AKEN"
-            width={44}
-            height={44}
-            priority
-            className="h-11 w-11 rounded-md bg-white/5 p-1 object-contain"
-          />
+          <BrandLogo priority sizeClassName="h-7" />
           <span className="text-sm font-semibold text-white/90">
             AKEN
           </span>

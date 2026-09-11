@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   ],
   icons: {
     icon: "/icon.svg",
-    apple: "/logo/logo.svg",
+    apple: "/icon.svg",
   },
   openGraph: {
     type: "website",

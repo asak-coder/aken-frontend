@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import BrandLogo from "@/components/BrandLogo";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   CONTACT_EMAIL,
@@ -84,14 +84,7 @@ export default function SiteHeader() {
               aria-label="AKEN Home"
               onClick={closeAll}
             >
-              <Image
-                src="/logo/logo-white.svg"
-                alt="AKEN"
-                width={1000}
-                height={300}
-                priority
-                className="h-8 w-auto object-contain md:h-9"
-              />
+              <BrandLogo priority sizeClassName="h-8 md:h-9" />
             </Link>
             <p className="truncate text-[11px] font-medium text-white/70 md:text-xs">
               A Brand of A K ENGINEERING
