@@ -17,7 +17,16 @@ export const metadata = {
   keywords:
     "AKEN, A K ENGINEERING, industrial EPC contractor India, PEB contractor, structural steel fabrication, industrial shed construction, steel erection, industrial maintenance",
   alternates: {
-    canonical: "https://aken.firm.in",
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://aken.firm.in",
+    title: "AKEN | A K ENGINEERING | Industrial Engineering & Steel Construction",
+    description:
+      "Industrial engineering and steel construction across PEB, structural steel fabrication, erection, roofing, mechanical installation and industrial maintenance.",
+    siteName: "AKEN",
+    locale: "en_IN",
   },
 };
 
@@ -284,22 +293,22 @@ export default function HomePage() {
               {
                 title: "Pre-Engineered Buildings (PEB)",
                 desc: "Efficient and durable PEB solutions for warehouses, industrial facilities and other large-span applications.",
-                href: "/services#peb",
+                href: "/services/peb",
               },
               {
                 title: "Structural Steel Fabrication",
                 desc: "Precision fabrication of structural steel components with focus on dimensional accuracy and workmanship.",
-                href: "/services#fabrication",
+                href: "/services/structural-steel-fabrication",
               },
               {
                 title: "Structural Steel Erection",
                 desc: "Professional site erection with emphasis on safety, alignment and lifting coordination.",
-                href: "/services#erection",
+                href: "/services/structural-steel-erection",
               },
               {
                 title: "Industrial Maintenance & Shutdown",
                 desc: "Planned maintenance, modification and shutdown execution for industrial facilities.",
-                href: "/services#maintenance",
+                href: "/services/industrial-maintenance-shutdown",
               },
             ].map((s) => (
               <article

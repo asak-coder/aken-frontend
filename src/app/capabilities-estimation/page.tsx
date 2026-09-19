@@ -11,19 +11,6 @@ import { useMemo, useRef, useState } from "react";
 
 type Step = 1 | 2 | "success" | "error";
 
-function IconBolt(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 function IconFactory(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
@@ -319,9 +306,20 @@ export default function CapabilitiesEstimationPage() {
               Heavy Fabrication Capability: The Hirakud Hub
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-              We own and operate an extensive fleet of advanced fabrication
-              machinery and heavy erection equipment to ensure zero third-party
-              delays.
+              Fabrication and erection for this class of industrial work depends
+              on heavy lifting, accurate cutting and controlled welding. The
+              equipment categories used to deliver it are set out below.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
+              Engineering and detailing workflows use AutoCAD, STAAD.Pro and
+              Tekla Structures as applicable to project requirements.
+            </p>
+            <p className="mt-3 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm leading-relaxed text-amber-900">
+              <strong className="font-semibold">Note:</strong> the specific
+              machines, capacities and ownership details for the Hirakud
+              facility are being documented and will be published here once
+              verified by A K ENGINEERING. Contact us for the equipment list
+              relevant to your scope.
             </p>
           </div>
 
@@ -331,29 +329,21 @@ export default function CapabilitiesEstimationPage() {
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
                 <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-100" />
                 <div className="absolute inset-0 grid place-items-center">
-                  <div className="text-center">
-                    <div className="mx-auto h-14 w-14 rounded-xl bg-slate-900/10" />
-                    <p className="mt-3 text-xs font-medium text-slate-600">
-                      Image Placeholder
-                    </p>
-                  </div>
+                  <IconFactory className="h-10 w-10 text-slate-400" />
                 </div>
                 <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/70 px-3 py-1 text-[11px] font-semibold text-slate-900 backdrop-blur">
                   <IconFactory className="h-4 w-4 text-sky-700" />
-                  Shop-floor Asset
+                  Fabrication Capability
                 </div>
               </div>
               <div className="p-6">
                 <h3 className="text-base font-semibold text-slate-950">
-                  Heavy-Duty EOT Cranes{" "}
-                  <span className="font-medium text-slate-500">
-                    (up to 50 MT)
-                  </span>
+                  Heavy-Duty EOT Crane Handling
                 </h3>
                 <ul className="mt-4 space-y-2 text-sm text-slate-700">
                   <li className="flex gap-2">
                     <span className="mt-2 h-1.5 w-1.5 rounded-full bg-sky-600" />
-                    Dual-girder configuration for heavy bay handling
+                    Heavy bay handling of fabricated members and assemblies
                   </li>
                   <li className="flex gap-2">
                     <span className="mt-2 h-1.5 w-1.5 rounded-full bg-sky-600" />
@@ -372,50 +362,7 @@ export default function CapabilitiesEstimationPage() {
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
                 <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-100" />
                 <div className="absolute inset-0 grid place-items-center">
-                  <div className="text-center">
-                    <div className="mx-auto h-14 w-14 rounded-xl bg-slate-900/10" />
-                    <p className="mt-3 text-xs font-medium text-slate-600">
-                      Image Placeholder
-                    </p>
-                  </div>
-                </div>
-                <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/70 px-3 py-1 text-[11px] font-semibold text-slate-900 backdrop-blur">
-                  <IconBolt className="h-4 w-4 text-sky-700" />
-                  CNC Cutting
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-base font-semibold text-slate-950">
-                  CNC Plasma & Oxy-Fuel Cutting Machines
-                </h3>
-                <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                  <li className="flex gap-2">
-                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-sky-600" />
-                    High-throughput plate profiling for structural members
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-sky-600" />
-                    Repeatable accuracy for bolt-hole and gusset patterns
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-sky-600" />
-                    Reduced edge prep rework through controlled cut quality
-                  </li>
-                </ul>
-              </div>
-            </article>
-
-            {/* Card 3 */}
-            <article className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md">
-              <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-100" />
-                <div className="absolute inset-0 grid place-items-center">
-                  <div className="text-center">
-                    <div className="mx-auto h-14 w-14 rounded-xl bg-slate-900/10" />
-                    <p className="mt-3 text-xs font-medium text-slate-600">
-                      Image Placeholder
-                    </p>
-                  </div>
+                  <IconShield className="h-10 w-10 text-slate-400" />
                 </div>
                 <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/70 px-3 py-1 text-[11px] font-semibold text-slate-900 backdrop-blur">
                   <IconShield className="h-4 w-4 text-sky-700" />
@@ -443,23 +390,18 @@ export default function CapabilitiesEstimationPage() {
               </div>
             </article>
 
-            {/* Card 4 */}
+            {/* Card 3 */}
             <article className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md lg:col-span-3">
               <div className="grid gap-0 lg:grid-cols-[1.2fr_1fr]">
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-100 lg:aspect-auto">
                   <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-100" />
-                  <div className="absolute inset-0 grid place-items-center">
-                    <div className="text-center">
-                      <div className="mx-auto h-14 w-14 rounded-xl bg-slate-900/10" />
-                      <p className="mt-3 text-xs font-medium text-slate-600">
-                        Image Placeholder
-                      </p>
-                    </div>
-                  </div>
-                  <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/70 px-3 py-1 text-[11px] font-semibold text-slate-900 backdrop-blur">
-                    <IconFactory className="h-4 w-4 text-sky-700" />
-                    Erection Fleet
-                  </div>
+                <div className="absolute inset-0 grid place-items-center">
+                  <IconFactory className="h-10 w-10 text-slate-400" />
+                </div>
+                <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/70 px-3 py-1 text-[11px] font-semibold text-slate-900 backdrop-blur">
+                  <IconFactory className="h-4 w-4 text-sky-700" />
+                  Erection Capability
+                </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-base font-semibold text-slate-950">
@@ -486,9 +428,9 @@ export default function CapabilitiesEstimationPage() {
 
           <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
             <p className="text-sm text-slate-700">
-              Procurement-ready assurance: equipment ownership reduces schedule
-              risk and ensures controlled quality from plate cutting to final
-              erection.
+              Procurement-ready assurance: controlled fabrication and engineered
+              lifting planning reduce schedule risk and support consistent
+              quality from plate cutting through final erection.
             </p>
           </div>
         </div>
@@ -505,8 +447,20 @@ export default function CapabilitiesEstimationPage() {
               Interactive PEB Budgetary Estimator
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-              Input your rough project parameters to receive a custom budgetary
-              estimate direct to your inbox.
+              Input your rough project parameters to receive a preliminary,
+              budgetary estimate direct to your inbox. This estimator is a
+              preliminary tool and not a quotation.
+            </p>
+            <p className="mt-4 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm leading-relaxed text-amber-900">
+              <strong className="font-semibold">
+                Preliminary / budgetary estimate only.
+              </strong>{" "}
+              Indicative budgetary base rates are ₹1,450 / sq.ft for a
+              warehouse, ₹1,550 / sq.ft for a commercial shed and ₹1,750 /
+              sq.ft for a manufacturing plant. These are indicative starting
+              points, not universal rates and not a final quotation. Rates are
+              indicative and subject to confirmation against the final project
+              scope and current market conditions.
             </p>
           </div>
 
@@ -676,8 +630,9 @@ export default function CapabilitiesEstimationPage() {
                           Location (State / City)
                         </p>
                         <p className="mt-1 text-xs text-slate-500">
-                          Helps our team consider logistics, wind zone, and site
-                          access assumptions.
+                          Used for your project enquiry and for our
+                          team&rsquo;s final assessment. Location does not by
+                          itself change the indicative budgetary rate.
                         </p>
 
                         <input
@@ -883,7 +838,7 @@ export default function CapabilitiesEstimationPage() {
 
                   <div className="mt-6 rounded-xl border border-slate-200 bg-white p-4">
                     <p className="text-sm font-semibold text-slate-900">
-                      Budgetary estimate output
+                      Budgetary estimate output (preliminary)
                     </p>
                     <p className="mt-1 text-sm text-slate-600">
                       For procurement discipline, the budgetary range is
@@ -938,6 +893,25 @@ export default function CapabilitiesEstimationPage() {
             </div>
           </div>
 
+          <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <p className="text-sm font-semibold text-slate-950">
+              What the final price depends on
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              The budgetary rate is a starting point only and is not universally
+              applicable. Actual pricing depends on project size, building
+              height, structural design, loading, location, steel specification,
+              roofing and cladding specification, openings, accessories,
+              foundation and civil scope, erection conditions, transportation,
+              applicable taxes and the final approved scope.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600">
+              Rates are indicative and subject to confirmation against the final
+              project scope and current market conditions. This estimator is not
+              a formal quotation.
+            </p>
+          </div>
+
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
               <p className="text-sm font-semibold text-slate-950">
@@ -950,11 +924,11 @@ export default function CapabilitiesEstimationPage() {
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
               <p className="text-sm font-semibold text-slate-950">
-                In-house capacity proof
+                Fabrication and erection capability
               </p>
               <p className="mt-2 text-sm text-slate-600">
-                Equipment ownership ensures schedule certainty and reduces
-                third-party dependencies.
+                Fabrication and erection capability supports schedule control
+                and reduces third-party dependency where the scope allows.
               </p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">

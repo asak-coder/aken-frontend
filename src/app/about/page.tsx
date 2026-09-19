@@ -1,10 +1,23 @@
+import type { Metadata } from "next";
 import BrandLogo from "@/components/BrandLogo";
 import TrackedLink from "@/components/TrackedLink";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "About AKEN | A Brand of A K ENGINEERING",
   description:
     "AKEN is a brand of A K ENGINEERING, representing our customer-facing identity for industrial engineering, steel fabrication and project execution services based in Hirakud, Odisha.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://aken.firm.in/about",
+    title: "About AKEN | A Brand of A K ENGINEERING",
+    description:
+      "AKEN is a brand of A K ENGINEERING — industrial engineering, steel fabrication and project execution services based in Hirakud, Odisha.",
+    siteName: "AKEN",
+    locale: "en_IN",
+  },
 };
 
 function IconShield(props: React.SVGProps<SVGSVGElement>) {
@@ -200,8 +213,11 @@ export default function AboutPage() {
 
               <div className="mt-8 grid grid-cols-2 gap-4 text-xs text-slate-600">
                 <div className="rounded-xl border border-slate-200 bg-white p-4">
-                  <p className="font-semibold text-slate-900">Location</p>
-                  <p className="mt-1">Hirakud, Sambalpur, Odisha</p>
+                  <p className="font-semibold text-slate-900">Locations</p>
+                  <p className="mt-1">
+                    Registered Address: Hirakud, Sambalpur, Odisha
+                  </p>
+                  <p className="mt-1">Branch Office: Bhubaneswar, Odisha</p>
                 </div>
                 <div className="rounded-xl border border-slate-200 bg-white p-4">
                   <p className="font-semibold text-slate-900">
@@ -335,12 +351,17 @@ export default function AboutPage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-4">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-gradient-to-br from-slate-200 to-slate-100">
-                  <div className="absolute inset-0 grid place-items-center">
-                    <div className="text-center">
-                      <div className="mx-auto h-16 w-16 rounded-full bg-slate-300" />
-                      <p className="mt-3 text-xs font-medium text-slate-600">
-                        Headshot Placeholder
+                <div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
+                  <div className="absolute inset-0 grid place-items-center px-6 text-center">
+                    <div>
+                      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-slate-900 text-base font-semibold text-white">
+                        AK
+                      </div>
+                      <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-slate-500">
+                        A K ENGINEERING
+                      </p>
+                      <p className="mt-2 text-sm text-slate-600">
+                        Proprietor-led execution oversight
                       </p>
                     </div>
                   </div>
@@ -364,7 +385,7 @@ export default function AboutPage() {
 
                 <blockquote className="mt-6 text-base leading-relaxed text-slate-700 sm:text-lg">
                   {
-                    '"In the EPC and structural fabrication sector, trust is built exactly like our steel structures: weld by weld, project by project. At A K ENGINEERING, our philosophy is anchored in absolute accountability. We do not over-promise, and we do not under-deliver. When we take on your project, my team and I treat your operational deadlines as our own. We enforce the strictest safety protocols, demand engineering perfection, and stand behind every single ton of steel we erect."'
+                    '"In the EPC and structural fabrication sector, trust is built exactly like our steel structures: weld by weld, project by project. At A K ENGINEERING, our philosophy is anchored in accountability. We do not over-promise, and we do not walk away from a scope we accept. When we take on your project, my team and I treat your operational deadlines as our own. We follow disciplined safety protocols, hold the work to high engineering and quality standards, and stand behind the steel we erect."'
                   }
                 </blockquote>
 
@@ -400,9 +421,10 @@ export default function AboutPage() {
                     Phase 1: Advanced Design & Detailing
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    Translating your technical requirements into precise
-                    structural models (AutoCAD and STAAD.Pro) to ensure zero
-                    site-fitment issues.
+                    Translating your technical requirements into detailed
+                    structural models and drawings. Engineering and detailing
+                    workflows use AutoCAD, STAAD.Pro and Tekla Structures as
+                    applicable to project requirements.
                   </p>
                 </div>
               </div>
@@ -418,9 +440,10 @@ export default function AboutPage() {
                     Phase 2: Heavy Fabrication in Hirakud
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    Advanced CNC cutting, submerged arc welding (SAW), and
-                    rigorous non-destructive testing (NDT) to manufacture
-                    high-tensile structural components.
+                    Submerged arc welding (SAW) and non-destructive testing
+                    (NDT) as required by project specifications, applied to
+                    fabricate structural components to drawing, BOQ and
+                    project requirements.
                   </p>
                 </div>
               </div>
@@ -454,9 +477,10 @@ export default function AboutPage() {
                     Phase 4: Mechanized Site Erection
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    Expert rigging teams, heavy-lifting equipment, and strict
-                    fall-protection protocols to assemble your structure rapidly
-                    and safely.
+                    Rigging teams supported by heavy lifting and erection
+                    equipment deployed as required for project-specific lifting
+                    and erection operations, with fall-protection protocols in
+                    place.
                   </p>
                 </div>
               </div>

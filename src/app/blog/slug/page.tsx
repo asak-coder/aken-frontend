@@ -1,10 +1,32 @@
+import type { Metadata } from "next";
 import { blogPosts } from "@/lib/blog-data";
 import TrackedLink from "@/components/TrackedLink";
 
-export const metadata = {
+/**
+ * This route duplicates the /blog article listing. It is kept so that existing
+ * links do not break, but it is deliberately excluded from search results and
+ * declares /blog as its canonical so the duplicate is consolidated.
+ */
+export const metadata: Metadata = {
   title: "Blog Library | AKEN",
   description:
     "Browse published articles from AKEN, a brand of A K ENGINEERING, on PEB, steel fabrication and EPC execution.",
+  alternates: {
+    canonical: "/blog",
+  },
+  robots: {
+    index: false,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    url: "https://aken.firm.in/blog",
+    title: "Blog Library | AKEN",
+    description:
+      "Browse published articles from AKEN, a brand of A K ENGINEERING, on PEB, steel fabrication and EPC execution.",
+    siteName: "AKEN",
+    locale: "en_IN",
+  },
 };
 
 export default function BlogLibraryPage() {

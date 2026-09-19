@@ -2,18 +2,45 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SmartEnquiryWizard from "@/components/SmartEnquiryWizard";
 import TrackedAnchor from "@/components/TrackedAnchor";
-import { CONTACT_PHONE_E164, CONTACT_WHATSAPP_PREFILL_URL } from "@/lib/contact";
+import {
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_E164,
+  CONTACT_WHATSAPP_PREFILL_URL,
+} from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "Industrial Project Enquiry | AKEN – A K ENGINEERING",
   description:
-    "Send an industrial project enquiry to AKEN, a brand of A K ENGINEERING, for EPC services including PEB sheds, steel structure fabrication, sheet cladding, industrial maintenance, and structural repair. Get a fast engineering callback and quotation support.",
+    "Send an industrial project enquiry to AKEN, a brand of A K ENGINEERING, for PEB sheds, structural steel fabrication, erection, roofing and cladding, industrial maintenance and structural repair.",
+  alternates: {
+    canonical: "/enquiry",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://aken.firm.in/enquiry",
+    title: "Industrial Project Enquiry | AKEN – A K ENGINEERING",
+    description:
+      "Share your project details — scope, location, tonnage and timeline — and A K ENGINEERING will respond with a practical quotation.",
+    siteName: "AKEN",
+    locale: "en_IN",
+  },
 };
 
 export default function EnquiryPage() {
   return (
     <main className="min-h-screen bg-gray-50">
       <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+        <div className="mb-8 max-w-3xl">
+          <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+            Industrial Project Enquiry
+          </h1>
+          <p className="mt-3 text-sm leading-relaxed text-gray-600 sm:text-base">
+            Share your scope, location, estimated tonnage and timeline. Our
+            engineering team reviews every enquiry and responds with a
+            practical quotation for the work involved.
+          </p>
+        </div>
+
         <div className="grid gap-6 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
           <div className="order-2 lg:order-1">
             <SmartEnquiryWizard />
@@ -32,7 +59,7 @@ export default function EnquiryPage() {
                   eventName="phone_click"
                   className="font-semibold text-gray-900 underline"
                 >
-                  8280076864
+                  {CONTACT_PHONE_DISPLAY}
                 </TrackedAnchor>
               </p>
 

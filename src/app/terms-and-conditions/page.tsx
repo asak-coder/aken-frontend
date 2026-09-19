@@ -4,6 +4,18 @@ export const metadata: Metadata = {
   title: "Terms and Conditions | AKEN – A K ENGINEERING",
   description:
     "Terms and conditions governing enquiry submission, project consultation, and communication with A K ENGINEERING, the registered business behind AKEN.",
+  alternates: {
+    canonical: "/terms-and-conditions",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://aken.firm.in/terms-and-conditions",
+    title: "Terms and Conditions | AKEN – A K ENGINEERING",
+    description:
+      "Terms governing enquiry submission, project consultation and communication with A K ENGINEERING, the registered business behind AKEN.",
+    siteName: "AKEN",
+    locale: "en_IN",
+  },
 };
 
 export default function TermsAndConditionsPage() {

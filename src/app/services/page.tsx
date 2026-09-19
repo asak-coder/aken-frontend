@@ -1,4 +1,5 @@
-import ProjectGallery, { ProjectGalleryItem } from "@/components/ProjectGallery";
+import type { ProjectGalleryItem } from "@/components/ProjectGallery";
+import RepresentativeGallery from "@/components/RepresentativeGallery";
 import TrackedAnchor from "@/components/TrackedAnchor";
 import TrackedLink from "@/components/TrackedLink";
 import {
@@ -7,13 +8,24 @@ import {
   CONTACT_WHATSAPP_URL,
 } from "@/lib/contact";
 import { getServiceStructuredDataJson } from "@/lib/schema";
+import { getServiceSummaries } from "@/lib/services/service-data";
 
 export const metadata = {
   title: "Industrial Engineering & Steel Fabrication Services | AKEN",
   description:
     "AKEN, a brand of A K ENGINEERING, delivers industrial EPC execution, PEB construction, structural steel fabrication, steel structure erection, roofing & cladding, mechanical installation and industrial maintenance services across Odisha and India. Request a project quotation for your plant, warehouse, or expansion works.",
-  keywords:
-    "PEB contractor Odisha, steel fabrication contractor Sambalpur, structural steel fabrication services, industrial steel structure erection, roofing sheeting cladding contractor, industrial maintenance shutdown services, industrial shed construction Odisha, AKEN A K ENGINEERING",
+  alternates: {
+    canonical: "/services",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://aken.firm.in/services",
+    title: "Industrial Engineering & Steel Fabrication Services | AKEN",
+    description:
+      "PEB, structural steel fabrication, erection, roofing and cladding, mechanical installation and industrial maintenance delivered across Odisha and India by A K ENGINEERING.",
+    siteName: "AKEN",
+    locale: "en_IN",
+  },
 };
 
 const pebGallery: ProjectGalleryItem[] = [
@@ -106,6 +118,33 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Dedicated service pages (child URLs) */}
+      <section className="border-b border-gray-200 bg-white">
+        <div className="mx-auto max-w-6xl px-6 py-10">
+          <h2 className="text-lg font-bold text-gray-900">
+            Dedicated service pages
+          </h2>
+          <p className="mt-2 max-w-3xl text-sm text-gray-600">
+            Detailed scope, execution approach, applications and FAQs for each
+            service are published on its own page.
+          </p>
+          <ul className="mt-5 flex flex-wrap gap-3">
+            {getServiceSummaries().map((service) => (
+              <li key={service.slug}>
+                <TrackedLink
+                  href={service.path}
+                  ctaName={`Service page link: ${service.navLabel}`}
+                  ctaLocation="services_index"
+                  eventName="service_page_click"
+                  className="inline-flex items-center rounded-full border border-gray-300 bg-gray-50 px-4 py-2 text-sm font-semibold text-gray-900 transition hover:border-gray-500 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400"
+                >
+                  {service.navLabel}
+                </TrackedLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       {/* Detailed Services */}
       <section className="py-20 px-6 max-w-6xl mx-auto">
@@ -113,8 +152,20 @@ export default function ServicesPage() {
           {/* PEB */}
           <div id="peb" className="border rounded-2xl p-8">
             <h2 className="text-3xl font-bold mb-4">
-              Pre-Engineered Building (PEB) Construction
+              Pre-Engineered Buildings (PEB) Construction
             </h2>
+            <p className="mb-4">
+              <TrackedLink
+                href="/services/peb"
+                ctaName="Open PEB service page"
+                ctaLocation="services_peb"
+                eventName="service_page_click"
+                className="text-sm font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-900"
+              >
+                View the full PEB service page
+                <span aria-hidden="true"> →</span>
+              </TrackedLink>
+            </p>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               AKEN delivers turnkey PEB execution for industrial
               warehouses, factory sheds and logistics facilities. We coordinate
@@ -166,8 +217,8 @@ export default function ServicesPage() {
             </div>
 
             <div className="mt-8">
-              <ProjectGallery
-                title="PEB Project Photos"
+              <RepresentativeGallery
+                headline="Representative imagery — PEB"
                 items={pebGallery}
               />
             </div>
@@ -197,6 +248,18 @@ export default function ServicesPage() {
           {/* Fabrication */}
           <div id="fabrication" className="border rounded-2xl p-8">
             <h2 className="text-3xl font-bold mb-4">Structural Steel Fabrication</h2>
+            <p className="mb-4">
+              <TrackedLink
+                href="/services/structural-steel-fabrication"
+                ctaName="Open structural steel fabrication service page"
+                ctaLocation="services_fabrication"
+                eventName="service_page_click"
+                className="text-sm font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-900"
+              >
+                View the full structural steel fabrication page
+                <span aria-hidden="true"> →</span>
+              </TrackedLink>
+            </p>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               As a trusted{" "}
               <span className="font-semibold">
@@ -251,8 +314,8 @@ export default function ServicesPage() {
             </div>
 
             <div className="mt-8">
-              <ProjectGallery
-                title="Fabrication Photos"
+              <RepresentativeGallery
+                headline="Representative imagery — fabrication"
                 items={fabricationGallery}
               />
             </div>
@@ -284,6 +347,18 @@ export default function ServicesPage() {
           {/* Erection */}
           <div id="erection" className="border rounded-2xl p-8">
             <h2 className="text-3xl font-bold mb-4">Steel Structure Erection</h2>
+            <p className="mb-4">
+              <TrackedLink
+                href="/services/structural-steel-erection"
+                ctaName="Open structural steel erection service page"
+                ctaLocation="services_erection"
+                eventName="service_page_click"
+                className="text-sm font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-900"
+              >
+                View the full steel erection service page
+                <span aria-hidden="true"> →</span>
+              </TrackedLink>
+            </p>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               We execute safe and dependable steel erection for industrial sheds,
               process buildings, conveyors and equipment support structures.
@@ -359,6 +434,18 @@ export default function ServicesPage() {
           {/* Roofing & Cladding */}
           <div id="roofing" className="border rounded-2xl p-8">
             <h2 className="text-3xl font-bold mb-4">Roofing, Sheeting & Cladding</h2>
+            <p className="mb-4">
+              <TrackedLink
+                href="/services/roofing-wall-cladding"
+                ctaName="Open roofing and wall cladding service page"
+                ctaLocation="services_cladding"
+                eventName="service_page_click"
+                className="text-sm font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-900"
+              >
+                View the full roofing and wall cladding page
+                <span aria-hidden="true"> →</span>
+              </TrackedLink>
+            </p>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               Roofing and cladding quality directly impacts leak resistance,
               equipment protection and the working environment. Our teams install
@@ -488,8 +575,8 @@ export default function ServicesPage() {
             </div>
 
             <div className="mt-8">
-              <ProjectGallery
-                title="PUF Panel & Cladding Photos"
+              <RepresentativeGallery
+                headline="Representative imagery — insulated panels and cladding"
                 items={pufGallery}
               />
             </div>
@@ -521,6 +608,18 @@ export default function ServicesPage() {
             <h2 className="text-3xl font-bold mb-4">
               Industrial Maintenance & Shutdown Services
             </h2>
+            <p className="mb-4">
+              <TrackedLink
+                href="/services/industrial-maintenance-shutdown"
+                ctaName="Open industrial maintenance and shutdown service page"
+                ctaLocation="services_maintenance"
+                eventName="service_page_click"
+                className="text-sm font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-900"
+              >
+                View the full maintenance and shutdown page
+                <span aria-hidden="true"> →</span>
+              </TrackedLink>
+            </p>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               We support plant operations with shutdown-ready manpower,
               structural repairs and quick-turn fabrication/installation. Our

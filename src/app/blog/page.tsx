@@ -1,12 +1,25 @@
+import type { Metadata } from "next";
 import { blogPosts } from "@/lib/blog-data";
 import TrackedAnchor from "@/components/TrackedAnchor";
 import TrackedLink from "@/components/TrackedLink";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_E164, CONTACT_WHATSAPP_URL } from "@/lib/contact";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Industrial Engineering Blog | AKEN",
   description:
-    "Read expert articles on Pre-Engineered Buildings, Industrial Steel Fabrication and EPC project execution from AKEN, a brand of A K ENGINEERING.",
+    "Articles on pre-engineered buildings, industrial steel fabrication, erection and EPC project execution from AKEN, a brand of A K ENGINEERING.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://aken.firm.in/blog",
+    title: "Industrial Engineering Blog | AKEN",
+    description:
+      "Articles on pre-engineered buildings, steel fabrication, erection and EPC project execution from A K ENGINEERING.",
+    siteName: "AKEN",
+    locale: "en_IN",
+  },
 };
 
 export default function BlogPage() {

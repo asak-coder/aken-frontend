@@ -13,7 +13,19 @@ import {
 export const metadata: Metadata = {
   title: "Contact AKEN | A K ENGINEERING",
   description:
-    "Contact AKEN, a brand of A K ENGINEERING, to discuss structural, fabrication, erection or industrial engineering requirements. Get in touch for Industrial EPC Projects, PEB, steel fabrication and industrial maintenance.",
+    "Contact AKEN, a brand of A K ENGINEERING, to discuss structural steel fabrication, erection, PEB or industrial maintenance requirements. Share your drawings and BOQ for a technical review and quotation.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://aken.firm.in/contact",
+    title: "Contact AKEN | A K ENGINEERING",
+    description:
+      "Discuss structural steel fabrication, erection, PEB or industrial maintenance requirements with A K ENGINEERING. Share your drawings and BOQ for a technical review.",
+    siteName: "AKEN",
+    locale: "en_IN",
+  },
 };
 
 export default function ContactPage() {
@@ -116,15 +128,16 @@ export default function ContactPage() {
               </TrackedAnchor>
             </p>
 
-            <p className="text-gray-700">
-              <strong>Locations:</strong> Bhubaneswar Office (Odisha) • Hirakud
-              Site Office (Odisha)
-            </p>
+            <div className="space-y-2 text-gray-700">
+              <p>
+                <strong>Branch Office:</strong> Bhubaneswar, Odisha
+              </p>
+              <p>
+                <strong>Registered Address:</strong> Hirakud, Sambalpur,
+                Odisha
+              </p>
+            </div>
 
-            <p className="text-sm text-gray-600">
-              Keywords: PEB Contractor Bhubaneswar • Steel Fabrication Contractor
-              Hirakud • Industrial Steel Structure Contractor Odisha
-            </p>
           </div>
         </div>
 
@@ -135,21 +148,27 @@ export default function ContactPage() {
       </section>
 
       <section className="pb-20 px-6 max-w-6xl mx-auto">
-        <h2 className="text-2xl font-bold mb-6 text-center">Our Locations</h2>
+        <h2 className="text-2xl font-bold mb-2 text-center">Our Locations</h2>
+        <p className="mx-auto mb-6 max-w-3xl text-center text-sm text-gray-600">
+          A K ENGINEERING operates its branch office at Bhubaneswar. Hirakud,
+          Sambalpur, Odisha is the registered address of A K ENGINEERING.
+        </p>
 
         <div className="grid gap-8 md:grid-cols-2">
           <div className="rounded-2xl border border-gray-200 bg-white overflow-hidden shadow-sm">
             <div className="p-5">
               <h3 className="text-lg font-semibold">
-                AKEN (A K ENGINEERING) – Bhubaneswar Office
+                AKEN (A K ENGINEERING) – Bhubaneswar Branch Office
               </h3>
-              <p className="mt-1 text-sm text-gray-600">A K ENGINEERING</p>
+              <p className="mt-1 text-sm text-gray-600">
+                Branch Office · A K ENGINEERING
+              </p>
             </div>
 
             <div className="px-5 pb-5">
               <div className="rounded-xl overflow-hidden border border-gray-200">
                 <LazyMapEmbed
-                  title="AKEN – Bhubaneswar Office"
+                  title="AKEN – Bhubaneswar Branch Office"
                   lat={20.273165901094252}
                   lng={85.8028445394262}
                 />
@@ -169,25 +188,23 @@ export default function ContactPage() {
                 </TrackedAnchor>
               </div>
 
-              <p className="mt-4 text-xs text-gray-600">
-                PEB Contractor Bhubaneswar • Industrial EPC Contractor Odisha •
-                Structural Steel Fabrication Bhubaneswar
-              </p>
             </div>
           </div>
 
           <div className="rounded-2xl border border-gray-200 bg-white overflow-hidden shadow-sm">
             <div className="p-5">
               <h3 className="text-lg font-semibold">
-                AKEN (A K ENGINEERING) – Hirakud
+                AKEN (A K ENGINEERING) – Hirakud Registered Address
               </h3>
-              <p className="mt-1 text-sm text-gray-600">A K ENGINEERING</p>
+              <p className="mt-1 text-sm text-gray-600">
+                Registered Address · A K ENGINEERING
+              </p>
             </div>
 
             <div className="px-5 pb-5">
               <div className="rounded-xl overflow-hidden border border-gray-200">
                 <LazyMapEmbed
-                  title="AKEN – Hirakud"
+                  title="AKEN – Hirakud Registered Address"
                   lat={21.5367316772452}
                   lng={83.89499883022955}
                 />
@@ -207,10 +224,6 @@ export default function ContactPage() {
                 </TrackedAnchor>
               </div>
 
-              <p className="mt-4 text-xs text-gray-600">
-                Steel Fabrication Contractor Hirakud • Industrial Steel Structure
-                Contractor Odisha • PEB Contractor Odisha
-              </p>
             </div>
           </div>
         </div>

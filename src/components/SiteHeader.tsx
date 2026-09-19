@@ -16,11 +16,37 @@ const navLinks = [
   { href: "/blog", label: "Insights" },
 ];
 
+/**
+ * Service links point at the dedicated service pages so that each capability
+ * has one canonical, crawlable destination. /services remains the index and is
+ * linked from the dropdown footer.
+ */
 const servicesLinks = [
-  { href: "/services#peb", label: "Pre-Engineered Buildings (PEB)" },
-  { href: "/services#fabrication", label: "Structural Steel Fabrication" },
-  { href: "/services#erection", label: "Structural Steel Erection" },
-  { href: "/services#maintenance", label: "Industrial Maintenance & Shutdown" },
+  { href: "/services/peb", label: "Pre-Engineered Buildings (PEB)" },
+  {
+    href: "/services/structural-steel-fabrication",
+    label: "Structural Steel Fabrication",
+  },
+  {
+    href: "/services/structural-steel-erection",
+    label: "Structural Steel Erection",
+  },
+  {
+    href: "/services/roofing-wall-cladding",
+    label: "Industrial Roofing & Wall Cladding",
+  },
+  {
+    href: "/services/industrial-maintenance-shutdown",
+    label: "Industrial Maintenance & Shutdown",
+  },
+  {
+    href: "/services/mechanical-equipment-erection",
+    label: "Mechanical Equipment Erection",
+  },
+  {
+    href: "/services/heavy-fabrication",
+    label: "Heavy & Custom Steel Fabrication",
+  },
 ];
 
 export default function SiteHeader() {

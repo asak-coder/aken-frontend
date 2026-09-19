@@ -1,9 +1,26 @@
 import type { Metadata } from "next";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_E164,
+} from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | AKEN – A K ENGINEERING",
   description:
     "Learn how A K ENGINEERING, the registered business behind AKEN, collects, uses and protects contact and project-related information.",
+  alternates: {
+    canonical: "/privacy-policy",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://aken.firm.in/privacy-policy",
+    title: "Privacy Policy | AKEN – A K ENGINEERING",
+    description:
+      "How A K ENGINEERING, the registered business behind AKEN, collects, uses and protects contact and project-related information.",
+    siteName: "AKEN",
+    locale: "en_IN",
+  },
 };
 
 export default function PrivacyPolicyPage() {
@@ -86,14 +103,14 @@ export default function PrivacyPolicyPage() {
           <p>A K ENGINEERING, Sambalpur, Odisha, India</p>
           <p>
             Email:{" "}
-            <a className="underline" href="mailto:contact@aken.firm.in">
-              contact@aken.firm.in
+            <a className="underline" href={`mailto:${CONTACT_EMAIL}`}>
+              {CONTACT_EMAIL}
             </a>
           </p>
           <p>
             Phone:{" "}
-            <a className="underline" href="tel:+918280076864">
-              8280076864
+            <a className="underline" href={`tel:${CONTACT_PHONE_E164}`}>
+              {CONTACT_PHONE_DISPLAY}
             </a>
           </p>
         </section>
