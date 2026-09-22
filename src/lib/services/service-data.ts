@@ -150,6 +150,12 @@ const peb: ServiceContent = {
   ],
   representativeImages: [
     {
+      src: "/projects/peb-primary-frame-erection-crane.jpg",
+      alt: "Tapered built-up PEB rafters being erected by a mobile crane, with roof purlins, wall girts and cross bracing installed at an Indian industrial project site",
+      caption:
+        "PEB primary frame erection — tapered rafters, purlins and girts — representative industrial imagery",
+    },
+    {
       src: "/projects/peb-warehouse-construction.jpg",
       alt: "Pre-engineered steel building frame under construction at an industrial site",
       caption: "PEB warehouse frame — representative industrial imagery",
