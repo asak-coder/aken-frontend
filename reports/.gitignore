@@ -1,0 +1,11 @@
+# Generated SEO audit output.
+#
+# Never commit these. A run contains a complete crawl of the live site -
+# every URL, title, meta description and finding - which is a private
+# artefact, not source. The writer already refuses to place a report under
+# any path containing a public segment; this keeps the same data out of
+# version control.
+#
+# Only this file is tracked.
+*
+!.gitignore

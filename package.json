@@ -8,7 +8,11 @@
     "prebuild": "npm run security:env-check",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seo:audit": "node scripts/seo/audit.mjs",
+    "seo:audit:offline": "node scripts/seo/audit.mjs --no-network",
+    "seo:test": "node --test scripts/seo/tests/",
+    "test": "npm run seo:test"
   },
   "dependencies": {
     "chart.js": "^4.5.1",
