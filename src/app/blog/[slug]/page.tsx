@@ -82,11 +82,15 @@ export async function generateMetadata({
       authors: [ORG_NAME],
       tags: post.keywords,
       locale: "en_IN",
+      images: post.image
+        ? [{ url: post.image.url, alt: post.image.alt }]
+        : undefined,
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
+      images: post.image ? [post.image.url] : undefined,
     },
   };
 }
@@ -132,6 +136,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     wordCount,
     timeRequired: `PT${readingMinutes}M`,
     inLanguage: "en-IN",
+    image: post.image ? [`${SITE_URL}${post.image.url}`] : undefined,
   };
 
   const breadcrumbJsonLd = {

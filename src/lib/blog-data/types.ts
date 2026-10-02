@@ -28,6 +28,17 @@ export interface BlogPost {
   updatedAt?: string;
   /** Primary and secondary keywords for metadata and JSON-LD. */
   keywords: string[];
+  /**
+   * Optional social/preview image. Must reference an existing public asset
+   * (for example /hero-steel.jpg) and is never presented as an AKEN project
+   * photograph. When absent, the article inherits the site default.
+   */
+  image?: {
+    /** Public asset path, e.g. /hero-steel.jpg */
+    url: string;
+    /** Descriptive alt text for the image. */
+    alt: string;
+  };
 }
 
 export type BlogBlock =

@@ -1,4 +1,5 @@
 import type { BlogPost } from "./blog-data/types";
+import { industrialShedConstructionCostIndia } from "./blog-data/posts/industrial-shed-construction-cost-india";
 import { pebCostPerSqFtIndia } from "./blog-data/posts/peb-cost-per-sq-ft-india";
 import { benefitsOfPreEngineeredBuildings } from "./blog-data/posts/benefits-of-pre-engineered-buildings";
 import { pebVsRccIndustrialConstruction } from "./blog-data/posts/peb-vs-rcc-industrial-construction";
@@ -15,6 +16,7 @@ export type { BlogPost } from "./blog-data/types";
  * /blog/<slug> and includes it in the sitemap automatically.
  */
 export const blogPosts: BlogPost[] = [
+  industrialShedConstructionCostIndia,
   pebCostPerSqFtIndia,
   benefitsOfPreEngineeredBuildings,
   pebVsRccIndustrialConstruction,
